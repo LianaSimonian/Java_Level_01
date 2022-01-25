@@ -7,7 +7,7 @@ public class User {
     User() {
 
     }
-
+    
     User(String str, int h) {
         name = str;
         height = h;
