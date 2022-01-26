@@ -30,5 +30,6 @@ public class ProjectTest {
         String projectName = new Scanner(System.in).nextLine();
 
         return new Project(projectName, System.currentTimeMillis() / 1000);
+    
     }
 }
