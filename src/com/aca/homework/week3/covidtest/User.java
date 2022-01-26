@@ -7,8 +7,4 @@ public class User {
     public void print() {
         System.out.print("username:" + name + " usercode:" + code);
     }
-
-    public String print1() {
-        return name + "/" + code;
-    }
 }
