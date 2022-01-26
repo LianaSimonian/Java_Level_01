@@ -27,22 +27,15 @@ public class Covid_Test {
         covidTestOfUser3.result = "negative";
         covidTestOfUser3.user =user3;
 
-        //checking1
+       
         CovidTest. printCovidTest(covidTestOfUser1);
         CovidTest.printCovidTest(covidTestOfUser2);
         CovidTest.printCovidTest(covidTestOfUser3);
         System.out.println();
-        //checking2
+     
         covidTestOfUser1.print();
         covidTestOfUser2.print();
         covidTestOfUser3.print();
-        System.out.println();
-        //checking3
-        System.out.println(covidTestOfUser1.print1());
-        System.out.println(covidTestOfUser2.print1());
-        System.out.println(covidTestOfUser3.print1());
-
-
     }
 }
 
