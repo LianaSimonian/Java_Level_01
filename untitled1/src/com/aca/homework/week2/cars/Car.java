@@ -9,6 +9,7 @@ public class Car {
     }
 
     Car(int year, String brand) {
+        
         this.year = year;
         this.brand = brand;
     }
