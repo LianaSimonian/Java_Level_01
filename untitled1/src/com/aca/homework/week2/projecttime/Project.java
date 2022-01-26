@@ -8,8 +8,8 @@ public class Project {
 
     }
 
-    Project(String str, long secunds) {
-        name = str;
+    Project(String projectName, long secunds) {
+        name = projectName;
         creationSeconds = secunds;
     }
 }

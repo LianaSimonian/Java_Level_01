@@ -1,10 +1,22 @@
 package com.aca.homework.week2.projecttime;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
 import java.util.Scanner;
 
 public class ProjectTest {
+
+    public static void main(String[] args) {
+
+        printProjects(createTreeProjects());
+    }
+
+    public static Project[] createTreeProjects() {
+        Project[] projects = new Project[3];
+
+        for (int i = 0; i < 3; i++) {
+            projects[i] = createProject();
+        }
+        return projects;
+    }
 
     public static void printProjects(Project[] projects) {
         for (int i = 0; i < projects.length; i++) {
@@ -17,19 +29,6 @@ public class ProjectTest {
         System.out.println("Please enter the project name:");
         String projectName = new Scanner(System.in).nextLine();
 
-        RuntimeMXBean runtimeBean = ManagementFactory.getRuntimeMXBean();
-        long upTime = runtimeBean.getUptime();
-        return new Project(projectName, upTime);
+        return new Project(projectName, System.currentTimeMillis() / 1000);
     }
-
-    public static void main(String[] args) {
-        Project[] projects = new Project[3];
-
-        for (int i = 0; i < 3; i++) {
-            projects[i] = createProject();
-        }
-
-        printProjects(projects);
-    }
-
 }
