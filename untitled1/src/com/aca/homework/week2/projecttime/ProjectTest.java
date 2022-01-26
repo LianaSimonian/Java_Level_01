@@ -19,15 +19,6 @@ public class ProjectTest {
 
         RuntimeMXBean runtimeBean = ManagementFactory.getRuntimeMXBean();
         long upTime = runtimeBean.getUptime();
-
-        /*
-         //using default constructor
-        Project temp = new Project();
-        temp.name=str;
-        temp.creationSeconds=upTime;
-        return temp;
-         */
-
         return new Project(projectName, upTime);
     }
 
