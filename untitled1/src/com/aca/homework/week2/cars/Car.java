@@ -8,8 +8,8 @@ public class Car {
 
     }
 
-    Car(int y, String s) {
-        year = y;
-        brand = s;
+    Car(int year, String brand) {
+        this.year = year;
+        this.brand = brand;
     }
 }
