@@ -13,8 +13,8 @@ public class ClassRoom {
         acaClass.fee = 500000;
         acaClass.students = getArrayOfStudent();
 
-        acaClass.startMillis = ConvertStringToDateByMillis("2022/01/01 00:00:00");
-        acaClass.endMillis = ConvertStringToDateByMillis("2022/05/01 00:00:00");
+        acaClass.startMillis = convertStringToDateByMillis("2022/01/01 00:00:00");
+        acaClass.endMillis = convertStringToDateByMillis("2022/05/01 00:00:00");
         acaClass.print();
 
     }
@@ -31,7 +31,7 @@ public class ClassRoom {
         return students;
     }
 
-    public static long ConvertStringToDateByMillis(String date) {
+    public static long convertStringToDateByMillis(String date) {
         String tempString = date;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

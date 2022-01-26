@@ -15,7 +15,7 @@ public class AcaClass {
         System.out.println("AcaClass end time by millis: " + endMillis);
         System.out.println("AcaClass name  surname  of students: ");
         for (int i = 0; i < students.length; i++) {
-            System.out.println("name:" + students[i].name + " surname :" + students[i].surname);
+           students[i].print();
         }
     }
 }
