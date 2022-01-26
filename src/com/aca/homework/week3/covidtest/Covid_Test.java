@@ -2,7 +2,7 @@ package com.aca.homework.week3.covidtest;
 
 public class Covid_Test {
     public static void main(String[] args) {
-        //using default constructor
+      
         User user1 = new User();
         user1.name = "Mark";
         user1.code = "mark789";
