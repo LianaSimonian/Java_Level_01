@@ -55,6 +55,7 @@ public class Cars {
             System.out.println(cars1[i].brand + " " + cars1[i].year);
 
         }
+        
         System.out.println();
         cars1 = carsManufacturedAfter2010Version2(cars);
         for (int i = 0; i < cars1.length; i++) {
