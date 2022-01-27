@@ -1,7 +1,6 @@
 package com.aca.homework.week3.covidtest;
 
 public class CovidTest {
-    //char result;
     String result;
     User user;
 
@@ -16,9 +15,6 @@ public class CovidTest {
         System.out.println(" testresult:" + result);
 
     }
-
-    public String print1() {
-        return user.print1() + "/" + result;
-    }
+    
 }
 
