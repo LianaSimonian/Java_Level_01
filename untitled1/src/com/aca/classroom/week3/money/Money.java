@@ -5,7 +5,7 @@ public class Money {
         double sum =150000 ;
 
         for(int i =1;i<=365;i++){
-            sum+=(sum /100);
+            sum=1.01*sum;
 
         }
         return sum;
