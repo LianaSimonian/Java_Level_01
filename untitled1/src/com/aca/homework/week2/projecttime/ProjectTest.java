@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class ProjectTest {
 
     public static void main(String[] args) {
-       long start = System.currentTimeMillis();
-        printProjects(createThreeProjects(start));
+
+        printProjects(createTreeProjects());
     }
 
-    public static Project[] createThreeProjects(long start) {
+    public static Project[] createTreeProjects() {
         Project[] projects = new Project[3];
 
         for (int i = 0; i < 3; i++) {
-            projects[i] = createProject(start);
+            projects[i] = createProject();
         }
         return projects;
     }
@@ -24,11 +24,11 @@ public class ProjectTest {
         }
     }
 
-    public static Project createProject(long start ) {
+    public static Project createProject() {
 
         System.out.println("Please enter the project name:");
         String projectName = new Scanner(System.in).nextLine();
 
-        return new Project(projectName,(System.currentTimeMillis()- start)/1000);
+        return new Project(projectName, System.currentTimeMillis() / 1000);
     }
 }
