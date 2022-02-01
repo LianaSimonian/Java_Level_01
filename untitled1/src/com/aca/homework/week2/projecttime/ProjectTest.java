@@ -6,10 +6,10 @@ public class ProjectTest {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        printProjects(createTreeProjects(start));
+        printProjects(createThreeProjects(start));
     }
 
-    public static Project[] createTreeProjects(long start) {
+    public static Project[] createThreeProjects(long start) {
         Project[] projects = new Project[3];
 
         for (int i = 0; i < 3; i++) {
