@@ -16,7 +16,6 @@ public class Main {
             for (int i = 0; i < 4; i++) {
                 System.out.println("removed value:"+ stack.pop());
             }
-
         System.out.println("size:" + stack.sizeOfStack());
     }
 }
