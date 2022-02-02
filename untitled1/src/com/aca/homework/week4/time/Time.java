@@ -1,5 +1,19 @@
 package com.aca.homework.week4.time;
+/*Create a Time method that takes seconds of a day in a constructor (starting from 00:00:00) and provides 3 method
+ to get hours, minutes and seconds of the time.
+        Time time = new Time(0)
+        time.getSeconds() -> should return 0
+        time.getMinutes() -> should return 0
+        time.getHours() -> should return 0
 
+
+        Time time = new Time(3600+5*60+6)
+        time.getSeconds() -> should return 6
+        time.getMinutes() -> should return 5
+        time.getHours() -> should return 1
+
+        print the result of each method invocation
+*/
 public class Time {
     private long seconds;
 
