@@ -16,5 +16,6 @@ public class Time_Test {
 
         Time time3 = new Time(24 * 60 * 60);
         time3.print();
+
     }
 }
