@@ -43,15 +43,15 @@ public class Time {
     }
 
     public static String patternSeconds(long seconds) {
-        return (seconds >= 9 && seconds <= 0) ? "0" + seconds : Long.toString(seconds);
+        return seconds <= 9 && seconds >= 0 ? "0" + seconds : Long.toString(seconds);
     }
 
     public static String patternMinutes(long minutes) {
-        return (minutes >= 9 && minutes <= 0) ? "0" + minutes : Long.toString(minutes);
+        return minutes <= 9 && minutes >= 0 ? "0" + minutes : Long.toString(minutes);
     }
 
     public static String patternHours(long hours) {
-        return (hours >= 9 && hours <= 0) ? "0" + hours : Long.toString(hours);
+        return hours <= 9 && hours >= 0 ? "0" + hours : Long.toString(hours);
     }
 
 }
