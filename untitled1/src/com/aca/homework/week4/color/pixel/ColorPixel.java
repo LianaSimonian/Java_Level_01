@@ -24,4 +24,5 @@ public class ColorPixel extends Pixel {
     public String getColor() {
         return color;
     }
+
 }
