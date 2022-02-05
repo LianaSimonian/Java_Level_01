@@ -1,4 +1,5 @@
 package com.aca.homework.week4.time;
+
 /*Create a Time method that takes seconds of a day in a constructor (starting from 00:00:00) and provides 3 method
  to get hours, minutes and seconds of the time.
         Time time = new Time(0)
@@ -41,35 +42,37 @@ public class Time {
         long hours = getHours();
         long minutes = getMinutes();
         long seconds = getSeconds();
-        if (hours >= 0 && hours <= 9) {
-            if (minutes >= 0 && minutes <= 9) {
-                if (seconds >= 0 && seconds <= 9) {
-                    System.out.println("0" + hours + ":0" + minutes + ":0" + seconds);
-                } else {
-                    System.out.println("0" + hours + ":0" + minutes + ":" + seconds);
-                }
-            } else {
-                if (seconds >= 0 && seconds <= 9) {
-                    System.out.println("0" + hours + ":" + minutes + ":0" + seconds);
-                } else {
-                    System.out.println("0" + hours + ":" + minutes + ":" + seconds);
-                }
+        boolean checkHours = checkHours(hours);
+        boolean checkMinutes = checkMinutes(minutes);
+        boolean checkSeconds = checkSeconds(seconds);
 
-            }
-        } else {
-            if (minutes >= 0 && minutes <= 9) {
-                if (seconds >= 0 && seconds <= 9) {
-                    System.out.println(hours + ":0" + minutes + ":0" + seconds);
-                } else {
-                    System.out.println(hours + ":0" + minutes + ":" + seconds);
-                }
-            } else {
-                if (seconds >= 0 && seconds <= 9) {
-                    System.out.println(hours + ":" + minutes + ":0" + seconds);
-                } else {
-                    System.out.println(hours + ":" + minutes + ":" + seconds);
-                }
-            }
-        }
+        if (checkHours && checkMinutes && checkSeconds)
+            System.out.println("0" + hours + ":0" + minutes + ":0" + seconds);
+        if (checkHours && checkMinutes && !checkSeconds)
+            System.out.println("0" + hours + ":0" + minutes + ":" + seconds);
+        if (checkHours && !checkMinutes && checkSeconds)
+            System.out.println("0" + hours + ":" + minutes + ":0" + seconds);
+        if (checkHours && !checkMinutes && !checkSeconds)
+            System.out.println("0" + hours + ":" + minutes + ":" + seconds);
+        if (!checkHours && checkMinutes && checkSeconds)
+            System.out.println(hours + ":0" + minutes + ":0" + seconds);
+        if (!checkHours && checkMinutes && !checkSeconds)
+            System.out.println(hours + ":0" + minutes + ":" + seconds);
+        if (!checkHours && !checkMinutes && checkSeconds)
+            System.out.println(hours + ":" + minutes + ":0" + seconds);
+        else
+            System.out.println(hours + ":" + minutes + ":" + seconds);
+    }
+
+    public static boolean checkHours(long hours) {
+        return hours >= 0 && hours <= 9;
+    }
+
+    public static boolean checkMinutes(long minutes) {
+        return minutes >= 0 && minutes <= 9;
+    }
+
+    public static boolean checkSeconds(long seconds) {
+        return seconds >= 0 && seconds <= 9;
     }
 }
