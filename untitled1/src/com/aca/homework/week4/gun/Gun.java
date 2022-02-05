@@ -6,16 +6,14 @@ public class Gun {
 
     public Gun() {
         maxCountsOfCartridges = 10;
-        counter = 0;
     }
 
     public Gun(int maxCountsOfCartridges) {
         this.maxCountsOfCartridges = maxCountsOfCartridges;
-        counter = 0;
     }
 
     public void loadSingleCartridge() {
-        if (gunIsFull()) {
+        if (isGunFull()) {
             System.out.println("Gun is full: We can not load the gun");
             return;
         }
@@ -24,7 +22,7 @@ public class Gun {
     }
 
     public void fire() {
-        if (gunIsEmpty()) {
+        if (isGunEmpty()) {
             System.out.println("Gun is empty:We can not fire");
             return;
         }
@@ -32,11 +30,11 @@ public class Gun {
         counter--;
     }
 
-    public boolean gunIsEmpty() {
+    public boolean isGunEmpty() {
         return counter == 0;
     }
 
-    public boolean gunIsFull() {
+    public boolean isGunFull() {
         return counter == maxCountsOfCartridges;
     }
 
