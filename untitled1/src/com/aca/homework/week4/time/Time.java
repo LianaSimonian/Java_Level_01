@@ -39,40 +39,19 @@ public class Time {
     }
 
     public void print() {
-        long hours = getHours();
-        long minutes = getMinutes();
-        long seconds = getSeconds();
-        boolean checkHours = checkHours(hours);
-        boolean checkMinutes = checkMinutes(minutes);
-        boolean checkSeconds = checkSeconds(seconds);
-
-        if (checkHours && checkMinutes && checkSeconds)
-            System.out.println("0" + hours + ":0" + minutes + ":0" + seconds);
-        if (checkHours && checkMinutes && !checkSeconds)
-            System.out.println("0" + hours + ":0" + minutes + ":" + seconds);
-        if (checkHours && !checkMinutes && checkSeconds)
-            System.out.println("0" + hours + ":" + minutes + ":0" + seconds);
-        if (checkHours && !checkMinutes && !checkSeconds)
-            System.out.println("0" + hours + ":" + minutes + ":" + seconds);
-        if (!checkHours && checkMinutes && checkSeconds)
-            System.out.println(hours + ":0" + minutes + ":0" + seconds);
-        if (!checkHours && checkMinutes && !checkSeconds)
-            System.out.println(hours + ":0" + minutes + ":" + seconds);
-        if (!checkHours && !checkMinutes && checkSeconds)
-            System.out.println(hours + ":" + minutes + ":0" + seconds);
-        else
-            System.out.println(hours + ":" + minutes + ":" + seconds);
+        System.out.println(patternHours(getHours()) + ":" + patternMinutes(getMinutes()) + ":" + patternSeconds(getSeconds()));
     }
 
-    public static boolean checkHours(long hours) {
-        return hours >= 0 && hours <= 9;
+    public static String patternSeconds(long seconds) {
+        return (seconds >= 9 && seconds <= 0) ? "0" + seconds : Long.toString(seconds);
     }
 
-    public static boolean checkMinutes(long minutes) {
-        return minutes >= 0 && minutes <= 9;
+    public static String patternMinutes(long minutes) {
+        return (minutes >= 9 && minutes <= 0) ? "0" + minutes : Long.toString(minutes);
     }
 
-    public static boolean checkSeconds(long seconds) {
-        return seconds >= 0 && seconds <= 9;
+    public static String patternHours(long hours) {
+        return (hours >= 9 && hours <= 0) ? "0" + hours : Long.toString(hours);
     }
+
 }
