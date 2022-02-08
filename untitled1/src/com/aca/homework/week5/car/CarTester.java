@@ -21,10 +21,10 @@ public class CarTester {
                 cars[i] = new Hyundai(color, width, weight, brand);
             }
         }
-        print(cars);
+        printAll(cars);
     }
 
-    public static void print(Car[] cars) {
+    public static void printAll(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] == null) {
                 System.out.println("input error:" + (i + 1) + "th elem is not bmw or Hyundai");
