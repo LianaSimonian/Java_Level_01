@@ -38,6 +38,7 @@ public class Car {
         System.out.println(toString());
     }
 }
+
 /*
 Create Car class that has color, width, weight, and brand fields and getters only. All fields of the Car class should be initialized within a constructor.
 
