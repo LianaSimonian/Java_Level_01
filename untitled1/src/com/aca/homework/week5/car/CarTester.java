@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class CarTester {
     public static void main(String[] args) {
+        Car[] cars = create5CarsObject();
+        printAll(cars);
+    }
+
+    public static Car[] create5CarsObject() {
         Car[] cars = new Car[5];
         for (int i = 0; i < 5; i++) {
             System.out.println("input  color");
@@ -21,7 +26,7 @@ public class CarTester {
                 cars[i] = new Hyundai(color, width, weight);
             }
         }
-        printAll(cars);
+        return cars;
     }
 
     public static void printAll(Car[] cars) {
