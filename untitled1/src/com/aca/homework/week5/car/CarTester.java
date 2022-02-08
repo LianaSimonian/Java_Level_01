@@ -37,7 +37,7 @@ public class CarTester {
     public static void printAll(Car[] cars) {
         for (int i = 0; i < cars.length; i++) {
             if (cars[i] == null) {
-                System.out.println("input error:" + (i + 1) + "th elem is not bmw or Hyundai");
+                System.out.println("input error:" + (i + 1) + "th elem is null");
                 continue;
             }
             System.out.print(i + 1 + ") ");
