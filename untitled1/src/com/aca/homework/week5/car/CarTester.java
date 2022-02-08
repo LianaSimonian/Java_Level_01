@@ -15,10 +15,10 @@ public class CarTester {
             System.out.println("input brand");
             String brand = new Scanner(System.in).nextLine();
             if (brand.equalsIgnoreCase("bmw")) {
-                cars[i] = new Bmw(color, width, weight, brand);
+                cars[i] = new Bmw(color, width, weight);
             }
             if (brand.equalsIgnoreCase("hyundai")) {
-                cars[i] = new Hyundai(color, width, weight, brand);
+                cars[i] = new Hyundai(color, width, weight);
             }
         }
         printAll(cars);
