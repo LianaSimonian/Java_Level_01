@@ -13,7 +13,7 @@ public class ExamTest {
         return username;
     }
 
-    public boolean getPassed() {
+    public boolean isPassed() {
         return passed;
     }
 
