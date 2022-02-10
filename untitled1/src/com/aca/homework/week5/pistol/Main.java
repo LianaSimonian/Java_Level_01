@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Pistol[] pistols = create4Pistols();
-        shoot(pistols);
+        shootAll(pistols);
     }
 
     public static Pistol[] create4Pistols() {
@@ -30,7 +30,7 @@ public class Main {
         return new Scanner(System.in).nextLine();
     }
 
-    public static void shoot(Pistol[] pistols) {
+    public static void shootAll(Pistol[] pistols) {
         for (int i = 0; i < pistols.length; i++) {
             pistols[i].shoot();
         }
