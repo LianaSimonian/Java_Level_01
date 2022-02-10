@@ -6,9 +6,6 @@ public class Main {
     public static void main(String[] args) {
         Pistol[] pistols = create4Pistols();
         shoot(pistols);
-        String s = "hello";
-        for(int i =0;i<s.length();i++)
-            s.charAt(i);
     }
 
     public static Pistol[] create4Pistols() {
