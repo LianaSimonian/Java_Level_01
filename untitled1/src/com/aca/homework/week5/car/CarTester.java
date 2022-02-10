@@ -11,7 +11,9 @@ public class CarTester {
     public static Car[] create5CarsObject() {
         Car[] cars = new Car[5];
         for (int i = 0; i < 5; i++) {
-            cars[i] = createCarObject();
+            Car temp =  createCarObject();
+            if(temp!=null)
+            cars[i] = temp;
         }
         return cars;
     }
