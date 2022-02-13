@@ -77,7 +77,8 @@ public class Game {
     private boolean isValidCoordinate(int x, int y) {
         return x >= 0 && x < lights.length && y >= 0 && y < lights[0].length;
     }
- //if there was an inheritance, its may be to replace private functions with protected
+
+    //if there was an inheritance, its may be to replace private functions with protected
     public void print() {
         System.out.println();
         System.out.println("moves: " + moves);
