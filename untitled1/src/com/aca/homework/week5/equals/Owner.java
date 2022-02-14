@@ -22,7 +22,7 @@ public class Owner {
         if (this == o) return true;
         if (o == null) return false;
 
-        if (isOfTypeOwner(o)) {
+        if (isTypeOfOwner(o)) {
             Owner owner = (Owner) o;
             return firstName.equals(owner.firstName) && lastName.equals(owner.lastName);
         }
@@ -33,7 +33,7 @@ public class Owner {
         System.out.println(toString());
     }
 
-    public static boolean isOfTypeOwner(Object o) {
+    public static boolean isTypeOfOwner(Object o) {
         return o.getClass() == Owner.class;
     }
 }
