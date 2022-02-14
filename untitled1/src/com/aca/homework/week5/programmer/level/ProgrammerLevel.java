@@ -6,6 +6,10 @@ public enum ProgrammerLevel {
     SENIOR;
 
     public String toString() {
+        return nameOf();
+    }
+
+    public String nameOf() {
         switch (this) {
             case JUNIOR:
                 return "Junior programmer";
@@ -16,7 +20,6 @@ public enum ProgrammerLevel {
         }
         throw new RuntimeException();
     }
-
 }
 /*
 Create a ProgrammerLevel enum class that has 3 constants: JUNIOR, MID, SENIOR. Implement the toString method to return
