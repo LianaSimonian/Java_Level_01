@@ -21,12 +21,20 @@ public class Owner {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        Owner owner = (Owner) o;
-        return firstName.equals(owner.firstName) && lastName.equals(owner.lastName);
+
+        if (isOfTypeOwner(o)) {
+            Owner owner = (Owner) o;
+            return firstName.equals(owner.firstName) && lastName.equals(owner.lastName);
+        }
+        return false;
     }
 
-    public void print(){
+    public void print() {
         System.out.println(toString());
+    }
+
+    public static boolean isOfTypeOwner(Object o) {
+        return o.getClass() == Owner.class;
     }
 }
 /*
