@@ -21,13 +21,15 @@ public class Motorcycle {
         if (o == null) return false;
         if (isTypeOfMotorcycle(o)) {
             return this.brand == ((Motorcycle) o).brand && this.owner.equals(((Motorcycle) o).owner);
-        } else return false;
+        }
+        return false;
     }
 
     public void print() {
         System.out.println(toString());
     }
-    public static boolean isTypeOfMotorcycle(Object o){
+
+    public static boolean isTypeOfMotorcycle(Object o) {
         return o.getClass() == Motorcycle.class;
     }
 
