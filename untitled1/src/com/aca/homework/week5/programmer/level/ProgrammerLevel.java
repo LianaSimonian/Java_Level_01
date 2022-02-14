@@ -16,6 +16,7 @@ public enum ProgrammerLevel {
         }
         throw new RuntimeException();
     }
+
 }
 /*
 Create a ProgrammerLevel enum class that has 3 constants: JUNIOR, MID, SENIOR. Implement the toString method to return
