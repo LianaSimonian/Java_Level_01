@@ -16,6 +16,5 @@ public class Main {
         buffer1.put("text2");
         System.out.println(buffer1.equals(buffer));
         System.out.println(buffer1.equals("hello"));
-
     }
 }

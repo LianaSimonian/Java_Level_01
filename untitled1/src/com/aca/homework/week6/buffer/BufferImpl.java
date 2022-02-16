@@ -29,8 +29,9 @@ public class BufferImpl implements Buffer {
 
     @Override
     public String toString() {
-        return "item= {" + item.toString() + '}' +
-                ", counter=" + counter;
+        if (counter == 1)
+            return item.toString();
+        return null;
     }
 
     @Override
