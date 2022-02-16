@@ -4,34 +4,30 @@ import java.util.Objects;
 
 public class BufferImpl implements Buffer {
     private Object item;
-    private int counter;
 
     @Override
     public void put(Object o) {
-        if (counter == 1) {
+        if (item != null) {
             System.out.println("buffer is not empty");
             return;
         }
         item = o;
-        counter++;
     }
 
     @Override
     public Object get() {
-        if (counter == 0) {
+        if (item == null) {
             System.out.println("buffer is empty");
             return null;
         }
-        counter--;
-        return item;
-
+        Object deletedElem=item;
+        item=null;
+        return deletedElem;
     }
 
     @Override
     public String toString() {
-        if (counter == 1)
-            return item.toString();
-        return null;
+        return (item != null) ? item.toString() : null;
     }
 
     @Override
@@ -39,7 +35,7 @@ public class BufferImpl implements Buffer {
         if (this == o) return true;
         if (o == null) return false;
         if (o.getClass() == BufferImpl.class) {
-            return counter == ((BufferImpl) o).counter && item.equals(((BufferImpl) o).item);
+            return item.equals(((BufferImpl) o).item);
         }
         return false;
     }
