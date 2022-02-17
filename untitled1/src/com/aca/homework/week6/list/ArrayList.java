@@ -5,16 +5,19 @@ public class ArrayList implements List {
     private int numberOfElements = 0;
 
     public void add(String element) {
-        if (numberOfElements < elements.length) {
-            elements[numberOfElements++] = element;
-        } else {
+        if (numberOfElements == elements.length) {
+            addCapacity();
+        }
+        elements[numberOfElements++] = element;
+    }
+
+    public void addCapacity() {
+        {
             String[] newArrayOfElements = new String[2 * elements.length];
             for (int i = 0; i < elements.length; i++) {
                 newArrayOfElements[i] = elements[i];
             }
-            newArrayOfElements[elements.length] = element;
             elements = newArrayOfElements;
-            numberOfElements++;
         }
     }
 
@@ -24,8 +27,6 @@ public class ArrayList implements List {
             System.out.println("invalid index");
             throw new IndexOutOfBoundsException();
         }
-        if (elements[index] == null)
-            throw new RuntimeException();
         return elements[index];
     }
 
