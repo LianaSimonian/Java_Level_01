@@ -2,6 +2,10 @@ package com.aca.homework.week4.snakee;
 
 import java.util.Random;
 import java.util.Scanner;
+/*
+I also could to have a separate array for the snake, but I tried to save memory, although otherwise we might get a more
+ simple algorithm than this one.I tried to find more effective way
+*/
 
 public class SnakeGame {
     private String step = "1";
@@ -32,7 +36,7 @@ public class SnakeGame {
         board[appleX][appleY] = appleSymbol;
     }
 
-    public char enterMovementDirection() {
+    private char enterMovementDirection() {
         System.out.printf("please choose the direction: %s, %s, %s or %s", 'w', 's', 'a', 'd');
         while (true) {
             System.out.println();
@@ -77,14 +81,14 @@ public class SnakeGame {
         }
     }
 
-    public void snakeMoveUpStep() {
+    private void snakeMoveUpStep() {
         snakeHeadX--;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
         updateSnakeTail();
     }
 
-    public void snakeMoveDownStep() {
+    private void snakeMoveDownStep() {
         snakeHeadX++;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
@@ -92,7 +96,7 @@ public class SnakeGame {
 
     }
 
-    public void snakeMoveLeftStep() {
+    private void snakeMoveLeftStep() {
         snakeHeadY--;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
@@ -100,7 +104,7 @@ public class SnakeGame {
 
     }
 
-    public void snakeMoveRightStep() {
+    private void snakeMoveRightStep() {
         snakeHeadY++;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
@@ -108,7 +112,7 @@ public class SnakeGame {
 
     }
 
-    public State snakeMoveUp() {
+    private State snakeMoveUp() {
         if (snakeHeadX - 1 < 0 || (isNumeric(board[snakeHeadX - 1][snakeHeadY]) && board[snakeHeadX - 1][snakeHeadY] != "0")) {//sxal
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
@@ -133,7 +137,7 @@ public class SnakeGame {
         return State.CONTINUE;
     }
 
-    public State snakeMoveDown() {
+    private State snakeMoveDown() {
         if (snakeHeadX + 1 >= 8 || (isNumeric(board[snakeHeadX + 1][snakeHeadY]) && board[snakeHeadX + 1][snakeHeadY] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
@@ -158,7 +162,7 @@ public class SnakeGame {
         return State.CONTINUE;
     }
 
-    public State snakeMoveLeft() {
+    private State snakeMoveLeft() {
         if (snakeHeadY - 1 < 0 || (isNumeric(board[snakeHeadX][snakeHeadY - 1]) && board[snakeHeadX][snakeHeadY - 1] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
@@ -183,7 +187,7 @@ public class SnakeGame {
         return State.CONTINUE;
     }
 
-    public State snakeMoveRight() {
+    private State snakeMoveRight() {
         if (snakeHeadY + 1 >= 8 || (isNumeric(board[snakeHeadX][snakeHeadY + 1]) && board[snakeHeadX][snakeHeadY + 1] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
@@ -208,12 +212,11 @@ public class SnakeGame {
         return State.CONTINUE;
     }
 
-    public void updateSnakeTail() {
+    private void updateSnakeTail() {
         step = incrementValueOfStringNumber(step);
         String valueOfOldSnakeTail = board[snakeTailX][snakeTailY];
         board[snakeTailX][snakeTailY] = "0";
         String valueOfNewSnakeTail = incrementValueOfStringNumber(valueOfOldSnakeTail);
-        //updateSnakeTailCoordinate
         if (checkValidationX(snakeTailX - 1) && board[snakeTailX - 1][snakeTailY].equals(valueOfNewSnakeTail))
             snakeTailX = snakeTailX - 1;
         if (checkValidationX(snakeTailX + 1) && board[snakeTailX + 1][snakeTailY].equals(valueOfNewSnakeTail))
@@ -224,7 +227,7 @@ public class SnakeGame {
             snakeTailY = snakeTailY - 1;
     }
 
-    public boolean isGenerateRandomApple() {
+    private boolean isGenerateRandomApple() {
         if (isEmptyPositionForApple()) {
             while (true) {
                 appleX = new Random().nextInt(8);
@@ -238,7 +241,7 @@ public class SnakeGame {
         return false;
     }
 
-    public void extendSnake() {
+    private void extendSnake() {
         snakeHeadX = appleX;
         snakeHeadY = appleY;
         System.out.println("step: " + step);
@@ -246,7 +249,7 @@ public class SnakeGame {
         step = incrementValueOfStringNumber(step);
     }
 
-    public boolean isEmptyPositionForApple() {
+    private boolean isEmptyPositionForApple() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].equals("0")) {
@@ -257,7 +260,7 @@ public class SnakeGame {
         return false;
     }
 
-    public void print() {
+    private void print() {
         System.out.println("score: " + score);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
