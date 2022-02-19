@@ -56,7 +56,7 @@ public class SnakeGame {
         board[snakeHeadX][snakeHeadY] = step;
         step = incrementValueOfStringNumber(step);
 
-        while (!isWin()) {
+        while (true) {
             char symbol = enterMovementDirection();
             if (symbol == up) {
                 if (snakeMoveUp() == State.RETURN) return;
@@ -75,8 +75,6 @@ public class SnakeGame {
                 else continue;
             }
         }
-        System.out.println("you Win!!!");
-        System.out.println("score: " + score);
     }
 
     public void snakeMoveUpStep() {
@@ -273,16 +271,6 @@ public class SnakeGame {
             }
         }
         return false;
-    }
-
-    public boolean isWin() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].equals("0"))
-                    return false;
-            }
-        }
-        return true;
     }
 
     public void print() {
