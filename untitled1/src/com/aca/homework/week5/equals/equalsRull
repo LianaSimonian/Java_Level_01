@@ -1,0 +1,5 @@
+1) a.equals(b)==b.equals(a)
+2) a.equals(null)->false
+3) a.equals(a)->true
+4) a.equals(b)is true, b.equals(c) is true => a.equals(c)->true
+5)equals does not depends on invocation number

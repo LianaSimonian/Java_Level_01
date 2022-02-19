@@ -1,0 +1,11 @@
+/*
+Create an Owner class that has firstName and lastName. Implement toString and equals method.
+
+Create a Motorcycle class that has a brand (SUZUKI, YAMAHA is allowed only) and an owner. Implement toString and equals methods of Motorcycle class.
+
+Create a Motorcycle of YAMAHA type owner of which is 'Yorgantz' 'Mark.
+Create a Motorcycle of YAMAHA type owner of which is 'Tavares 'Mark.
+
+print the above objects, compare them and print the result.
+
+*/
