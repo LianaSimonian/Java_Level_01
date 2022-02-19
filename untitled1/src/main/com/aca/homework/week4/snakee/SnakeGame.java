@@ -117,7 +117,6 @@ public class SnakeGame {
         if (board[snakeHeadX - 1][snakeHeadY].equals("0")) {
             snakeMoveUpStep();
             print();
-            //continue;
             return State.CONTINUE;
         }
         if (board[snakeHeadX - 1][snakeHeadY].equals(appleSymbol)) {
@@ -126,11 +125,9 @@ public class SnakeGame {
             if (!isGenerateRandomApple()) {
                 System.out.println("you win!!!");
                 System.out.println("score: " + score);
-                //return;
                 return State.RETURN;
             }
             print();
-            //continue;
             return State.CONTINUE;
         }
         return State.CONTINUE;
@@ -140,13 +137,11 @@ public class SnakeGame {
         if (snakeHeadX + 1 >= 8 || (isNumeric(board[snakeHeadX + 1][snakeHeadY]) && board[snakeHeadX + 1][snakeHeadY] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
-            // return;
             return State.RETURN;
         }
         if (board[snakeHeadX + 1][snakeHeadY].equals("0")) {
             snakeMoveDownStep();
             print();
-            //continue;
             return State.CONTINUE;
         }
         if (board[snakeHeadX + 1][snakeHeadY].equals(appleSymbol)) {
@@ -155,11 +150,9 @@ public class SnakeGame {
             if (!isGenerateRandomApple()) {
                 System.out.println("you win!!!");
                 System.out.println("score: " + score);
-                //return;
                 return State.RETURN;
             }
             print();
-            //continue;
             return State.CONTINUE;
         }
         return State.CONTINUE;
@@ -169,13 +162,11 @@ public class SnakeGame {
         if (snakeHeadY - 1 < 0 || (isNumeric(board[snakeHeadX][snakeHeadY - 1]) && board[snakeHeadX][snakeHeadY - 1] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
-            //return;
             return State.RETURN;
         }
         if (board[snakeHeadX][snakeHeadY - 1].equals("0")) {
             snakeMoveLeftStep();
             print();
-            //continue;
             return State.CONTINUE;
         }
         if (board[snakeHeadX][snakeHeadY - 1].equals(appleSymbol)) {
@@ -184,11 +175,9 @@ public class SnakeGame {
             if (!isGenerateRandomApple()) {
                 System.out.println("you win!!!");
                 System.out.println("score: " + score);
-                //return;
                 return State.RETURN;
             }
             print();
-            //continue;
             return State.CONTINUE;
         }
         return State.CONTINUE;
@@ -198,13 +187,11 @@ public class SnakeGame {
         if (snakeHeadY + 1 >= 8 || (isNumeric(board[snakeHeadX][snakeHeadY + 1]) && board[snakeHeadX][snakeHeadY + 1] != "0")) {
             System.out.println("you lose!!!");
             System.out.println("score: " + score);
-            //return;
             return State.RETURN;
         }
         if (board[snakeHeadX][snakeHeadY + 1].equals("0")) {
             snakeMoveRightStep();
             print();
-            //continue;
             return State.CONTINUE;
         }
         if (board[snakeHeadX][snakeHeadY + 1].equals(appleSymbol)) {
@@ -213,11 +200,9 @@ public class SnakeGame {
             if (!isGenerateRandomApple()) {
                 System.out.println("you win!!!");
                 System.out.println("score: " + score);
-                //return;
                 return State.RETURN;
             }
             print();
-            //continue;
             return State.CONTINUE;
         }
         return State.CONTINUE;
@@ -259,7 +244,6 @@ public class SnakeGame {
         System.out.println("step: " + step);
         board[snakeHeadX][snakeHeadY] = step;
         step = incrementValueOfStringNumber(step);
-        //step=(char)(step+1);
     }
 
     public boolean isEmptyPositionForApple() {
