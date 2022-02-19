@@ -55,7 +55,7 @@ public class SnakeGame {
         char left = 'a';
         char right = 'd';
 
-        System.out.println("step:" + step);
+        System.out.println("step: " + step);
         print();
         board[snakeHeadX][snakeHeadY] = step;
         step = incrementValueOfStringNumber(step);
