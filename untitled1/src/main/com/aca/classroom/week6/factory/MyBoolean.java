@@ -11,7 +11,7 @@ public class MyBoolean {
     public boolean isValue() {
         return value;
     }
-
+    //static factory end singleton
     public static MyBoolean create(boolean value) {
         if (value == true) {
             if (trueMyBoolean == null) {
