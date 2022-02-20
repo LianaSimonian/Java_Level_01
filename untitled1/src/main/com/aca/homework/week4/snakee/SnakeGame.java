@@ -85,6 +85,7 @@ public class SnakeGame {
         snakeHeadX--;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
+        step = incrementValueOfStringNumber(step);
         updateSnakeTail();
     }
 
@@ -92,6 +93,7 @@ public class SnakeGame {
         snakeHeadX++;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
+        step = incrementValueOfStringNumber(step);
         updateSnakeTail();
 
     }
@@ -100,6 +102,7 @@ public class SnakeGame {
         snakeHeadY--;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
+        step = incrementValueOfStringNumber(step);
         updateSnakeTail();
 
     }
@@ -108,6 +111,7 @@ public class SnakeGame {
         snakeHeadY++;
         board[snakeHeadX][snakeHeadY] = step;
         System.out.println("step: " + step);
+        step = incrementValueOfStringNumber(step);
         updateSnakeTail();
 
     }
@@ -213,7 +217,6 @@ public class SnakeGame {
     }
 
     private void updateSnakeTail() {
-        step = incrementValueOfStringNumber(step);
         String valueOfOldSnakeTail = board[snakeTailX][snakeTailY];
         board[snakeTailX][snakeTailY] = "0";
         String valueOfNewSnakeTail = incrementValueOfStringNumber(valueOfOldSnakeTail);
