@@ -12,6 +12,7 @@ public class MyBoolean {
         return value;
     }
 
+    //singleton
     public static MyBoolean create(boolean value) {
         if (value == true) {
             if (trueMyBoolean == null) {
