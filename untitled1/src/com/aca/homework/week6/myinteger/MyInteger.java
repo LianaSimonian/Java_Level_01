@@ -2,7 +2,6 @@ package com.aca.homework.week6.myinteger;
 
 public class MyInteger {
     private static MyInteger[] myIntegers = new MyInteger[201];
-    private static boolean[] integerValues = new boolean[201];
     private int value;
 
     public MyInteger(int value) {
@@ -14,9 +13,8 @@ public class MyInteger {
     }
 
     public static MyInteger valueOf(int value) {
-        if (integerValues[value + 100] == false) {
+        if (myIntegers[value + 100] == null) {
             myIntegers[value + 100] = new MyInteger(value);
-            integerValues[value + 100] = true;
         }
         return myIntegers[value + 100];
     }
