@@ -23,12 +23,13 @@ public class PhoneService extends AbstractPhoneService {
     public Phone getByImei(String imei) {
         if (counter == 0) {
             System.out.println("PhoneService is empty");
-            throw new RuntimeException();
+            return null;
         }
         for (int i = 0; i < counter; i++) {
             if (phones[i].getImei().equals(imei))
                 return phones[i];
         }
+        System.out.println("don't find phone by IMEI =" + imei);
         return null;
     }
 
