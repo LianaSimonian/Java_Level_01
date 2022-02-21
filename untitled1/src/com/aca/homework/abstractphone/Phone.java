@@ -27,14 +27,10 @@ public class Phone {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        if (isTypeOfPhone(o)) {
+        if (o.getClass() == Phone.class) {
             return imei.equals(((Phone) o).imei) && model == ((Phone) o).model;
         }
         return false;
-    }
-
-    public static boolean isTypeOfPhone(Object o) {
-        return o.getClass() == Phone.class;
     }
 
     public void print() {
