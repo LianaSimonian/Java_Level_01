@@ -1,4 +1,4 @@
-package com.aca.classroom.week6.factory;
+package com.aca.classroom.week6.clone.factory;
 
 public class Figure {
     private int width;
