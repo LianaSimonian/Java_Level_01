@@ -11,17 +11,18 @@ public interface User {
 
 
     static User of(String name, int age) {
-        // return new UserImpl(name,age) ;
+
         return new User() {
-            //anonimus
+            @Override
             public String getName() {
                 return null;
             }
 
+            @Override
             public int getAge() {
                 return 0;
             }
-
         };
     }
-}//anonimus implementation
+}//anonymous implementation
+
