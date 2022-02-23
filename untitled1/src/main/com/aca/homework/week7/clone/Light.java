@@ -12,8 +12,12 @@ public class Light implements Cloneable {
         return (Light) super.clone();
     }
 
-    public static Light ofLight(State state) {
-        return new Light(state);
+    public static Light createOff() {
+        return new Light(State.OFF);
+    }
+
+    public static Light createOn() {
+        return new Light(State.ON);
     }
 
     @Override
