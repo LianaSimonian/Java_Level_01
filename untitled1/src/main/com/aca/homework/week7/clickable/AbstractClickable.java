@@ -1,13 +1,22 @@
 package com.aca.homework.week7.clickable;
 
-public abstract class AbstractClickable implements Clickable {
+public class AbstractClickable implements Clickable {
     private Action action;
+    private String name;
 
-    public AbstractClickable(Action action) {
+    public AbstractClickable(Action action, String name) {
         this.action = action;
+        this.name = name;
     }
 
-    public Action getAction() {
-        return action;
+    @Override
+    public String name() {
+        return name;
     }
+
+    @Override
+    public void click() {
+        action.doAction(this);
+    }
+
 }
