@@ -26,13 +26,13 @@ public class FixedSizeList implements List {
 
     @Override
     public Object get(int index) {
-        if (!checkValidationOfIndex(index))
+        if (!isValidIndex(index))
             throw new IndexOutOfBoundsException();
 
         return array[index];
     }
 
-    public boolean checkValidationOfIndex(int index) {
+    public boolean isValidIndex(int index) {
         return (index < 0 || index >= size) ? false : true;
     }
 }
