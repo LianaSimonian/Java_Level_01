@@ -13,24 +13,17 @@ public class MyInteger {
     }
 
     public static MyInteger valueOf(int value) {
+        if (isValueOutOfRange(value)) {
+            System.out.println(value + " is out of range [-100,100] we can not cache it  with number in this range,needed another range for caching int values");
+            return null;
+        }
         if (myIntegers[value + 100] == null) {
             myIntegers[value + 100] = new MyInteger(value);
         }
         return myIntegers[value + 100];
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(valueOf(17).getValue());
-        System.out.println(valueOf(10).getValue());
-        System.out.println(valueOf(17).getValue());
-        System.out.println(valueOf(10).getValue());
-        System.out.println(valueOf(20).getValue());
-        System.out.println(valueOf(10).getValue());
-        System.out.println(valueOf(10).getValue());
-
-
+    public static boolean isValueOutOfRange(int value) {
+        return value < -100 || value > 100;
     }
-
-
 }
