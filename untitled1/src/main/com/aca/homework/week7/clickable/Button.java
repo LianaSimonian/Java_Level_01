@@ -1,7 +1,6 @@
 package com.aca.homework.week7.clickable;
 
 public class Button extends AbstractClickable {
-    private String name;
 
     public Button(String name, Action action) {
         super(action, name);
