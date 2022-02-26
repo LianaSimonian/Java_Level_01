@@ -14,8 +14,7 @@ public class MyInteger {
 
     public static MyInteger valueOf(int value) {
         if (isValueOutOfRange(value)) {
-            System.out.println(value + " is out of range [-100,100] we can not cache it  with number in this range,needed another range for caching int values");
-            return null;
+            return new MyInteger(value);
         }
         if (myIntegers[value + 100] == null) {
             myIntegers[value + 100] = new MyInteger(value);
