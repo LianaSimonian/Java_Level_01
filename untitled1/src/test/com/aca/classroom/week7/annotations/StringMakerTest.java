@@ -13,7 +13,6 @@ class StringMakerTest {
                 System.out.println(stringMaker.make(1, 100_000).getExecutionTime());
             }
         }
-
     }
 }
 
