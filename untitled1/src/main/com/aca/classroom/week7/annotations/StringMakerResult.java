@@ -1,41 +1,23 @@
 package com.aca.classroom.week7.annotations;
+
 public class StringMakerResult {
+    private double executionTime;
+    private String output;
 
-    private long duration;
-    private String text;
-
-    public StringMakerResult( long duration,String text) {
-        this.text = text;
-        this.duration = duration;
+    public StringMakerResult(String output, double executionTime) {
+        this.executionTime = executionTime;
+        this.output = output;
     }
 
-    public String getText() {
-        return text;
+    public double getExecutionTime() {
+        return executionTime;
     }
 
-    public long getDuration() {
-        return duration;
+    public String getOutput() {
+        return output;
     }
+
+
 }
 
-/*
-public class Result {
-    private String text;
-   private long time;
 
-    public Result(String string, long time) {
-       // this.string = string;
-        this.time = time;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public String getString() {
-      //  return string;
-        return " ";
-    }
-}
-
- */
