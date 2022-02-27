@@ -26,7 +26,18 @@ public class ArraySetTest {
     }
 
     @Test
-    public void testSizeWhen5SameUsersWereAdded() {
+    public void testSizeWhen5SameUsersWereAdded(){
+        testSubject.add(new User("f", "l"));
+        testSubject.add(new User("f", "l"));
+        testSubject.add(new User("f", "l"));
+        testSubject.add(new User("f", "l"));
+        testSubject.add(new User("f", "l"));
+
+        Assertions.assertEquals(5, testSubject.size());
+    }
+
+    @Test
+    public void testForIntegersArray() {
         Integer[] ints = {1, 5, 6};
         method1(ints);
         Assertions.assertNotEquals(null, ints);
