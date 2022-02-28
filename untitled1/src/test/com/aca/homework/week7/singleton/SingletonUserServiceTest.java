@@ -1,6 +1,7 @@
 package com.aca.homework.week7.singleton;
 
-class SingletonUserServiceTest {
+class
+SingletonUserServiceTest {
     public static void main(String[] args) {
         SingletonUserService instance1 = SingletonUserService.getInstance();
         SingletonUserService instance2 = SingletonUserService.getInstance();
