@@ -6,7 +6,8 @@ import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
+class
+MainTest {
     @Test
     public void test() {
         Assertions.assertThrows(RuntimeException.class, new Executable() {
