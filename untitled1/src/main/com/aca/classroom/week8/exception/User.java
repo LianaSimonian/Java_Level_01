@@ -10,5 +10,6 @@ public class User {
         if (userName == null) throw new RuntimeException("the lastName is null");
         this.userName = userName;
         this.firstName = firstName;
+
     }
 }

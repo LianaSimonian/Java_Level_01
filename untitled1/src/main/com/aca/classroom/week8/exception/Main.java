@@ -7,7 +7,6 @@ public class Main {
         RuntimeException exception = new RuntimeException();
         // Exception exception1 = new Exception();
         //throw exception1;
-
         // throw exception;
         //Throwable extends objects
         createUser();
