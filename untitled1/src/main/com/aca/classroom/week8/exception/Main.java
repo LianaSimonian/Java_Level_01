@@ -5,11 +5,10 @@ public class Main {
         // throw new RuntimeException();
         //  System.err.println("error");
         RuntimeException exception = new RuntimeException();
+        // throw exception;
         // Exception exception1 = new Exception();
         //throw exception1;
-
-        // throw exception;
-        //Throwable extends objects
+        //Throwable extends objects,throwable is class
         createUser();
     }
 
