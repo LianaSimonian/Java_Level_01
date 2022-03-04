@@ -17,7 +17,4 @@ public class PaymentResult {
         return paymentAmount;
     }
 
-    public static PaymentResult paymentResultOf(int paymentAmount, long processingTime) {
-        return new PaymentResult(paymentAmount, processingTime);
-    }
 }

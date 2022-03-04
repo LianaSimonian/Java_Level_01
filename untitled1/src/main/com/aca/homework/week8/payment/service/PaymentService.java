@@ -10,10 +10,10 @@ public class PaymentService {
         int millisecondsOfWait = generateRandomIntBetween(low, high);
         waitForSomeMilliseconds(millisecondsOfWait);
         System.out.println("the payment is done " + money);
-        return PaymentResult.paymentResultOf(money, millisecondsOfWait);
+        return new PaymentResult(money, millisecondsOfWait);
     }
 
-    public static void waitForSomeMilliseconds(int milliseconds) {
+    private static void waitForSomeMilliseconds(int milliseconds) {
         long startMillis = System.currentTimeMillis();
         while (System.currentTimeMillis() - startMillis < milliseconds) ;
 

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Annotation;
-//import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceTest {
     private PaymentService testSubject;
@@ -35,10 +34,10 @@ class PaymentServiceTest {
 
     @Test
     public void testDuration() {
-        Assertions.assertTrue(isBetween(testSubject.pay(100).getProcessingTime()));
+        Assertions.assertTrue(isInRangeFrom200To800(testSubject.pay(100).getProcessingTime()));
     }
 
-    public static boolean isBetween(long number) {
+    public static boolean isInRangeFrom200To800(long number) {
         return number >= 200 && number < 800;
     }
 }
