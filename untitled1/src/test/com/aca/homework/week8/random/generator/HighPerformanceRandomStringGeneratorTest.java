@@ -15,14 +15,14 @@ class HighPerformanceRandomStringGeneratorTest {
     @Test
     public void testWrongNumber() {
         Result randomString = testObject.randomString(100);
-        Assertions.assertTrue(randomString.getResultText().equalsIgnoreCase("Error") && randomString.getExecutionDurationByMillis() == 0);
+        Assertions.assertTrue(randomString.getResultText().equalsIgnoreCase("Error"));
+        Assertions.assertTrue(randomString.getExecutionDurationByMillis() == 0);
     }
 
     @Test
     public void test30000() {
         Result randomString = testObject.randomString(30000);
-        Assertions.assertTrue(randomString.getResultText().length() == 30000 && randomString.getExecutionDurationByMillis() > 0);
-
+        Assertions.assertTrue(randomString.getResultText().length() == 30000);
+        Assertions.assertTrue(randomString.getExecutionDurationByMillis() > 0);
     }
-
 }

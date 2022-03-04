@@ -17,8 +17,4 @@ public class Result {
         return resultText;
     }
 
-    public static Result resultOf(String resultText, long executionDurationByMillis) {
-        return new Result(resultText, executionDurationByMillis);
-
-    }
 }

@@ -4,12 +4,12 @@ public class LowPerformanceRandomStringGenerator implements RandomStringGenerato
 
     @Override
     public Result randomString(int length) {
-        if (RandomStringGenerator.isNotMultiplesOfThree(length)) return Result.resultOf("ERROR", 0);
+        if (RandomStringGenerator.isNotMultiplesOfThree(length)) return new Result("ERROR", 0);
         long startTime = System.currentTimeMillis();
         String resultText = "";
         for (int i = 0; i < length / 3; i++) {
             resultText += Randomizer.randomString();
         }
-        return Result.resultOf(resultText, System.currentTimeMillis() - startTime);
+        return new Result(resultText, System.currentTimeMillis() - startTime);
     }
 }

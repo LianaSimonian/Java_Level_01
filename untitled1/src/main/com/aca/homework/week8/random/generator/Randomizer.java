@@ -6,8 +6,9 @@ public class Randomizer {
     public static String randomString() {
         char[] symbols = {'a', 'b', '7', '1', '9', '-'};
         String randomString = "";
+        Random random = new Random();
         for (int i = 0; i < 3; i++) {
-            int index = new Random().nextInt(symbols.length);
+            int index =random.nextInt(symbols.length);
             randomString += symbols[index];
         }
         return randomString;
