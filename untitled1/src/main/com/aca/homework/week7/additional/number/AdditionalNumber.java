@@ -7,11 +7,16 @@ public class AdditionalNumber {
     public static int findAdditionalNumberBySortMethod(int[] firstArray, int[] lastArray) {
         Arrays.sort(firstArray);
         Arrays.sort(lastArray);
-        int lengthOfFirstArray = firstArray.length;
-        for (int i = 0; i < lengthOfFirstArray - 1; i++) {
-            if (firstArray[i] - lastArray[i] != 0) return firstArray[i];
+        //binary search
+        int start = 0, end = firstArray.length - 1;
+        while (start != end - 1) {
+            int mid = start + end / 2;
+            if (firstArray[mid] == lastArray[mid])
+                start = mid;
+            else
+                end = mid;
         }
-        return firstArray[lengthOfFirstArray - 1];
+        return firstArray[end];
     }
 
 
@@ -50,7 +55,6 @@ public class AdditionalNumber {
             combinedArray[j] = array2[j - firstArrayLength];
         return combinedArray;
     }
-
 }
 
 
