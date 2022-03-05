@@ -1,6 +1,7 @@
-package com.aca.homework.week8.repository.car;
+package com.aca.homework.week8.car.repository;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CarTest {
