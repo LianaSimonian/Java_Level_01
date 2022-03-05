@@ -1,4 +1,6 @@
-package com.aca.homework.week7.singleton;
+package com.aca.checking1.ifelseperformance.homework.week7.singleton;
+
+import com.aca.homework.week7.singleton.SingletonUserService;
 
 class SingletonUserServiceTest {
     public static void main(String[] args) {

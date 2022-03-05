@@ -3,8 +3,8 @@ package com.aca.homework.week7.clickable;
 import java.util.Scanner;
 
 class ClickableTest {
-    public static AbstractClickable[] createClickableObjects() {
-        AbstractClickable[] clickables = new AbstractClickable[5];
+    public static Clickable[] createClickableObjects() {
+        Clickable[] clickables = new AbstractClickable[5];
         for (int i = 0; i < clickables.length; i++) {
             System.out.println("Please type a clickable object name.");
             String clickableObjectName = new Scanner(System.in).nextLine();
