@@ -24,3 +24,4 @@ testSave2DifferentCarsTwice() //save 2 different cars 2 times and assert that th
 testFindByVinWhenTotalCountIs0() // assert that the return result is null
 testFindByVinWhenCarExists() //create a car then find it by vin and assert that the result is equal to created car
 testGetTotalCountWhenThereIsNoSavedCar() //assert that the result is 0
+

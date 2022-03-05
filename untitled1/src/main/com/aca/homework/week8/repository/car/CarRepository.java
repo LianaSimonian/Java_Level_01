@@ -1,4 +1,4 @@
-package com.aca.homework.week8.car.repository;
+package com.aca.homework.week8.repository.car;
 
 public class CarRepository {
     private Car[] cars = new Car[1000];
@@ -10,7 +10,7 @@ public class CarRepository {
             //update
             addedCar.setYear(car.getYear());
             addedCar.setOwnersCount(car.getOwnersCount());
-            return addedCar  ;
+            return addedCar;
         }
         cars[totalCount++] = car;
         return cars[totalCount - 1];
