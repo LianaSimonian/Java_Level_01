@@ -13,22 +13,21 @@ class PaymentServiceTest {
                 PaymentService.pay(new CreditCard(100, "12457"), 150);
             }
         });
-        Assertions.assertEquals("the provided credit card balance: 100.0 is not enough to perform a payment equals 150.0" , insufficientBalanceException.getMessage());
+        Assertions.assertEquals("the provided credit card balance: 100.0 is not enough to perform a payment equals 150.0", insufficientBalanceException.getMessage());
     }
 
     @Test
     public void testPayWhenBalanceGreaterThenAmountToBePaid() {
+        CreditCard creditCard = new CreditCard(100, "12457");
+        PaymentService.pay(creditCard, 30);
+        PaymentService.pay(creditCard, 30);
+        PaymentService.pay(creditCard, 30);
         InsufficientBalanceException insufficientBalanceException = Assertions.assertThrows(InsufficientBalanceException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                CreditCard creditCard = new CreditCard(100, "12457");
                 PaymentService.pay(creditCard, 30);
-                PaymentService.pay(creditCard, 30);
-                PaymentService.pay(creditCard, 30);
-                PaymentService.pay(creditCard, 30);
-
             }
         });
-        Assertions.assertEquals("the provided credit card balance: 10.0 is not enough to perform a payment equals 30.0" , insufficientBalanceException.getMessage());
+        Assertions.assertEquals("the provided credit card balance: 10.0 is not enough to perform a payment equals 30.0", insufficientBalanceException.getMessage());
     }
 }

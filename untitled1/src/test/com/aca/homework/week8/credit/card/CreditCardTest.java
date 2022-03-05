@@ -46,7 +46,7 @@ class CreditCardTest {
 
     @Test
     public void testGetNumber() {
-        Assertions.assertEquals("1234567" , testSubject.getNumber());
+        Assertions.assertEquals("1234567", testSubject.getNumber());
     }
 
     @Test
@@ -57,6 +57,6 @@ class CreditCardTest {
 
     @Test
     public void testToString() {
-        Assertions.assertEquals("balance: 100000.0, number: 1234567" , testSubject.toString());
+        Assertions.assertEquals("balance: 100000.0, number: 1234567", testSubject.toString());
     }
 }

@@ -7,6 +7,7 @@ public class CreditCard {
     private String number;
 
     public CreditCard(double balance, String number) {
+        if (balance < 0) throw new BalanceIsNegativeException("creditCard balance can not be negative");
         this.balance = balance;
         this.number = number;
     }
@@ -34,6 +35,7 @@ public class CreditCard {
     }
 
     public void setBalance(double balance) {
+        if (balance < 0) throw new BalanceIsNegativeException("creditCard balance can not be negative");
         this.balance = balance;
     }
 }
