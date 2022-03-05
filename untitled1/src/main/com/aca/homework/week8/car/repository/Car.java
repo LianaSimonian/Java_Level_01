@@ -1,7 +1,5 @@
 package com.aca.homework.week8.car.repository;
 
-import java.util.Objects;
-
 public class Car {
     private String vin;
     private int year;

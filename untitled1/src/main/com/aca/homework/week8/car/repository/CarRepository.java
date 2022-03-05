@@ -1,16 +1,17 @@
 package com.aca.homework.week8.car.repository;
 
 public class CarRepository {
-    private Car[] cars = new Car[1000];
+    private final int size = 1000;
+    private Car[] cars = new Car[size];
     private int totalCount;
 
     public Car save(Car car) {
-        Car addedCar = findByVin(car.getVin());
-        if (addedCar != null && car != addedCar) {
+        Car updatedCar = findByVin(car.getVin());
+        if (updatedCar != null && car != updatedCar) {
             //update
-            addedCar.setYear(car.getYear());
-            addedCar.setOwnersCount(car.getOwnersCount());
-            return addedCar  ;
+            updatedCar.setYear(car.getYear());
+            updatedCar.setOwnersCount(car.getOwnersCount());
+            return updatedCar;
         }
         cars[totalCount++] = car;
         return cars[totalCount - 1];

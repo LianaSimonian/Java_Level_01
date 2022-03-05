@@ -16,7 +16,6 @@ The save method should add the car in the fixed size array (set the size to 1000
 
 Create CarRepositoryTest class, testSubject object in @BeforEach annotated method and the following methods:
 
-
 testSave() // assert that the total count is 1
 testSaveSameCar2Times() //assert that the toatl count is 1
 testSave2DifferentCars() //assert that the total count is 2

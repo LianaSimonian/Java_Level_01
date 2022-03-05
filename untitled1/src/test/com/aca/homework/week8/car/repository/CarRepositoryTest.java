@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class CarRepositoryTest {
     private CarRepository testSubject;
 
@@ -25,6 +23,7 @@ class CarRepositoryTest {
         testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
         testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
         Assertions.assertEquals(1, testSubject.getTotalCount());
+
     }
 
     @Test
@@ -58,4 +57,6 @@ class CarRepositoryTest {
     public void testGetTotalCountWhenThereIsNoSavedCar() {
         Assertions.assertEquals(0, testSubject.getTotalCount());
     }
+
 }
+
