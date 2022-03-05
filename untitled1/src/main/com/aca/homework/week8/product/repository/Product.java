@@ -19,6 +19,7 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if (o == null) return false;
         if (getClass() == o.getClass()) {
             Product product = (Product) o;
             return id == product.id && name.equals(product.name);

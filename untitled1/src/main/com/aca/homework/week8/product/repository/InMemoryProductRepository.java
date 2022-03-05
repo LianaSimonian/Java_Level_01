@@ -14,14 +14,6 @@ public class InMemoryProductRepository implements ProductRepository {
             throw new ProductAlreadyExistsException("element exists");
         products[counter++] = product;
     }
-
-    private Product findProduct(Product product) {
-        for (int i = 0; i < counter; i++)
-            if (products[i].equals(product))
-                return products[i];
-        return null;
-    }
-
     @Override
     public Product findById(Long id) {
         for (int i = 0; i < counter; i++)
@@ -33,10 +25,17 @@ public class InMemoryProductRepository implements ProductRepository {
     public Product getById(Long Id) {
         for (int i = 0; i < counter; i++)
             if (products[i].getId() == Id) return products[i];
-        throw new ProductNotFoundException("element don't find");
+        throw new ProductNotFoundException(Id);
     }
 
-    public int getCounter() {
+    public int counter() {
         return counter;
+    }
+
+    private Product findProduct(Product product) {
+        for (int i = 0; i < counter; i++)
+            if (products[i].equals(product))
+                return products[i];
+        return null;
     }
 }

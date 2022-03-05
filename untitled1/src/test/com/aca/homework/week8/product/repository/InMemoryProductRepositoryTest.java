@@ -21,15 +21,15 @@ class InMemoryProductRepositoryTest {
                 testSubject.save(null);
             }
         });
-        Assertions.assertEquals("product is null" , illegalArgumentException.getMessage());
+        Assertions.assertEquals("product is null", illegalArgumentException.getMessage());
     }
 
     @Test
     public void testSaveWhenProductDoesNotExist() {
-        int sizeBeforeSave = testSubject.getCounter();
+        int sizeBeforeSave = testSubject.counter();
         Product product = new Product(124578, "product name");
         testSubject.save(product);
-        int sizeAfterSave = testSubject.getCounter();
+        int sizeAfterSave = testSubject.counter();
         Assertions.assertEquals(sizeAfterSave, sizeBeforeSave + 1);
     }
 
@@ -43,7 +43,7 @@ class InMemoryProductRepositoryTest {
                 testSubject.save(product);
             }
         });
-        Assertions.assertEquals("element exists" , productAlreadyExistsException.getMessage());
+        Assertions.assertEquals("element exists", productAlreadyExistsException.getMessage());
     }
 
     @Test
@@ -70,7 +70,7 @@ class InMemoryProductRepositoryTest {
                 testSubject.getById(1248712L);
             }
         });
-        Assertions.assertEquals("element don't find" , productNotFoundException.getMessage());
+        Assertions.assertEquals("element having 1248712 don't find", productNotFoundException.getMessage());
     }
 
     @Test
