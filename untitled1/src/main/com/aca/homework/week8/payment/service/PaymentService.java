@@ -19,8 +19,7 @@ public class PaymentService {
 
     }
 
-    public static int generateRandomIntBetween(int low, int high) {
+    private static int generateRandomIntBetween(int low, int high) {
         return new Random().nextInt(high - low) + low;
-
     }
 }
