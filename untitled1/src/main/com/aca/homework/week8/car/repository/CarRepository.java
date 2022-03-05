@@ -1,7 +1,8 @@
-package com.aca.homework.week8.repository.car;
+package com.aca.homework.week8.car.repository;
 
 public class CarRepository {
-    private Car[] cars = new Car[1000];
+    private final int size = 1000;
+    private Car[] cars = new Car[size];
     private int totalCount;
 
     public Car save(Car car) {

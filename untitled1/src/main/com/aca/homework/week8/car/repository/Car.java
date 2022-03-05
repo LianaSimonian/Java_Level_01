@@ -1,4 +1,4 @@
-package com.aca.homework.week8.repository.car;
+package com.aca.homework.week8.car.repository;
 
 public class Car {
     private String vin;
