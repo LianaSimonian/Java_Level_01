@@ -6,7 +6,4 @@ public class Button extends AbstractClickable {
         super(name, action);
     }
 
-    public static Button ofButton(String name, Action action) {
-        return new Button(name, action);
-    }
 }

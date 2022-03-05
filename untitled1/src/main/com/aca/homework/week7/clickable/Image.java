@@ -6,7 +6,4 @@ public class Image extends AbstractClickable {
         super(name, action);
     }
 
-    public static Image ofImage(String name, Action action) {
-        return new Image(name, action);
-    }
 }
