@@ -28,4 +28,3 @@ public class CarRepository {
         return totalCount;
     }
 }
-
