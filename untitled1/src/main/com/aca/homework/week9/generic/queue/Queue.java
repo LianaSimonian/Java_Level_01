@@ -1,5 +1,6 @@
 package com.aca.homework.week9.generic.queue;
 
+
 public class Queue<T> {
     private final int size = 10_000;
     private Object[] queue = new Object[size];

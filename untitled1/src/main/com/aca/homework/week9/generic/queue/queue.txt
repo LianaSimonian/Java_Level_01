@@ -1,6 +1,7 @@
 Create a Queue generic class that will encapsulate an array of type Object[].
 The Queue class has the following methods
 
+
 void produce(T object);
 T consume();
 
