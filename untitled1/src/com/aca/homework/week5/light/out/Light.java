@@ -7,11 +7,20 @@ public class Light {
         state = (stateOfLight == true) ? '+' : '0';
     }
 
-    public char getLight() {
-        return state;
-    }
-
     public void switchState() {
         state = (state == '+') ? '0' : '+';
+    }
+
+    public boolean isOn() {
+        return state == '+';
+    }
+
+    public boolean isOff() {
+        return state == '0';
+    }
+
+    @Override
+    public String toString() {
+        return state + "";
     }
 }
