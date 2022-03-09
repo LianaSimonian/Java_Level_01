@@ -9,21 +9,21 @@ class AdditionalNumberTest {
         int[] array1 = {4, 5, 7, 6, 3, 10};
         int[] array2 = {5, 7, 4, 6, 3};
         int expectedValue = 10;
-        Assertions.assertEquals(10, AdditionalNumber.findAdditionalNumberBySortMethod(array1, array2));
+        Assertions.assertEquals(expectedValue, AdditionalNumber.findAdditionalNumberBySortMethod(array1, array2));
     }
     @Test
     public void testFindAdditionalNumberBySumMethod(){
         int[] array1 = {1, 5, 7, 6, 0, 4};
         int[] array2 = {5, 1, 4, 6, 7};
         int expectedValue = 0;
-        Assertions.assertEquals(0, AdditionalNumber.findAdditionalNumberBySumMethod(array1, array2));
+        Assertions.assertEquals(expectedValue, AdditionalNumber.findAdditionalNumberBySumMethod(array1, array2));
     }
     @Test
     public void findAdditionalNumberByXORMethod(){
         int[] array1 = {1, 5, 7, 6, 0, 4};
         int[] array2 = {5, 1, 4, 6, 7};
         int expectedValue = 0;
-        Assertions.assertEquals(0, AdditionalNumber.findAdditionalNumberByXORMethod(array1, array2));
+        Assertions.assertEquals(expectedValue, AdditionalNumber.findAdditionalNumberByXORMethod(array1, array2));
     }
 
 }
