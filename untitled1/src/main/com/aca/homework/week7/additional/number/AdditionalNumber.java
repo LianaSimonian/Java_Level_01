@@ -3,23 +3,8 @@ package com.aca.homework.week7.additional.number;
 import java.util.Arrays;
 
 public class AdditionalNumber {
-
-    public static int findAdditionalNumberBySortMethod(int[] firstArray, int[] lastArray) {
-        Arrays.sort(firstArray);
-        Arrays.sort(lastArray);
-        //binary search
-        int start = 0, end = firstArray.length - 1;
-        while (start != end - 1) {
-            int mid = start + end / 2;
-            if (firstArray[mid] == lastArray[mid])
-                start = mid;
-            else
-                end = mid;
-        }
-        return firstArray[end];
-    }
-
-
+    //Time Complexity: O(n)
+    //Space Complexity: O(1)
     public static int findAdditionalNumberBySumMethod(int[] firstArray, int[] secondArray) {
         int sumOfElementsFirstArray = 0;
         int sumOfElementsSecondArray = 0;
@@ -33,7 +18,8 @@ public class AdditionalNumber {
         return sumOfElementsFirstArray - sumOfElementsSecondArray;
 
     }
-
+     //Time Complexity: O(n)
+     //Space Complexity: O(n)
     public static int findAdditionalNumberByXORMethod(int[] firstArray, int[] secondArray) {
         int result = 0;
 
@@ -54,6 +40,22 @@ public class AdditionalNumber {
         for (int j = firstArrayLength; j < lengthCombinedArray; j++)
             combinedArray[j] = array2[j - firstArrayLength];
         return combinedArray;
+    }
+    //Time Complexity: O(nlogn)
+    //Space Complexity: O(n)
+    public static int findAdditionalNumberBySortMethod(int[] firstArray, int[] lastArray) {
+        Arrays.sort(firstArray);
+        Arrays.sort(lastArray);
+        //binary search
+        int start = 0, end = firstArray.length - 1;
+        while (start != end - 1) {
+            int mid = start + end / 2;
+            if (firstArray[mid] == lastArray[mid])
+                start = mid;
+            else
+                end = mid;
+        }
+        return firstArray[end];
     }
 }
 

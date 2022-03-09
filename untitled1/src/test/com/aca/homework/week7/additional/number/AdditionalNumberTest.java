@@ -1,12 +1,29 @@
 package com.aca.homework.week7.additional.number;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 class AdditionalNumberTest {
-    public static void main(String[] args) {
+    @Test
+    public void testForFindAdditionalNumberBySortMethod() {
         int[] array1 = {4, 5, 7, 6, 3, 10};
         int[] array2 = {5, 7, 4, 6, 3};
-        System.out.println(AdditionalNumber.findAdditionalNumberBySortMethod(array1, array2));
-        System.out.println(AdditionalNumber.findAdditionalNumberBySumMethod(array1, array2));
-        System.out.println(AdditionalNumber.findAdditionalNumberByXORMethod(array1, array2));
+        int expectedValue = 10;
+        Assertions.assertEquals(10, AdditionalNumber.findAdditionalNumberBySortMethod(array1, array2));
+    }
+    @Test
+    public void testFindAdditionalNumberBySumMethod(){
+        int[] array1 = {1, 5, 7, 6, 0, 4};
+        int[] array2 = {5, 1, 4, 6, 7};
+        int expectedValue = 0;
+        Assertions.assertEquals(0, AdditionalNumber.findAdditionalNumberBySumMethod(array1, array2));
+    }
+    @Test
+    public void findAdditionalNumberByXORMethod(){
+        int[] array1 = {1, 5, 7, 6, 0, 4};
+        int[] array2 = {5, 1, 4, 6, 7};
+        int expectedValue = 0;
+        Assertions.assertEquals(0, AdditionalNumber.findAdditionalNumberByXORMethod(array1, array2));
     }
 
 }
