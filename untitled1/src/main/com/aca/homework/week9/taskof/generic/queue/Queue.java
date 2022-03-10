@@ -35,5 +35,4 @@ package com.aca.homework.week9.taskof.generic.queue;
         public boolean isFull() {
             return count > size;
         }
-
     }
