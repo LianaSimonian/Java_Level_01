@@ -1,45 +1,52 @@
 package com.aca.homework.week9.expressioncalculator;
 
-public enum OperationType {
-    ADDITION {
+public enum Operation {
+    ADDITION('+') {
         @Override
         public double calculate(int number1, int number2) {
             return number1 + number2;
         }
     },
-    SUBTRACTION {
+    SUBTRACTION('-') {
         @Override
         public double calculate(int number1, int number2) {
             return number1 - number2;
         }
     },
-    DIVISION {
+    DIVISION('/') {
         @Override
         public double calculate(int number1, int number2) {
             return (double) number1 / number2;
         }
     },
-    MULTIPLICATION {
+    MULTIPLICATION('*') {
         @Override
         public double calculate(int number1, int number2) {
             return number1 * number2;
         }
     };
 
+    private char operationSymbol;
+
+    Operation(char operationSymbol) {
+        this.operationSymbol = operationSymbol;
+    }
+
+    public char getOperationSymbol() {
+        return operationSymbol;
+    }
+
     public abstract double calculate(int number1, int number2);
 
-    public static OperationType charConvertToOperationType(char type) {
-        switch (type) {
-            case '+':
-                return ADDITION;
-            case '-':
-                return SUBTRACTION;
-            case '/':
-                return DIVISION;
-            case '*':
-                return MULTIPLICATION;
-        }
+    public static Operation operationOf(char symbol) {
+        for (Operation operation : Operation.values())
+            if (operation.operationSymbol == symbol)
+                return operation;
+
         throw new IllegalArgumentException("can not convert to char");
+    }
+    public static boolean isOperation(char symbol){
+        return symbol =='/' || symbol =='*' || symbol=='-' || symbol=='+';
     }
 }
 

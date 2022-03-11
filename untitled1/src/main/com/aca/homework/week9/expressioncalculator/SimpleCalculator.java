@@ -1,6 +1,6 @@
 package com.aca.homework.week9.expressioncalculator;
 
-import java.util.Scanner;
+
 
 public class SimpleCalculator {
     private StringSupplier stringSupplier;
@@ -19,20 +19,21 @@ public class SimpleCalculator {
         }
 
         char operation = expression.charAt(1);
-        try {
-            OperationType operationType = OperationType.charConvertToOperationType(operation);
-            int firstOperand = convertCharToDigit(expression.charAt(0));
-            int secondOperand = convertCharToDigit(expression.charAt(2));
-
-            if (firstOperand != -1 && secondOperand != -1) {
-                String result = Double.toString(operationType.calculate(firstOperand, secondOperand));
-                System.out.println("result = " + result);
-                return result;
-            }
-        } catch (IllegalArgumentException e) {
+        if (!Operation.isOperation(operation)) {
             System.out.println("The user input expression having other format then \' digit operation digit \' ");
             return "error";
         }
+
+        Operation operationType = Operation.operationOf(operation);
+        int firstOperand = convertCharToDigit(expression.charAt(0));
+        int secondOperand = convertCharToDigit(expression.charAt(2));
+
+        if (firstOperand != -1 && secondOperand != -1) {
+            String result = Double.toString(operationType.calculate(firstOperand, secondOperand));
+            System.out.println("result = " + result);
+            return result;
+        }
+
         System.out.println("The user input expression having other format then \' digit operation digit \' ");
         return "error";
     }
