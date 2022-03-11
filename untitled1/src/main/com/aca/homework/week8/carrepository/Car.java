@@ -39,7 +39,8 @@ public class Car {
         this.year = year;
     }
 
-    public static Car carOf(String vin, int year, int ownersCount) {
-        return new Car(vin, year, ownersCount);
+    public void update(int year, int ownersCount) {
+        this.year = year;
+        this.ownersCount = ownersCount;
     }
 }

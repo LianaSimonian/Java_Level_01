@@ -14,30 +14,30 @@ class CarRepositoryTest {
 
     @Test
     public void testSave() {
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 2));
         Assertions.assertEquals(1, testSubject.getTotalCount());
     }
 
     @Test
     public void testSaveSameCar2Times() {
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 2));
         Assertions.assertEquals(1, testSubject.getTotalCount());
     }
 
     @Test
     public void testSave2DifferentCars() {
-        testSubject.save(Car.carOf("4Y1SL65848Z411400", 2010, 2));
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 1));
+        testSubject.save(new Car("4Y1SL65848Z411400", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 1));
         Assertions.assertEquals(2, testSubject.getTotalCount());
     }
 
     @Test
     public void testSave2DifferentCarsTwice() {
-        testSubject.save(Car.carOf("4Y1SL65848Z411400", 2010, 2));
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 2));
-        testSubject.save(Car.carOf("4Y1SL65848Z411400", 2010, 3));
-        testSubject.save(Car.carOf("4Y1SL65848Z411439", 2010, 1));
+        testSubject.save(new Car("4Y1SL65848Z411400", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 2));
+        testSubject.save(new Car("4Y1SL65848Z411400", 2010, 3));
+        testSubject.save(new Car("4Y1SL65848Z411439", 2010, 1));
         Assertions.assertEquals(2, testSubject.getTotalCount());
     }
 
@@ -48,7 +48,7 @@ class CarRepositoryTest {
 
     @Test
     public void testFindByVinWhenCarExists() {
-        Car car = testSubject.save(Car.carOf("Y1SL65848Z411400", 2010, 2));
+        Car car = testSubject.save(new Car("Y1SL65848Z411400", 2010, 2));
         Assertions.assertEquals(car, testSubject.findByVin(car.getVin()));
     }
 

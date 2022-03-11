@@ -6,11 +6,10 @@ public class CarRepository {
     private int totalCount;
 
     public Car save(Car car) {
-        Car updatedCar = findByVin(car.getVin());
-        if (updatedCar != null && car != updatedCar) {
-            updatedCar.setYear(car.getYear());
-            updatedCar.setOwnersCount(car.getOwnersCount());
-            return updatedCar;
+        Car findCarByVin = findByVin(car.getVin());
+        if (findCarByVin != null) {
+            findCarByVin.update(car.getYear(), car.getOwnersCount());
+            return findCarByVin;
         }
         cars[totalCount++] = car;
         return cars[totalCount - 1];
