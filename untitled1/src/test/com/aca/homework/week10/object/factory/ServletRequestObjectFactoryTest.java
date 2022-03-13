@@ -9,7 +9,7 @@ class ServletRequestObjectFactoryTest {
 
     @BeforeEach
     public void setUp() {
-        subject = new ServletRequestObjectFactory();
+        subject = new ServletRequestObjectFactory<>();
     }
 
     @Test

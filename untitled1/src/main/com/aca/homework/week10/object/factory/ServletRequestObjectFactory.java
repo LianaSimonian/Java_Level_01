@@ -1,9 +1,9 @@
 package com.aca.homework.week10.object.factory;
 
-public class ServletRequestObjectFactory implements ObjectFactory<ServletRequest> {
+public class ServletRequestObjectFactory<T extends ServletRequest> implements ObjectFactory<ServletRequest> {
 
     @Override
-    public ServletRequest getObject() {
-        return  new ServletRequestImpl();
+    public T getObject() {
+        return  (T)new ServletRequestImpl();
     }
 }
