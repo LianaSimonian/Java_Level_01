@@ -4,6 +4,6 @@ public class ServletRequestObjectFactory<T extends ServletRequest> implements Ob
 
     @Override
     public T getObject() {
-        return  (T)new ServletRequestImpl();
+        return (T) new ServletRequestImpl();
     }
 }
