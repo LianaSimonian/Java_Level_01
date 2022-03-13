@@ -15,35 +15,35 @@ class MapTest {
 
     @Test
     public void testPutWhenKeyIsNull() {
-        NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class, new Executable() {
+        IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
                 testMap.put(null, "value1");
             }
         });
-        Assertions.assertEquals("key is null", nullPointerException.getMessage());
+        Assertions.assertEquals("key is null", illegalArgumentException.getMessage());
     }
 
     @Test
     public void testPutWhenValueIsNull() {
-        NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class, new Executable() {
+        IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
                 testMap.put("key1", null);
             }
         });
-        Assertions.assertEquals("value is null", nullPointerException.getMessage());
+        Assertions.assertEquals("value is null", illegalArgumentException.getMessage());
     }
 
     @Test
     public void testGetValueWhenKeyIsNull() {
-        NullPointerException nullPointerException = Assertions.assertThrows(NullPointerException.class, new Executable() {
+        IllegalArgumentException illegalArgumentException = Assertions.assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
                 testMap.getValue(null);
             }
         });
-        Assertions.assertEquals("key is null", nullPointerException.getMessage());
+        Assertions.assertEquals("key is null", illegalArgumentException.getMessage());
     }
 
     @Test
