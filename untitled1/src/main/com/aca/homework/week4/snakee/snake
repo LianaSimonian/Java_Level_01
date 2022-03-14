@@ -1,0 +1,90 @@
+Create a snake game.
+
+Given an 8x8 matrix filled by 0s, a small point snake located at (0x0) position, and an apple at (2,1).
+
+Every time the program prints the snake board and asks a user to enter a snake movement direction.
+
+The entered w symbol means up, s down, left, and d right.
+
+When the snake eats the apple, its size increases from the tail, and a new apple appears in a random free position.
+
+* 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 = 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+s
+
+0 0 0 0 0 0 0 0
+* 0 0 0 0 0 0 0
+0 = 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+s
+
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+* = 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+d
+
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 = 0
+0 * 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+d
+
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 = 0
+0 * * 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+d
+
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 = 0
+0 0 * * 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+please choose the direction
+w
+0 0 0 0 0 0 0 0
+0 0 0 * 0 0 = 0
+0 0 0 * 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0
+
+
