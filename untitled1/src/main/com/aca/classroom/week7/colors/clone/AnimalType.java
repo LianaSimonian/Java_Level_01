@@ -1,4 +1,4 @@
-package com.aca.classroom.week7.clone;
+package com.aca.classroom.week7.colors.clone;
 
 public enum AnimalType {
     MAMMAL,

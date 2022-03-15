@@ -1,6 +1,4 @@
-package com.aca.classroom.week7.clone;
-
-import java.util.concurrent.Callable;
+package com.aca.classroom.week7.colors.clone;
 
 public class Animal implements Cloneable {
     private AnimalType type;
