@@ -8,8 +8,9 @@ class DefaultUserMapperTest {
     public void testMap() {
         UserMapper testSubject = new DefaultUserMapper();
         User user = new User(1L, "student", "Lord");
-        Assertions.assertEquals("student", testSubject.map(user).getUsername());
-        Assertions.assertEquals("Lord", testSubject.map(user).getFirstName());
+        UserModel usermodel =testSubject.map(user);
+        Assertions.assertEquals("student", usermodel.getUsername());
+        Assertions.assertEquals("Lord", usermodel.getFirstName());
     }
 
 }
