@@ -9,9 +9,7 @@ public class ListUtils {
     }
 
     public static <T> List<T> copy(List<T> list) {
-        List<T> copyList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++)
-            copyList.add(list.get(i));
+        List<T> copyList = new ArrayList<>(list);
         return copyList;
     }
 }
