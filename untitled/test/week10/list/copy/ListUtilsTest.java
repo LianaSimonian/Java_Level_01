@@ -14,10 +14,12 @@ class ListUtilsTest {
         list.add("b");
         list.add("c");
         List<String> resultList = ListUtils.copy(list);
-        Assertions.assertNotEquals(list.iterator(), resultList.iterator());
+        Assertions.assertNotSame(list,resultList);
         Assertions.assertEquals(list.size(), resultList.size());
         Assertions.assertEquals(list.get(0), resultList.get(0));
         Assertions.assertEquals(list.get(1), resultList.get(1));
         Assertions.assertEquals(list.get(2), resultList.get(2));
+
+
     }
 }
