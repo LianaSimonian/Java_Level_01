@@ -5,10 +5,12 @@ import java.util.List;
 
 public class ArrayObservableList<T> implements ObservableList<T> {
     private final int MAX_SIZE = 100_000;
+    private final int LISTENER_SIZE = 1000;
+
     private Object[] objects = new Object[MAX_SIZE];
     private int counter;
     private int counterOfListeners;
-    private List<ListChangeListener<T>> listOfListeners = new ArrayList<>();
+    private Object[] listOfListeners = new Object[LISTENER_SIZE];
 
     @Override
     public void add(T object) {
@@ -16,7 +18,7 @@ public class ArrayObservableList<T> implements ObservableList<T> {
         if (counter >= MAX_SIZE) throw new ArrayStoreException("arraylist is full");
         objects[counter++] = object;
         for (int i = 0; i < counterOfListeners; i++)
-            listOfListeners.get(i).onAdded(object);
+            ( (ListChangeListener<T>)listOfListeners[i]).onAdded(object);
     }
 
     @Override
@@ -33,7 +35,6 @@ public class ArrayObservableList<T> implements ObservableList<T> {
 
     @Override
     public void addListener(ListChangeListener<T> listener) {
-        listOfListeners.add(listener);
-        counterOfListeners++;
+        listOfListeners[counterOfListeners++]=listener;
     }
 }
