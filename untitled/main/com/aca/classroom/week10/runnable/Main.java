@@ -11,7 +11,7 @@ public class Main {
         //will be good  access with interface ,it helps to do changes only one space
         //we will write real name only if we must call function that have not
         // in interface and specific only that class
-        List<Runnable> list = new LinkedList<>();
+        List<Runnable> list = new LinkedList<>();//ArrayList
         list.add(mulRunnable);
         list.add(subRunnable);
         list.add(sumRunnable);
@@ -20,7 +20,7 @@ public class Main {
     }
 
     public static void runRunnable(List<Runnable> runnableList) {
-        for (Runnable runnable : runnableList)
+        for (Runnable runnable : runnableList)//for(int i =0;i<runnuble.size();i++)
             runnable.run();
     }
 
