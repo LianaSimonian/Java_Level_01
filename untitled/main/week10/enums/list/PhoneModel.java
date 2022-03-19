@@ -7,7 +7,7 @@ public enum PhoneModel {
     NOKIA_3110(List.of("back camera")),
     GALAXY_S2(List.of("back camera", "front camera"));
 
-    private List<String> descriptionOfCamera;
+    private final List<String> descriptionOfCamera;
 
     PhoneModel(List<String> descriptionOfCamera) {
         this.descriptionOfCamera = descriptionOfCamera;
