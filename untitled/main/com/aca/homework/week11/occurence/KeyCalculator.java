@@ -3,21 +3,23 @@ package com.aca.homework.week11.occurence;
 import java.util.*;
 
 public class KeyCalculator {
-    private Supplier stringOfNumberSupplier;
+    private Supplier supplier;
 
     public KeyCalculator(Supplier stringOfNumberSupplier) {
-        this.stringOfNumberSupplier = stringOfNumberSupplier;
+        this.supplier = stringOfNumberSupplier;
     }
 
     public Map<String, Integer> askAndCalculate() {
         Map<String, Integer> map = new HashMap<>();
-        String inputStringNumber = (String) stringOfNumberSupplier.get();
+        String inputStringNumber = (String) supplier.get();
 
         while (!inputStringNumber.equals("end")) {
-            if (map.containsKey(inputStringNumber))
+            if (map.containsKey(inputStringNumber)) {
                 map.replace(inputStringNumber, map.get(inputStringNumber) + 1);
-            else map.put(inputStringNumber, 1);
-            inputStringNumber = (String) stringOfNumberSupplier.get();
+            } else {
+                map.put(inputStringNumber, 1);
+            }
+            inputStringNumber = (String) supplier.get();
         }
 
         System.out.println(map);

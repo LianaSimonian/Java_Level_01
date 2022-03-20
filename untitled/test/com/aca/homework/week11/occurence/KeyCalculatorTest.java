@@ -11,7 +11,7 @@ class KeyCalculatorTest {
 
     @BeforeEach
     public void setUp() {
-        testSubject = new KeyCalculator(new StringOfNumberSupplierTest());
+        testSubject = new KeyCalculator(new StringOfNumberSupplierTest(new String[]{"1","1","1","5","5","49","end"}));
     }
 
     @Test
