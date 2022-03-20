@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ListUtilsTest {
+
     @Test
     public void testCopy() {
         List<String> list = new ArrayList<>();
@@ -19,7 +20,5 @@ class ListUtilsTest {
         Assertions.assertEquals(list.get(0), resultList.get(0));
         Assertions.assertEquals(list.get(1), resultList.get(1));
         Assertions.assertEquals(list.get(2), resultList.get(2));
-
-
     }
 }
