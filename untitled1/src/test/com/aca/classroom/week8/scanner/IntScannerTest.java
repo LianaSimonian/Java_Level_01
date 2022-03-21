@@ -12,7 +12,7 @@ class IntScannerTest {
 
     @BeforeEach
     public void setUp() {
-        testSubject = new IntScanner(new IntSupplierForTest());
+        testSubject = new IntScanner(new IntSupplierForTest2version(new int[]{9,10,4,5,6}));
     }
 
     @Test
