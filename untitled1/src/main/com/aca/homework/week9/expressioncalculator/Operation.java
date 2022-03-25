@@ -53,4 +53,3 @@ public enum Operation {
         return false;
     }
 }
-
