@@ -45,8 +45,12 @@ public enum Operation {
 
         throw new IllegalArgumentException("can not convert to char");
     }
-    public static boolean isOperation(char symbol){
-        return symbol =='/' || symbol =='*' || symbol=='-' || symbol=='+';
+
+    public static boolean isOperation(char symbol) {
+        for (Operation operation : Operation.values())
+            if (operation.operationSymbol == symbol)
+                return true;
+        return false;
     }
 }
 
