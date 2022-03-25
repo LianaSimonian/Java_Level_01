@@ -3,10 +3,10 @@ package com.aca.homework.week11.occurence;
 import java.util.*;
 
 public class KeyCalculator {
-    private Supplier supplier;
+    private final Supplier<String> supplier;
 
-    public KeyCalculator(Supplier stringOfNumberSupplier) {
-        this.supplier = stringOfNumberSupplier;
+    public KeyCalculator(Supplier supplier) {
+        this.supplier = supplier;
     }
 
     public Map<String, Integer> askAndCalculate() {
@@ -19,7 +19,7 @@ public class KeyCalculator {
             } else {
                 map.put(inputStringNumber, 1);
             }
-            inputStringNumber = (String) supplier.get();
+            inputStringNumber = supplier.get();
         }
 
         System.out.println(map);
