@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class HelloTranslaterResolver {
-    private Map<LanguageType, HelloTranslater> helloTranslaters = new HashMap<>();
+    private final Map<LanguageType, HelloTranslater> helloTranslaters = new HashMap<>();
 
     HelloTranslaterResolver(List<HelloTranslater> list) {
         for (HelloTranslater helloTranslater : list) {
@@ -16,4 +16,5 @@ public class HelloTranslaterResolver {
     HelloTranslater resolve(LanguageType type) {
         return helloTranslaters.get(type);
     }
+
 }

@@ -14,7 +14,7 @@ class HelloTranslaterResolverTest {
     public void setUp() {
         List<HelloTranslater> list =
                 new LinkedList<>(List.of(new FrenchHelloTranslater(), new EnglishHelloTranslater(), new RussianHelloTranslater()));
-        testSubject = new HelloTranslaterResolver(new LinkedList<>());
+        testSubject = new HelloTranslaterResolver(list);
     }
 
     @Test
