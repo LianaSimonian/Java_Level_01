@@ -5,13 +5,13 @@ import java.util.*;
 public class KeyCalculator {
     private final Supplier<String> supplier;
 
-    public KeyCalculator(Supplier supplier) {
+    public KeyCalculator(Supplier<String> supplier) {
         this.supplier = supplier;
     }
 
     public Map<String, Integer> askAndCalculate() {
         Map<String, Integer> map = new HashMap<>();
-        String inputStringNumber = (String) supplier.get();
+        String inputStringNumber = supplier.get();
 
         while (!inputStringNumber.equals("end")) {
             if (map.containsKey(inputStringNumber)) {
