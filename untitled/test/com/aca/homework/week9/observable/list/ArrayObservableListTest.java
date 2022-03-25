@@ -14,11 +14,11 @@ class ArrayObservableListTest {
 
     @Test
     public void testAddWhenThereIsOneAddedListener() {
-        ObservableList<Object> testSubject = new ArrayObservableList<>();
+        ObservableList<Integer> testSubject = new ArrayObservableList<>();
         int[] counter = {1, 2};
-        testSubject.addListener(new ListChangeListener<Object>() {
+        testSubject.addListener(new ListChangeListener<Integer>() {
             @Override
-            public void onAdded(Object item) {
+            public void onAdded(Integer item) {
                 counter[0] = 0;
             }
         });
@@ -32,17 +32,17 @@ class ArrayObservableListTest {
     @Test
     public void testAddWhenThereAreTwoAddedListener() {
         int[] counter = {1, 2};
-        ObservableList<Object> testSubject = new ArrayObservableList<>();
+        ObservableList<Integer> testSubject = new ArrayObservableList<>();
 
-        testSubject.addListener(new ListChangeListener<Object>() {
+        testSubject.addListener(new ListChangeListener<Integer>() {
             @Override
-            public void onAdded(Object item) {
+            public void onAdded(Integer item) {
                 counter[0] = 0;
             }
         });
-        testSubject.addListener(new ListChangeListener<Object>() {
+        testSubject.addListener(new ListChangeListener<Integer>() {
             @Override
-            public void onAdded(Object item) {
+            public void onAdded(Integer item) {
                 counter[1] = 1;
             }
         });
