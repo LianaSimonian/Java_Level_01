@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
-import java.util.SortedSet;
+import java.util.Set;
 
 class CalcutateTest {
     @Test
     public void testAskEndCalculate() {
 
         Calcutate testSubject = new Calcutate(new StringSupplierForTest(new String[]{"John,bmw,7", "Jack,opel,astra", "Mary,bmw,7", "Arsen,opel,xxx", "finish"}));
-        SortedSet<Car> set = testSubject.askEndCalculate();
+        Set<Car> set = testSubject.askEndCalculate();
 
         Assertions.assertEquals(3, set.size());
         Iterator<Car> iterator = set.iterator();

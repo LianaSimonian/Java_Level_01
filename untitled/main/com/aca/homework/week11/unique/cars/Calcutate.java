@@ -1,6 +1,6 @@
 package com.aca.homework.week11.unique.cars;
 
-import java.util.SortedSet;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class Calcutate {
@@ -11,8 +11,8 @@ public class Calcutate {
         this.supplier = supplier;
     }
 
-    public SortedSet<Car> askEndCalculate() {
-        SortedSet<Car> set = new TreeSet<>();
+    public Set<Car> askEndCalculate() {
+        Set<Car> set = new TreeSet<>();
         System.out.println("please type your name,brand and model of your car");
         String inputString = supplier.get();
         while (!inputString.equals("finish")) {
@@ -23,7 +23,7 @@ public class Calcutate {
         return set;
     }
 
-    public void printResult(SortedSet<Car> set) {
+    public void printResult(Set<Car> set) {
         System.out.println("Number of unique brand and models: " + set.size());
         for (Car car : set)
             System.out.println(car);

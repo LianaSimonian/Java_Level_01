@@ -2,7 +2,7 @@ package com.aca.homework.week11.unique.cars;
 
 
 public class Car implements Comparable<Car> {
-    private String brand;
+    private final String brand;
     private String model;
 
     public Car(String brand, String model) {
