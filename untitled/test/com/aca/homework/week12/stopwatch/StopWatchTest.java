@@ -22,13 +22,15 @@ class StopWatchTest {
         } catch (InterruptedException e) {
 
         }
-        Assertions.assertTrue(testSubject.getTimer() >= 10);
+        long timer = testSubject.getTimer();
+        Assertions.assertTrue(timer >= 10);
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
 
         }
-        Assertions.assertTrue(testSubject.getTimer() >= 20);
+        long timer1 = testSubject.getTimer();
+        Assertions.assertTrue(timer1 > timer && timer1 >= 20);
     }
 
     @Test
