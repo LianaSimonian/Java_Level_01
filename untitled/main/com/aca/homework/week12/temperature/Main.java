@@ -18,13 +18,13 @@ public class Main {
         });
 
 
-        DailyTemperatureFileItemWriter fileItemWriter = new DailyTemperatureFileItemWriter("C:\\Users\\user\\Desktop\\daily-temp-data.txt");
+        DailyTemperatureFileItemWriter fileItemWriter = new DailyTemperatureFileItemWriter("D:\\Users\\user\\IdeaProjects\\aca\\Java_Level_01\\untitled\\main\\com\\aca\\homework\\week12\\temperature\\daily-temp-data.txt");
         for (DailyTemperature dailyTemperature : list) {
             fileItemWriter.write(dailyTemperature);
         }
         int fileLinesNumber = fileItemWriter.getNumberOfWritingItems();
 
-        ItemReader<DailyTemperature> fileItemReader = new DailyTemperatureFileItemReader("C:\\Users\\user\\Desktop\\daily-temp-data.txt");
+        ItemReader<DailyTemperature> fileItemReader = new DailyTemperatureFileItemReader("D:\\Users\\user\\IdeaProjects\\aca\\Java_Level_01\\untitled\\main\\com\\aca\\homework\\week12\\temperature\\daily-temp-data.txt");
         List<DailyTemperature> dailyTemperatures = new LinkedList<>();
         DailyTemperature dailyTemperature = null;
 
