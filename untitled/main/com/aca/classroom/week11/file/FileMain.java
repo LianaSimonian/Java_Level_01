@@ -30,6 +30,7 @@ public class FileMain {
         objectOutputStream.writeInt(123456);
         objectOutputStream.writeDouble(123456.4);
         objectOutputStream.writeFloat(123456.3f);
+        objectOutputStream.writeChar('\n');
         objectOutputStream.writeObject(address);
         objectOutputStream.close();
         fileOutputStream.close();
