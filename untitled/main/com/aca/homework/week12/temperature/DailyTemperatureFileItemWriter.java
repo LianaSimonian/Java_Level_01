@@ -33,6 +33,8 @@ public class DailyTemperatureFileItemWriter implements ItemWrite<DailyTemperatur
             objectOutputStream.writeFloat(item.getDegree());
             objectOutputStream.write('\n');
             numberOfWritingItems++;
+            objectOutputStream.close();
+            fileOutputStream.close();
 
         } catch (IOException e) {
             throw new RuntimeException("I/O errors occur while writing to the underlying stream ,file path " + filePath, e);
