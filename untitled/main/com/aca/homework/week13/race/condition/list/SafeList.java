@@ -22,7 +22,7 @@ public class SafeList<E> implements List<E> {
     }
 
     @Override
-    public boolean contains(E item) {
+    public synchronized boolean contains(E item) {
         return list.contains(item);
     }
 }
