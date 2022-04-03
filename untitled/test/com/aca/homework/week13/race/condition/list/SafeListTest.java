@@ -26,4 +26,17 @@ class SafeListTest {
         testSubject.add(12);
         Assertions.assertEquals(1, testSubject.size());
     }
+    @Test
+    public void testGet(){
+        testSubject.add(12);
+        testSubject.add(15);
+        Assertions.assertEquals(12,testSubject.get(0));
+        Assertions.assertEquals(15,testSubject.get(1));
+    }
+    @Test
+    public void testContains(){
+        testSubject.add(12);
+        Assertions.assertTrue(testSubject.contains(12));
+    }
+
 }

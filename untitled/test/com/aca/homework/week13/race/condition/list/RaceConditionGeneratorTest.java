@@ -16,11 +16,12 @@ class RaceConditionGeneratorTest {
             }
         });
 
-        int listSize = RaceConditionGenerator.getThreadsSize();
-        Assertions.assertEquals(listSize, testSubject.start());
-
         List<Integer> resultList = testSubject.getIntegerList();
-        for (int i = 0; i < listSize; i++) {
+        Assertions.assertEquals(0,resultList.size());
+        int size = testSubject.start();
+        Assertions.assertEquals( RaceConditionGenerator.getThreadsSize(), size);
+
+        for (int i = 0; i < size; i++) {
             Assertions.assertTrue(resultList.contains(i));
         }
     }
