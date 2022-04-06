@@ -2,8 +2,8 @@ package com.aca.homework.week13.race.condition.list;
 
 public class NumberAdderRunnable implements Runnable {
 
-    private List<Integer> list;
-    private Integer integer;
+    private final List<Integer> list;
+    private final Integer integer;
 
     public NumberAdderRunnable(List<Integer> list, Integer integer) {
         this.list = list;
