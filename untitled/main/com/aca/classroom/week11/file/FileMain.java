@@ -4,7 +4,7 @@ import java.io.*;
 
 public class FileMain {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        final String fileName = "C:\\Users\\user\\Desktop\\file.txt";
+        final String fileName = "D:\\Users\\user\\IdeaProjects\\aca\\Java_Level_01\\untitled\\main\\com\\aca\\classroom\\week11\\file\\file.txt";
         FileOutputStream fileOutputStream = new FileOutputStream(fileName);
 
         fileOutputStream.write(123456789);
@@ -34,7 +34,7 @@ public class FileMain {
         objectOutputStream.writeObject(address);
         objectOutputStream.close();
         fileOutputStream.close();
-
+/*
         FileInputStream fileInputStream = new FileInputStream(fileName);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         System.out.println(objectInputStream.readInt());
@@ -43,5 +43,7 @@ public class FileMain {
         System.out.println((Address) objectInputStream.readObject());
         objectInputStream.close();
 
+
+ */
     }
 }
