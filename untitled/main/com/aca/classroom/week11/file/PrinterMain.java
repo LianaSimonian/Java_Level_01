@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 public class PrinterMain {
     public static void main(String[] args) throws FileNotFoundException {
-        final String fileName = "C:\\Users\\user\\Desktop\\file.txt";
+        final String fileName = "C:\\Users\\user\\Desktop\\filePrintWriter.txt";
         PrintWriter printWriter = new PrintWriter(fileName);
         printWriter.println();
         printWriter.print('\n');
