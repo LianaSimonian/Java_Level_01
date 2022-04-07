@@ -34,7 +34,7 @@ public class FileMain {
         objectOutputStream.writeObject(address);
         objectOutputStream.close();
         fileOutputStream.close();
-/*
+
         FileInputStream fileInputStream = new FileInputStream(fileName);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         System.out.println(objectInputStream.readInt());
@@ -44,6 +44,6 @@ public class FileMain {
         objectInputStream.close();
 
 
- */
+
     }
 }
