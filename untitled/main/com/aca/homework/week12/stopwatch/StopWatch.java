@@ -16,7 +16,7 @@ public class StopWatch {
             System.out.println(type.displayFormat(timer));
             startMillis = System.currentTimeMillis();
             while (System.currentTimeMillis() - startMillis < 10) ;
-            timer += 10;
+            timer += System.currentTimeMillis() - startMillis ;
         }
     }
 
