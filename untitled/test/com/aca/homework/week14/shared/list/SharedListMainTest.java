@@ -18,12 +18,11 @@ class SharedListMainTest {
         int size = SharedListMain.size();
         Assertions.assertEquals(size, testSubject.start());
 
+        Assertions.assertEquals(size, resultList.size());
         List<Integer> list = new LinkedList<>();
         for (int i = 1; i <= size; i++) {
             list.add(i);
         }
-
-        Assertions.assertEquals(size, resultList.size());
         Assertions.assertTrue(resultList.containsAll(list));
         Assertions.assertTrue(list.containsAll(resultList));
     }
