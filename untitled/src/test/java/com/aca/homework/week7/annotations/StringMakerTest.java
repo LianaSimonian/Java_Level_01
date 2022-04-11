@@ -1,0 +1,21 @@
+package com.aca.homework.week7.annotations;
+
+import com.aca.homework.week7.annotations.HighPerformance;
+import com.aca.homework.week7.annotations.StringMaker;
+
+import java.lang.annotation.Annotation;
+
+class StringMakerTest {
+    public static void main(String[] args) {
+        StringMaker bad = StringMaker.ofBad();
+        StringMaker good = StringMaker.ofGood();
+        StringMaker[] stringMakers = {bad, good};
+        for (StringMaker stringMaker : stringMakers) {
+            Annotation[] declaredAnnotations = stringMaker.getClass().getDeclaredAnnotations();
+            if (declaredAnnotations.length > 0 && declaredAnnotations[0].annotationType() == HighPerformance.class) {
+                System.out.println(stringMaker.make(1, 100_000).getExecutionTime());
+            }
+        }
+
+    }
+}
