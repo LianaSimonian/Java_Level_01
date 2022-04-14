@@ -1,0 +1,81 @@
+Windows PowerShell
+(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+Установите последнюю версию PowerShell для новых функций и улучшения! https://aka.ms/PSWindows
+
+PS C:\Users\user> docker run -d postgres:9.6.12
+35833703dc256ed5afc42943f44dcbf1d756e549bcfea477ca61dc444c14db3d
+PS C:\Users\user> docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS      NAMES
+35833703dc25   postgres:9.6.12   "docker-entrypoint.s…"   5 seconds ago    Up 3 seconds    5432/tcp   gallant_montalcini
+PS C:\Users\user> docker exec -it 35833703dc25 bash
+root@35833703dc25:/# psql -U postgres
+psql (9.6.12)
+Type "help" for help.
+
+postgres=# \c
+You are now connected to database "postgres" as user "postgres".
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+(3 rows)
+
+postgres=# create database testDb;
+CREATE DATABASE
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ testdb    | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+(4 rows)
+
+postgres=# \c testDb
+FATAL:  database "testDb" does not exist
+Previous connection kept
+postgres=# \c testdb
+You are now connected to database "testdb" as user "postgres".
+testdb=# \d
+No relations found.
+testdb=# create table Students(first_name varchar(255),second_name varchar(255));
+CREATE TABLE
+testdb=# \d
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | students | table | postgres
+(1 row)
+
+testdb=# \d Students
+             Table "public.students"
+   Column    |          Type          | Modifiers
+-------------+------------------------+-----------
+ first_name  | character varying(255) |
+ second_name | character varying(255) |
+
+testdb=# insert into Students(first_name,second_name) values('name1','lastname1');
+INSERT 0 1                                                            ^
+testdb=# insert into students(first_name,second_name) values('name2','lastname2');
+INSERT 0 1
+testdb=# insert into students(first_name,second_name) values('name3','lastnaem3');
+INSERT 0 1
+testdb=# select * from students;
+ first_name | second_name
+------------+-------------
+ name1      | lastname1
+ name2      | lastname2
+ name3      | lastnaem3
+(3 rows)
+
+testdb=# quit
+testdb-#
