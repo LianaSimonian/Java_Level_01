@@ -50,6 +50,7 @@ public class EntityProcessor {
                     throw new RuntimeException("the Object " + o + " does not have such field " + field);
                 }
             }
+            field.setAccessible(false);
         }
         System.out.println(o.getClass() + "has not field annotated as @Id ");
         return -1L;
