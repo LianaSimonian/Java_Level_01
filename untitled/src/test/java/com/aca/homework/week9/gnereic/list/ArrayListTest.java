@@ -10,7 +10,7 @@ class ArrayListTest {
     public void testSizeForInteger() {
         List<Integer> testSubject = new ArrayList<>();
         testSubject.add(Integer.valueOf(12));
-        testSubject.add(new Integer(178));
+        testSubject.add(178);
         Assertions.assertEquals(2, testSubject.size());
     }
 
