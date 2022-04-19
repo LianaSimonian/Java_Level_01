@@ -20,5 +20,11 @@ class UserCrudRepositoryTest {
 
         UserCrudRepository testSubject = new UserCrudRepository(connection);
         testSubject.save(new User("Name1", 112));
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
