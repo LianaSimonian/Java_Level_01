@@ -14,6 +14,7 @@ class EmployeeRepositoryTest {
     @BeforeEach
     public void setUp() {
         testSubject = new EmployeeRepository(new ConnectionFactory());
+        testSubject.deleteAll();
     }
 
     @Test
@@ -24,15 +25,23 @@ class EmployeeRepositoryTest {
     @Test
     public void testFindAll() {
         List<Employee> employeeList;
+        Employee employee1 = new Employee("id1", "firstName1", "secondName1", 1200L);
+        Employee employee2 = new Employee("id2", "firstName2", "secondName2", 1300L);
+        testSubject.save(employee1);
+        testSubject.save(employee2);
+
         employeeList = testSubject.findAll();
-        Assertions.assertEquals(1, employeeList.size());
-        Assertions.assertEquals(new Employee("id1", "firstName1", "secondName1", 1200L), employeeList.get(0));
+        Assertions.assertEquals(2, employeeList.size());
+        Assertions.assertEquals(employee1, employeeList.get(0));
+        Assertions.assertEquals(employee2, employeeList.get(1));
     }
 
     @Test
     public void testFindByIdWhenIdExist() {
+        Employee employee1 = new Employee("id1", "firstName1", "secondName1", 1200L);
+        testSubject.save(employee1);
         Employee employee = testSubject.findById("id1");
-        Assertions.assertEquals(new Employee("id1", "firstName1", "secondName1", 1200L), employee);
+        Assertions.assertEquals(employee1, employee);
     }
 
     @Test
@@ -43,6 +52,10 @@ class EmployeeRepositoryTest {
 
     @Test
     public void testDeleteAll() {
+        Employee employee1 = new Employee("id1", "firstName1", "secondName1", 1200L);
+        Employee employee2 = new Employee("id2", "firstName2", "secondName2", 1300L);
+        testSubject.save(employee1);
+        testSubject.save(employee2);
         testSubject.deleteAll();
     }
 }
