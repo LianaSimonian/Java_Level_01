@@ -20,7 +20,6 @@ public class CommitAnalyzer {
     public int count() {
         int count = 0;
         List<WeekCommitData> commitList = getListFromFile();
-
         for (WeekCommitData weekCommitData : commitList) {
             count += weekCommitData.getTotal();
         }
