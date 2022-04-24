@@ -1,6 +1,7 @@
 package com.aca;
 
 public class CreateUserParams {
+
     private final String first_name;
     private final String second_name;
 

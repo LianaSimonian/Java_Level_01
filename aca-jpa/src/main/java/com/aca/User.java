@@ -5,15 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USERS")
 public class User {
-    public User(String firstName, String secondName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-    }
-
-    public User() {
-
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +12,20 @@ public class User {
 
     @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "second_name")
+    private String secondName;
+
+    public User() {
+
+    }
+
+    public User(String firstName, String secondName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+    }
+
 
     public Long getId() {
         return id;
@@ -46,6 +51,4 @@ public class User {
         this.secondName = secondName;
     }
 
-    @Column(name = "second_name")
-    private String secondName;
 }
