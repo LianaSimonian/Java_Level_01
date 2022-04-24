@@ -12,19 +12,16 @@ public class ObjectJsonProcessor {
         StringBuilder json = new StringBuilder("{");
         Field[] fields = o.getClass().getDeclaredFields();
 
-        JsonProperty annotation = null;
         for (Field field : fields) {
-            annotation = field.getAnnotation(JsonProperty.class);
+            JsonProperty annotation = field.getAnnotation(JsonProperty.class);
             if (annotation != null) {
                 json.append("\"" + annotation.value() + "\": \"");
                 field.setAccessible(true);
                 try {
                     json.append(field.get(o));
                 } catch (IllegalAccessException e) {
-                    e.printStackTrace();
                     throw new RuntimeException("the Object " + o + " field " + field + " is private");
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
                     throw new RuntimeException("the Object " + o + " does not have such field " + field);
 
                 }
