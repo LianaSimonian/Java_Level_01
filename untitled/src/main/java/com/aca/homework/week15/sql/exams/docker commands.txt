@@ -1,0 +1,89 @@
+PS C:\Users\user> docker run -d postgres:9.6.12
+2cafd55b1d27c3b8bb467be8ba9aa134d59f892e824c6349b1d6f9040788fcc7
+PS C:\Users\user> docker exec -it 2cafd55b1d27c3b8bb4 bash
+root@2cafd55b1d27:/# psql -U postgres
+psql (9.6.12)
+Type "help" for help.
+
+postgres=# \c
+You are now connected to database "postgres" as user "postgres".
+postgres=# create database aca;
+CREATE DATABASE
+postgres=# \c aca
+You are now connected to database "aca" as user "postgres".                                                            ^
+aca=# create table EXAMS (id serial primary key,task_name varchar(255) not null unique,task_description varchar(255) not null);
+CREATE TABLE
+aca=# \d
+              List of relations
+ Schema |     Name     |   Type   |  Owner
+--------+--------------+----------+----------
+ public | exams        | table    | postgres
+ public | exams_id_seq | sequence | postgres
+(2 rows)
+
+aca=# \d EXAMS
+                                      Table "public.exams"
+      Column      |          Type          |                     Modifiers
+------------------+------------------------+----------------------------------------------------
+ id               | integer                | not null default nextval('exams_id_seq'::regclass)
+ task_name        | character varying(255) | not null
+ task_description | character varying(255) | not null
+Indexes:
+    "exams_pkey" PRIMARY KEY, btree (id)
+    "exams_task_name_key" UNIQUE CONSTRAINT, btree (task_name)
+
+aca=# insert into EXAMS (task_name,task_description) values ('task1','t1-desc');
+INSERT 0 1
+aca=# insert into EXAMS (task_name,task_description) values ('task2','t2-desc');
+INSERT 0 1
+aca=# insert into EXAMS (task_name,task_description) values ('task3','t3-desc');
+INSERT 0 1
+aca=# select* from exams;
+ id | task_name | task_description
+----+-----------+------------------
+  1 | task1     | t1-desc
+  2 | task2     | t2-desc
+  3 | task3     | t3-desc
+(3 rows)
+
+aca=# select* from exams where id=3;
+ id | task_name | task_description
+----+-----------+------------------
+  3 | task3     | t3-desc
+(1 row)
+
+aca=# insert into EXAMS (task_name,task_description) values ('test task','test-task-desc');
+INSERT 0 1
+aca=# select* from exams;
+ id | task_name | task_description
+----+-----------+------------------
+  1 | task1     | t1-desc
+  2 | task2     | t2-desc
+  3 | task3     | t3-desc
+  4 | test task | test-task-desc
+(4 rows)
+
+aca=# select* from exams where task_name='test task';
+ id | task_name | task_description
+----+-----------+------------------
+  4 | test task | test-task-desc
+(1 row)
+
+aca=# select count(*) from exams;
+ count
+-------
+     4
+(1 row)
+
+aca=# select task_name from Exams;
+ task_name
+-----------
+ task1
+ task2
+ task3
+ test task
+(4 rows)
+
+aca-# \q
+root@2cafd55b1d27:/# exit
+exit
