@@ -641,7 +641,6 @@ class UserServiceImplTest {
                 return null;
             }
         });
-
         Assertions.assertThatThrownBy(() -> testSubject.getByUsername("user1")).isExactlyInstanceOf(UserNotFoundException.class);
     }
 }
