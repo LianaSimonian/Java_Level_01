@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.service;
+package com.aca.classroom.week15.user.service.version2;
 
 public interface UserService {
 
