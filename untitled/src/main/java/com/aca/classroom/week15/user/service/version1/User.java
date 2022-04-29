@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.user.service.simplestart.version;
+package com.aca.classroom.week15.user.service.version1;
 
 import javax.persistence.*;
 
