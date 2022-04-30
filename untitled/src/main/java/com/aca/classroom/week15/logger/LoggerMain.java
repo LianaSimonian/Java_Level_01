@@ -1,4 +1,4 @@
-package com.aca.classroom.week15;
+package com.aca.classroom.week15.logger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
