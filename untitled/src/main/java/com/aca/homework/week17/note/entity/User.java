@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.service;
+package com.aca.homework.week17.note.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
