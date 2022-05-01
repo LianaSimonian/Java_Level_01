@@ -1,4 +1,6 @@
-package com.aca.classroom.week15.service;
+package com.aca.classroom.week15.user.service.version3;
+
+import com.aca.classroom.week15.user.service.version3.entity.User;
 
 import java.util.Optional;
 
