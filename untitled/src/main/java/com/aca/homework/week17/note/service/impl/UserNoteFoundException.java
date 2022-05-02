@@ -9,6 +9,4 @@ public class UserNoteFoundException extends RuntimeException {
     public UserNoteFoundException(Long id) {
         super(String.format("User with the id %d not found", id));
     }
-
-
 }

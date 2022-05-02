@@ -5,7 +5,7 @@ import org.springframework.util.Assert;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class NoteCreationParams {
+public final class NoteCreationParams {
 
     private final String text;
     private final Long userId;

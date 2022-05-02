@@ -1,6 +1,7 @@
 package com.aca.homework.week17.note.facade.user;
 
 
+import com.aca.homework.week17.note.entity.User;
 import com.aca.homework.week17.note.service.core.UserCreationParams;
 import com.aca.homework.week17.note.service.core.UserService;
 import org.slf4j.Logger;

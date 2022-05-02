@@ -4,7 +4,7 @@ import org.springframework.util.Assert;
 
 import java.util.Objects;
 
-public class NoteCreationRequestDto {
+public final class NoteCreationRequestDto {
 
     private final String username;
     private final String text;
