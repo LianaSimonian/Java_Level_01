@@ -1,9 +1,9 @@
-package com.aca.homework.week17.note.facade.user;
+package com.aca.classroom.note.facade.user;
 
 
-import com.aca.homework.week17.note.entity.User;
-import com.aca.homework.week17.note.service.core.UserCreationParams;
-import com.aca.homework.week17.note.service.core.UserService;
+import com.aca.classroom.note.entity.User;
+import com.aca.classroom.note.service.core.UserCreationParams;
+import com.aca.classroom.note.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

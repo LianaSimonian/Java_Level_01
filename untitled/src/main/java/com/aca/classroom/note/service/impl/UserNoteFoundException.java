@@ -1,4 +1,4 @@
-package com.aca.homework.week17.note.service.impl;
+package com.aca.classroom.note.service.impl;
 
 public class UserNoteFoundException extends RuntimeException {
 

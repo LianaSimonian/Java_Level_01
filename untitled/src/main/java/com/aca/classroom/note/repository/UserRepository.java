@@ -1,6 +1,6 @@
-package com.aca.homework.week17.note.repository;
+package com.aca.classroom.note.repository;
 
-import com.aca.homework.week17.note.entity.User;
+import com.aca.classroom.note.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

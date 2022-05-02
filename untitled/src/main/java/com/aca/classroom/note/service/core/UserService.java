@@ -1,6 +1,6 @@
-package com.aca.homework.week17.note.service.core;
+package com.aca.classroom.note.service.core;
 
-import com.aca.homework.week17.note.entity.User;
+import com.aca.classroom.note.entity.User;
 
 public interface UserService {
 

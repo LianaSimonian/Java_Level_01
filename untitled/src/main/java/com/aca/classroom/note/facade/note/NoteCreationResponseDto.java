@@ -1,4 +1,4 @@
-package com.aca.homework.week17.note.facade.note;
+package com.aca.classroom.note.facade.note;
 
 import org.springframework.util.Assert;
 

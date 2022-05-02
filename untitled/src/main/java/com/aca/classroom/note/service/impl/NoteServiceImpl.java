@@ -1,11 +1,11 @@
-package com.aca.homework.week17.note.service.impl;
+package com.aca.classroom.note.service.impl;
 
-import com.aca.homework.week17.note.entity.Note;
-import com.aca.homework.week17.note.entity.User;
-import com.aca.homework.week17.note.repository.NoteRepository;
-import com.aca.homework.week17.note.service.core.NoteCreationParams;
-import com.aca.homework.week17.note.service.core.NoteService;
-import com.aca.homework.week17.note.service.core.UserService;
+import com.aca.classroom.note.entity.Note;
+import com.aca.classroom.note.entity.User;
+import com.aca.classroom.note.repository.NoteRepository;
+import com.aca.classroom.note.service.core.NoteCreationParams;
+import com.aca.classroom.note.service.core.NoteService;
+import com.aca.classroom.note.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

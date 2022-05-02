@@ -1,4 +1,4 @@
-package com.aca.homework.week17.note.service.core;
+package com.aca.classroom.note.service.core;
 
 import org.springframework.util.Assert;
 

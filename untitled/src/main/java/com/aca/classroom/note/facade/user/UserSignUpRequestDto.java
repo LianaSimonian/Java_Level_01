@@ -1,16 +1,16 @@
-package com.aca.homework.week17.note.service.core;
+package com.aca.classroom.note.facade.user;
 
 import org.springframework.util.Assert;
 
 import java.util.Objects;
 
-public final class UserCreationParams {
+public class UserSignUpRequestDto {
 
     private final String username;
     private final String firstName;
     private final String secondName;
 
-    public UserCreationParams(String username, String firstName, String secondName) {
+    public UserSignUpRequestDto(String username, String firstName, String secondName) {
         Assert.hasText(firstName, "The first name should not be null or empty");
         Assert.hasText(secondName, "The second name should not be null or empty");
         Assert.hasText(username, "The username should not be null or empty");
@@ -33,7 +33,7 @@ public final class UserCreationParams {
 
     @Override
     public String toString() {
-        return "UserCreationParams{" +
+        return "UserSignUpRequestDto{" +
                 "username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
@@ -43,9 +43,10 @@ public final class UserCreationParams {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserCreationParams)) return false;
+        if (!(o instanceof UserSignUpRequestDto)) return false;
 
-        UserCreationParams that = (UserCreationParams) o;
+        UserSignUpRequestDto that = (UserSignUpRequestDto) o;
+
         return Objects.equals(username, that.username) && Objects.equals(firstName, that.firstName) && Objects.equals(secondName, that.secondName);
     }
 
