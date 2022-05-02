@@ -5,7 +5,7 @@ import org.springframework.util.Assert;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class NoteCreationResponseDto {
+public final class NoteCreationResponseDto {
 
     private final String username;
     private final String text;

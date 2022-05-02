@@ -1,6 +1,7 @@
 package com.aca.homework.week17.note.facade.note;
 
 import com.aca.homework.week17.note.entity.Note;
+import com.aca.homework.week17.note.entity.User;
 import com.aca.homework.week17.note.service.core.NoteCreationParams;
 import com.aca.homework.week17.note.service.core.NoteService;
 import com.aca.homework.week17.note.service.core.UserService;

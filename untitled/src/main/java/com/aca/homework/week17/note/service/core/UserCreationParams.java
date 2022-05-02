@@ -4,7 +4,7 @@ import org.springframework.util.Assert;
 
 import java.util.Objects;
 
-public class UserCreationParams {
+public final class UserCreationParams {
 
     private final String username;
     private final String firstName;
