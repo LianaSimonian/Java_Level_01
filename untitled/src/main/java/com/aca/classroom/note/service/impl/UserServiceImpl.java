@@ -1,9 +1,9 @@
-package com.aca.homework.week17.note.service.impl;
+package com.aca.classroom.note.service.impl;
 
-import com.aca.homework.week17.note.entity.User;
-import com.aca.homework.week17.note.repository.UserRepository;
-import com.aca.homework.week17.note.service.core.UserCreationParams;
-import com.aca.homework.week17.note.service.core.UserService;
+import com.aca.classroom.note.entity.User;
+import com.aca.classroom.note.repository.UserRepository;
+import com.aca.classroom.note.service.core.UserCreationParams;
+import com.aca.classroom.note.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("Creating end saving user for the provided params - {}", params);
         final User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName());
         User savedUser = userRepository.save(user);
-        LOGGER.info("Successfully created end saved a user for the provided params - {},", params);
+        LOGGER.info("Successfully created end saved a user for the provided params - {}", params);
         return savedUser;
     }
 

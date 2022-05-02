@@ -1,11 +1,11 @@
-package com.aca.homework.week17.note.service.impl;
+package com.aca.classroom.note.service.impl;
 
-import com.aca.homework.week17.note.entity.Note;
-import com.aca.homework.week17.note.entity.User;
-import com.aca.homework.week17.note.repository.NoteRepository;
-import com.aca.homework.week17.note.service.core.NoteCreationParams;
-import com.aca.homework.week17.note.service.core.NoteService;
-import com.aca.homework.week17.note.service.core.UserService;
+import com.aca.classroom.note.entity.Note;
+import com.aca.classroom.note.entity.User;
+import com.aca.classroom.note.repository.NoteRepository;
+import com.aca.classroom.note.service.core.NoteCreationParams;
+import com.aca.classroom.note.service.core.NoteService;
+import com.aca.classroom.note.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -13,9 +13,9 @@ import org.springframework.util.Assert;
 public class NoteServiceImpl implements NoteService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NoteServiceImpl.class);
+
     private final NoteRepository noteRepository;
     private final UserService userService;
-
 
     public NoteServiceImpl(NoteRepository noteRepository, UserService userService) {
         Assert.notNull(noteRepository, "note repository cannot be null");
@@ -34,7 +34,7 @@ public class NoteServiceImpl implements NoteService {
                 user,
                 params.getCreationDate());
         final Note persistentNote = noteRepository.save(transientNote);
-        LOGGER.info("Successfully created a note for the provided params - {}", params);
+        LOGGER.info("Successfully created a note for the provided params - {}, result -{}", params, persistentNote);
         return persistentNote;
     }
 }
