@@ -13,3 +13,12 @@ public class JDBCMain {
         ResultSet resultSet = connection.createStatement().executeQuery("select * from users");
     }
 }
+//djbc
+//datasorce other connection
+//lib hichari
+//hicari
+//map key imutable
+//map,list implementation
+//how can i exec sqlstatment using 1 lib,using more libes
+//executor executor service
+//
