@@ -22,7 +22,8 @@ public class User {
     private String secondName;
 
     @Column(name =" created_at",nullable = false)
-    private LocalDate createdAt;
+    private LocalDate createdAt;//admitedUnivercity
+
     public User() {
     }
 

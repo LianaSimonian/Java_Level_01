@@ -34,7 +34,7 @@ public class NoteServiceImpl implements NoteService {
                 user,
                 params.getCreationDate());
         final Note persistentNote = noteRepository.save(transientNote);
-        LOGGER.info("Successfully created a note for the provided params - {}, result -{}", params, persistentNote);
+        LOGGER.info("Successfully created a note for the provided params - {}, result - {}", params, persistentNote);
         return persistentNote;
     }
 }

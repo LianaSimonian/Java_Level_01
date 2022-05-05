@@ -80,8 +80,7 @@ public class Note {
     }
 
     @Override
-    public String
-    toString() {
+    public String toString() {
         return "Note{" +
                 "id=" + id +
                 ", text='" + text + '\'' +

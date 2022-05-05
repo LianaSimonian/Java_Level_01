@@ -3,6 +3,7 @@ package com.aca.classroom.week15.user.service.version4;
 import com.aca.classroom.week15.user.service.version4.facade.*;
 import com.aca.classroom.week15.user.service.version4.repository.DiplomaRepository;
 import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
+import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import com.aca.classroom.week15.user.service.version4.service.impl.DipolmaServiceImpl;
 import com.aca.classroom.week15.user.service.version4.service.impl.UserServiceImpl;
 import org.springframework.boot.SpringApplication;
@@ -19,15 +20,19 @@ public class Main {
         UserRepository userRepository = context.getBean(UserRepository.class);
         DiplomaRepository diplomaRepository = context.getBean(DiplomaRepository.class);
 
-        UniversityFacade universityFacade = new UniversityFacadeImpl(new UserServiceImpl(userRepository),
-                new DipolmaServiceImpl(diplomaRepository, new UserServiceImpl(userRepository)),new UserMapperImpl());
-         UserAdmissionResponseDto name1Response= universityFacade.admit(new UserAdmissionRequestDto("Aaaa","fjhfjhjfd"));
-        UserAdmissionResponseDto name2Response =universityFacade.admit(new UserAdmissionRequestDto("KOlya","fjhfjhjfd"));
-       UserAdmissionResponseDto name3Response= universityFacade.admit(new UserAdmissionRequestDto("Arsen","fjhfjhjfd"));
-        UserAdmissionResponseDto name4rESPONSE=universityFacade.admit(new UserAdmissionRequestDto("Olya","fjhfjhjfd"));
+        UserServiceImpl userService1 = new UserServiceImpl(userRepository);
+        UniversityFacade universityFacade = new UniversityFacadeImpl(userService1,
+                new DipolmaServiceImpl(diplomaRepository, userService1), new UserMapperImpl());
+        UserService userService = new UserServiceImpl(userRepository);
+        UserAdmissionResponseDto name1Response = universityFacade.admit(new UserAdmissionRequestDto("Liana", "Simonian"));
+        UserAdmissionResponseDto name2Response = universityFacade.admit(new UserAdmissionRequestDto("Diana", "Simonian"));
+        UserAdmissionResponseDto name3Response = universityFacade.admit(new UserAdmissionRequestDto("Arsen", "Simonian"));
+        UserAdmissionResponseDto name4Response = universityFacade.admit(new UserAdmissionRequestDto("Olya", "Ayvazian"));
 
-            universityFacade.graduate(new UserGraduationRequestDto(name1Response.getUsername()));
-        universityFacade.graduate(new UserGraduationRequestDto("jdhkjhjfkd"));
+        universityFacade.graduate(new UserGraduationRequestDto(name1Response.getUsername()));
+        universityFacade.graduate(new UserGraduationRequestDto("Diana"));
+        universityFacade.graduate(new UserGraduationRequestDto("abc"));
+
           /*
         UserService userService = new UserServiceImpl(userRepository);
         DiplomaService diplomaService = new DipolmaServiceImpl(diplomaRepository, new UserServiceImpl(userRepository));

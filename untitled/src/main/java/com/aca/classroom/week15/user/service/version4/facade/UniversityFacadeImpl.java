@@ -22,7 +22,7 @@ public class UniversityFacadeImpl implements UniversityFacade {
     private final DiplomaService diplomaService;
     private final UserMapper userMapper;
 
-    public UniversityFacadeImpl(final UserService userService, final DiplomaService diplomaService,UserMapper userMapper) {
+    public UniversityFacadeImpl(final UserService userService, final DiplomaService diplomaService, UserMapper userMapper) {
         this.userService = userService;
         this.diplomaService = diplomaService;
         this.userMapper = userMapper;
@@ -40,21 +40,21 @@ public class UniversityFacadeImpl implements UniversityFacade {
                         LocalDate.now()
                 )
         );
-        UserAdmissionResponseDto userAdmissionResponseDto=userMapper.map(user);
+        UserAdmissionResponseDto userAdmissionResponseDto = userMapper.map(user);
         //UserAdmissionResponseDto userAdmissionResponseDto = new UserAdmissionResponseDto(user.getUsername(), user.getFirstName(), user.getSecondName());
-        LOGGER.info("Successgully addmiited a student for the provided request - {},response -{}",dto,userAdmissionResponseDto);
+        LOGGER.info("Successfully admitted a student for the provided request - {},response -{}", dto, userAdmissionResponseDto);
         return userAdmissionResponseDto;
     }
 
     @Override
     public UserGraduationResponseDto graduate(UserGraduationRequestDto dto) {
-        Assert.notNull(dto,"the user graduation dto should not be null");
+        Assert.notNull(dto, "the user graduation dto should not be null");
 
-       Optional<User> userOptional= userService.findByUsername(dto.getUsername());
+        Optional<User> userOptional = userService.findByUsername(dto.getUsername());
 
-       if(userOptional.isEmpty()){
-           return new UserGraduationResponseDto(List.of("user not found"));
-       }
+        if (userOptional.isEmpty()) {
+            return new UserGraduationResponseDto(List.of("user not found"));
+        }
 
         User user = userOptional.get();
         final Diploma diploma = diplomaService.create(new CreateDiplomaParams(
@@ -62,11 +62,10 @@ public class UniversityFacadeImpl implements UniversityFacade {
                 user.getCreatedAt(),
                 LocalDate.now(),
                 user.getId()
-
         ));
-     UserGraduationResponseDto responseDto  =userMapper.map(diploma);
-        LOGGER.debug("starting graduation process for the provided dto -{}",dto);
-        return null;
+        UserGraduationResponseDto responseDto = userMapper.map(diploma);
+        LOGGER.debug("starting graduation process for the provided dto -{}, result - {}", dto,responseDto);
+        return responseDto;
     }
 }
 //cntrlP tesnum enq dashter@

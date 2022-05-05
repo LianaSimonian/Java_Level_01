@@ -12,7 +12,7 @@ public class Diploma {
     private Long id;
 
     @Column(name = "color", nullable = false, length = 25)
-    @Enumerated(value = EnumType.STRING)//????
+    @Enumerated(value = EnumType.STRING)
     private DiplomaColorType colorType;
 
     @Column(name = "start_date", nullable = false)

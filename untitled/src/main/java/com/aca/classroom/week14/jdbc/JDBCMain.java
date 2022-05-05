@@ -30,3 +30,14 @@ public class JDBCMain {
 //supplier
 //function interface examples
 //disgn patterns singlton
+//shift enter nshum enq
+//vor key lav pahum mapi mej,immutable
+//exception +
+//jdbc 1 libov
+//key imutable
+//strategy Executor threeset inch pti unene
+//list immpelmentation,vector(tradsefe,unmutifiAble list empty list,linked list,vector synchronized list,
+//map implementation unmodifible map
+//llinkedlist array list diffrence
+//functional interface Consumer,Supplier,function
+//execterservice executer,poll types

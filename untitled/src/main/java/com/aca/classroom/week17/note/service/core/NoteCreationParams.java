@@ -8,7 +8,7 @@ import java.util.Objects;
 public final class NoteCreationParams {
 
     private final String text;
-    private final Long userId;
+    private final Long userId;//??????
     private final LocalDate creationDate;
 
     public NoteCreationParams(String text, Long userId, LocalDate creationDate) {
