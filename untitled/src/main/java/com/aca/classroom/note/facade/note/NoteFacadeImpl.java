@@ -1,6 +1,7 @@
 package com.aca.classroom.note.facade.note;
 
 import com.aca.classroom.note.entity.Note;
+import com.aca.classroom.note.entity.User;
 import com.aca.classroom.note.service.core.NoteCreationParams;
 import com.aca.classroom.note.service.core.NoteService;
 import com.aca.classroom.note.service.core.UserService;

@@ -1,9 +1,9 @@
 package com.aca.homework.week7.ui;
 
 public class UIButton extends UIView {
-    private ColorType buttonColor;
+    private DiplomaColorType buttonColor;
 
-    public UIButton(int width, int height, ColorType buttonColor) {
+    public UIButton(int width, int height, DiplomaColorType buttonColor) {
         super(width, height);
         this.buttonColor = buttonColor;
     }

@@ -21,4 +21,12 @@ public class JDBCMain {
 //map,list implementation
 //how can i exec sqlstatment using 1 lib,using more libes
 //executor executor service
-//
+//list poxancenq u iteracia anenq vor@ harmar klini arrayLiat te LinkedList
+//incapsulation
+//interface abstract class
+//hashSet vor unenqanq inch  a petq
+//Set i inch implementatianer kan
+//callable , runnalble
+//supplier
+//function interface examples
+//disgn patterns singlton

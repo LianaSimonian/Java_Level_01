@@ -2,9 +2,9 @@ package com.aca.homework.week7.ui;
 
 public class UIText extends UIView {
     private String textValue;
-    private ColorType textColor;
+    private DiplomaColorType textColor;
 
-    public UIText(int width, int height, String textValue, ColorType textColor) {
+    public UIText(int width, int height, String textValue, DiplomaColorType textColor) {
         super(width, height);
         this.textValue = textValue;
         this.textColor = textColor;

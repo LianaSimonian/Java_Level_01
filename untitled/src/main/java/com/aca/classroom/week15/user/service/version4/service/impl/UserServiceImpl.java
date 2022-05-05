@@ -1,9 +1,9 @@
-package com.aca.classroom.week15.user.service.version3.service.impl;
+package com.aca.classroom.week15.user.service.version4.service.impl;
 
-import com.aca.classroom.week15.user.service.version3.entity.User;
-import com.aca.classroom.week15.user.service.version3.repository.UserRepository;
-import com.aca.classroom.week15.user.service.version3.service.core.CreateUserParams;
-import com.aca.classroom.week15.user.service.version3.service.core.UserService;
+import com.aca.classroom.week15.user.service.version4.entity.User;
+import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
+import com.aca.classroom.week15.user.service.version4.service.core.CreateUserParams;
+import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating user for the provided params - {}", params);
         // TODO: 25.04.2022  replace null username
-        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName());
+        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(),params.getCreatedAt());
         User savedUser = userRepository.save(user);
         LOGGER.info("Successfully created a user for the provided params - {}", params);
         return savedUser;
@@ -47,6 +47,20 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("Successfully retrieved the user for the provided username - {}, result - {}", username, user);
 
         return user;
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        Assert.hasText(username, "Username should not be null or empty");
+        LOGGER.info("Retrieving user for the provided username - {}", username);
+        final Optional<User> userOptional = userRepository.findByUsername(username);
+/*
+        Optional<User> userOptional = userRepository.findByUsername(username);
+        User user = userOptional.orElseThrow(() -> new UserNotFoundException(username));
+ */
+        LOGGER.info("Successfully retrieved the user for the provided username - {}, result - {}", username,userOptional);
+
+        return userOptional;
     }
 
     @Override

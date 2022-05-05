@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.user.service.version3.service.impl;
+package com.aca.classroom.week15.user.service.version4.service.impl;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String username) {

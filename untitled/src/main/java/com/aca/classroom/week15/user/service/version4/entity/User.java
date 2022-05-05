@@ -1,6 +1,7 @@
-package com.aca.classroom.week15.user.service.version3.entity;
+package com.aca.classroom.week15.user.service.version4.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -20,13 +21,16 @@ public class User {
     @Column(name = "second_name", nullable = false)
     private String secondName;
 
+    @Column(name =" created_at",nullable = false)
+    private LocalDate createdAt;
     public User() {
     }
 
-    public User(String username, String firstName, String secondName) {
+    public User(String username, String firstName, String secondName,LocalDate createdAt) {
         this.username = username;
         this.firstName = firstName;
         this.secondName = secondName;
+        this.createdAt = createdAt;
     }
 
     public String getUsername() {
@@ -61,6 +65,14 @@ public class User {
         this.secondName = secondName;
     }
 
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -68,6 +80,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
+                ", createdAt=" + createdAt +
                 '}';
     }
 
@@ -76,11 +89,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) &&  Objects.equals(createdAt,user.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, firstName, secondName);
+        return Objects.hash(id, username, firstName, secondName,createdAt);
     }
 }

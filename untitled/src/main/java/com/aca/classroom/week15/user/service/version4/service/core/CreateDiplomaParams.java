@@ -1,6 +1,6 @@
-package com.aca.classroom.week15.user.service.version3.service.core;
+package com.aca.classroom.week15.user.service.version4.service.core;
 
-import com.aca.classroom.week15.user.service.version3.entity.DiplomaColorType;
+import com.aca.classroom.week15.user.service.version4.entity.DiplomaColorType;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
