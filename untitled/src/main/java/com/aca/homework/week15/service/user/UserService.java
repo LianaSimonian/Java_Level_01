@@ -13,7 +13,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    User create(UserCreateParams params) {
+    public User create(UserCreateParams params) {
         LOGGER.debug("Creating a user for the provided creation params - ({} , {}) ", params.getUsername(), params.getName());
         User user = new User(params.getUsername(), params.getName());
         userRepository.save(user);

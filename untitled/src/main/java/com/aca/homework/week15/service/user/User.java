@@ -1,5 +1,7 @@
 package com.aca.homework.week15.service.user;
 
+import java.util.Objects;
+
 @Table(name = "USERS")
 public class User {
 
@@ -33,11 +35,15 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof User)) return false;
 
         User user = (User) o;
 
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        return name != null ? name.equals(user.name) : user.name == null;
+        return Objects.equals(username, user.username) && Objects.equals(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, name);
     }
 }
