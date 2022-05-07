@@ -1,30 +1,35 @@
 package com.aca.homework.week14.objectmapper;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class WeekCommitData {
 
-    private int total;
-    private int week;
-    private int[] days;
+    @JsonProperty("jsonFieldTotal")
+    private Integer total;
+    @JsonProperty("jsonFieldWeek")
+    private Integer week;
+    @JsonProperty("jsonFieldDays")
+    private Integer[] days;
 
     public WeekCommitData() {
 
     }
 
-    public WeekCommitData(int total, int week, int[] days) {
+    public WeekCommitData(Integer total, Integer week, Integer[] days) {
         this.total = total;
         this.week = week;
         this.days = days;
     }
 
-    public int getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public int getWeek() {
+    public Integer getWeek() {
         return week;
     }
 
-    public int[] getDays() {
+    public Integer[] getDays() {
         return days;
     }
 }
