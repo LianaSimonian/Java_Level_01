@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -342,7 +343,7 @@ class UserServiceImplTest {
             @Override
             public Optional<User> findByUsername(String username) {
                 if (!username.isBlank()) {
-                    return Optional.of(new User(username, "firstname1", "secondname1"));
+                    return Optional.of(new User(username, "firstname1", "secondname1", LocalDate.of(2020,04,12)));
                 } else {
                     return Optional.empty();
                 }
@@ -489,7 +490,7 @@ class UserServiceImplTest {
             }
         });
         User user = testSubject.getByUsername("username1");
-        Assertions.assertThat(user).isEqualTo(new User("username1", "firstname1", "secondname1"));
+        Assertions.assertThat(user).isEqualTo(new User("username1", "firstname1", "secondname1", LocalDate.of(2020,04,12)));
     }
 
     @Test

@@ -8,4 +8,4 @@ public interface DiplomaService {
 
     Diploma create(CreateDiplomaParams params);
 }
-//CRAD//DATA TRANSFER OBJECT disign pattern
+//CRUD//DATA TRANSFER OBJECT disign pattern
