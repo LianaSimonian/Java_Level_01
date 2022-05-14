@@ -21,8 +21,6 @@ public class Main {
     @Scope(value = "prototype") // everytime returns a new repository
     public Repository1 repository1() {
         return new Repository1();
-
-
     }
 }
 //repository1 glxin component 2 tarberak
