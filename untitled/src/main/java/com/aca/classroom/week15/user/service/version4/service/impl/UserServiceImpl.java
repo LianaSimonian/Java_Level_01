@@ -1,9 +1,9 @@
-package com.aca.classroom.week15.user.service.version04.service.impl;
+package com.aca.classroom.week15.user.service.version4.service.impl;
 
-import com.aca.classroom.week15.user.service.version04.entity.User;
-import com.aca.classroom.week15.user.service.version04.repository.UserRepository;
-import com.aca.classroom.week15.user.service.version04.service.core.CreateUserParams;
-import com.aca.classroom.week15.user.service.version04.service.core.UserService;
+import com.aca.classroom.week15.user.service.version4.entity.User;
+import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
+import com.aca.classroom.week15.user.service.version4.service.core.CreateUserParams;
+import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

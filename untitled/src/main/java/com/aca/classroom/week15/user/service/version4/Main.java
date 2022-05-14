@@ -1,11 +1,11 @@
-package com.aca.classroom.week15.user.service.version04;
+package com.aca.classroom.week15.user.service.version4;
 
-import com.aca.classroom.week15.user.service.version04.facade.*;
-import com.aca.classroom.week15.user.service.version04.repository.DiplomaRepository;
-import com.aca.classroom.week15.user.service.version04.repository.UserRepository;
-import com.aca.classroom.week15.user.service.version04.service.core.UserService;
-import com.aca.classroom.week15.user.service.version04.service.impl.DiplomaServiceImpl;
-import com.aca.classroom.week15.user.service.version04.service.impl.UserServiceImpl;
+import com.aca.classroom.week15.user.service.version4.facade.*;
+import com.aca.classroom.week15.user.service.version4.repository.DiplomaRepository;
+import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
+import com.aca.classroom.week15.user.service.version4.service.core.UserService;
+import com.aca.classroom.week15.user.service.version4.service.impl.DiplomaServiceImpl;
+import com.aca.classroom.week15.user.service.version4.service.impl.UserServiceImpl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

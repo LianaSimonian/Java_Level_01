@@ -1,11 +1,9 @@
 package com.aca.classroom.week15.user.service.version4.service.impl;
 
 
-import com.aca.classroom.week15.user.service.version04.entity.User;
-import com.aca.classroom.week15.user.service.version04.repository.UserRepository;
-import com.aca.classroom.week15.user.service.version04.service.core.UserService;
-import com.aca.classroom.week15.user.service.version04.service.impl.UserNotFoundException;
-import com.aca.classroom.week15.user.service.version04.service.impl.UserServiceImpl;
+import com.aca.classroom.week15.user.service.version4.entity.User;
+import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
+import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Example;

@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.user.service.version04.service.core;
+package com.aca.classroom.week15.user.service.version4.service.core;
 
 import org.springframework.util.Assert;
 

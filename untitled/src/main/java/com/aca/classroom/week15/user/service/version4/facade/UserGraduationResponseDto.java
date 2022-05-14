@@ -1,7 +1,7 @@
-package com.aca.classroom.week15.user.service.version04.facade;
+package com.aca.classroom.week15.user.service.version4.facade;
 
 
-import com.aca.classroom.week15.user.service.version04.entity.DiplomaColorType;
+import com.aca.classroom.week15.user.service.version4.entity.DiplomaColorType;
 
 import java.time.LocalDate;
 import java.util.List;

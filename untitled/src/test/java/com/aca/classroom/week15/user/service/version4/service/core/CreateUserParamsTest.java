@@ -1,6 +1,5 @@
 package com.aca.classroom.week15.user.service.version4.service.core;
 
-import com.aca.classroom.week15.user.service.version04.service.core.CreateUserParams;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

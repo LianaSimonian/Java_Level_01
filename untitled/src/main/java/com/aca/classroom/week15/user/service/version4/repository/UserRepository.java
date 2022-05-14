@@ -1,6 +1,6 @@
-package com.aca.classroom.week15.user.service.version04.repository;
+package com.aca.classroom.week15.user.service.version4.repository;
 
-import com.aca.classroom.week15.user.service.version04.entity.User;
+import com.aca.classroom.week15.user.service.version4.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

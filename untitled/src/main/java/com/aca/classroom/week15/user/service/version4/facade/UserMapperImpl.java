@@ -1,7 +1,7 @@
-package com.aca.classroom.week15.user.service.version04.facade;
+package com.aca.classroom.week15.user.service.version4.facade;
 
-import com.aca.classroom.week15.user.service.version04.entity.Diploma;
-import com.aca.classroom.week15.user.service.version04.entity.User;
+import com.aca.classroom.week15.user.service.version4.entity.Diploma;
+import com.aca.classroom.week15.user.service.version4.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,6 @@
-package com.aca.classroom.week15.user.service.version04.service.core;
+package com.aca.classroom.week15.user.service.version4.service.core;
 
-import com.aca.classroom.week15.user.service.version04.entity.User;
+import com.aca.classroom.week15.user.service.version4.entity.User;
 
 import java.util.Optional;
 
