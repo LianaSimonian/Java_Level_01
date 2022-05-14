@@ -6,10 +6,13 @@ import com.aca.classroom.week15.user.service.version4.repository.DiplomaReposito
 import com.aca.classroom.week15.user.service.version4.service.core.CreateDiplomaParams;
 import com.aca.classroom.week15.user.service.version4.service.core.DiplomaService;
 import com.aca.classroom.week15.user.service.version4.service.core.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+@Service
 public class DipolmaServiceImpl implements DiplomaService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DipolmaServiceImpl.class);

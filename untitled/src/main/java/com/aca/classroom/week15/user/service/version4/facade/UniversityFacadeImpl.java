@@ -9,12 +9,14 @@ import com.aca.classroom.week15.user.service.version4.service.core.DiplomaServic
 import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class UniversityFacadeImpl implements UniversityFacade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UniversityFacadeImpl.class);

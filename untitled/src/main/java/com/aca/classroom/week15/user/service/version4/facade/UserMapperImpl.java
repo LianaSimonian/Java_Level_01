@@ -4,7 +4,9 @@ import com.aca.classroom.week15.user.service.version4.entity.Diploma;
 import com.aca.classroom.week15.user.service.version4.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapperImpl implements UserMapper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserMapperImpl.class);

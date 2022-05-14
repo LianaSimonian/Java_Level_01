@@ -6,10 +6,12 @@ import com.aca.classroom.week15.user.service.version4.service.core.CreateUserPar
 import com.aca.classroom.week15.user.service.version4.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
