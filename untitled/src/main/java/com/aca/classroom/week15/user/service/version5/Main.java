@@ -1,11 +1,9 @@
-package com.aca.classroom.week15.user.service.version4;
+package com.aca.classroom.week15.user.service.version5;
 
-import com.aca.classroom.week15.user.service.version4.facade.*;
-import com.aca.classroom.week15.user.service.version4.repository.DiplomaRepository;
-import com.aca.classroom.week15.user.service.version4.repository.UserRepository;
-import com.aca.classroom.week15.user.service.version4.service.core.UserService;
-import com.aca.classroom.week15.user.service.version4.service.impl.DipolmaServiceImpl;
-import com.aca.classroom.week15.user.service.version4.service.impl.UserServiceImpl;
+import com.aca.classroom.week15.user.service.version5.facade.UniversityFacade;
+import com.aca.classroom.week15.user.service.version5.facade.UserAdmissionRequestDto;
+import com.aca.classroom.week15.user.service.version5.facade.UserAdmissionResponseDto;
+import com.aca.classroom.week15.user.service.version5.facade.UserGraduationRequestDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -25,7 +23,7 @@ public class Main {
         UserService userService = context.getBean(UserService.class);
 
          */
-          UniversityFacade universityFacade = context.getBean(UniversityFacade.class);
+        UniversityFacade universityFacade = context.getBean(UniversityFacade.class);
 
         UserAdmissionResponseDto name1Response = universityFacade.admit(new UserAdmissionRequestDto("Liana", "Simonian"));
         UserAdmissionResponseDto name2Response = universityFacade.admit(new UserAdmissionRequestDto("Diana", "Simonian"));

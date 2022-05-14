@@ -1,4 +1,4 @@
-package com.aca.classroom.week15.user.service.version4.entity;
+package com.aca.classroom.week15.user.service.version5.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

@@ -1,11 +1,11 @@
-package com.aca.classroom.week15.user.service.version4.service.impl;
+package com.aca.classroom.week15.user.service.version5.service.impl;
 
-import com.aca.classroom.week15.user.service.version4.entity.Diploma;
-import com.aca.classroom.week15.user.service.version4.entity.User;
-import com.aca.classroom.week15.user.service.version4.repository.DiplomaRepository;
-import com.aca.classroom.week15.user.service.version4.service.core.CreateDiplomaParams;
-import com.aca.classroom.week15.user.service.version4.service.core.DiplomaService;
-import com.aca.classroom.week15.user.service.version4.service.core.UserService;
+import com.aca.classroom.week15.user.service.version5.entity.Diploma;
+import com.aca.classroom.week15.user.service.version5.entity.User;
+import com.aca.classroom.week15.user.service.version5.repository.DiplomaRepository;
+import com.aca.classroom.week15.user.service.version5.service.core.CreateDiplomaParams;
+import com.aca.classroom.week15.user.service.version5.service.core.DiplomaService;
+import com.aca.classroom.week15.user.service.version5.service.core.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
