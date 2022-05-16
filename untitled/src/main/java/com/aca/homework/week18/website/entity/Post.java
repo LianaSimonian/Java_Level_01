@@ -1,6 +1,7 @@
 package com.aca.homework.week18.website.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +21,9 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_POSTS_USER_ID_USERS_ID"), nullable = false)
     User user;
+
+    @Transient
+    private List<Long> imageBlobIds;
 
     Post() {
 
@@ -61,6 +65,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setImageBlobIds(List<Long> imageBlobIds) {
+        this.imageBlobIds = imageBlobIds;
+    }
+
+    public List<Long> getImageBlobIds() {
+        return imageBlobIds;
     }
 
     @Override

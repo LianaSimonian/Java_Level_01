@@ -13,11 +13,13 @@ public class PostMapperImpl implements PostMapper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PostMapperImpl.class);
 
+
     @Override
-    public PostCreationResponseDto mapper(Post post, List<Long> imagesId) {
-        LOGGER.info("Mapping a post - {} with images {} to post creation response dto", post, imagesId);
-        PostCreationResponseDto responseDto = new PostCreationResponseDto(post.getId(), post.getTitle(), post.getDescription(), post.getUser().getId(), imagesId, LocalDate.now());
-        LOGGER.info("Successfully mapped a post - {} with images {} to post creation Response dto ,result - {}", post, imagesId, responseDto);
+    public PostCreationResponseDto mapper(Post post) {
+        final List<Long> imageBlobIds = post.getImageBlobIds();
+        LOGGER.info("Mapping a post - {} with images {} to post creation response dto", post, imageBlobIds);
+        PostCreationResponseDto responseDto = new PostCreationResponseDto(post.getId(), post.getTitle(), post.getDescription(), post.getUser().getId(), imageBlobIds, LocalDate.now());
+        LOGGER.info("Successfully mapped a post - {} with images {} to post creation Response dto ,result - {}", post, imageBlobIds, responseDto);
         return responseDto;
     }
 }

@@ -4,6 +4,7 @@ import com.aca.homework.week18.website.entity.Image;
 import com.aca.homework.week18.website.entity.Post;
 import com.aca.homework.week18.website.entity.User;
 import com.aca.homework.week18.website.facade.post.core.*;
+import com.aca.homework.week18.website.facade.user.core.UserSignUpResponseDto;
 import com.aca.homework.week18.website.service.core.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,10 +42,10 @@ public class PostFacadeImpl implements PostFacade {
     public PostCreationResponseDto create(PostCreationRequestDto dto) {
         Assert.notNull(dto, "post creation request dto param should not be null");
         LOGGER.info("creating the post  according to the provided request - {}", dto);
-        List<Long> imagesBlobId = dto.getImagesBlobId();
+        List<Long> imageBlobIds = dto.getImagesBlobId();
 
-        if (imagesBlobId.size() > 5) {
-            return new PostCreationResponseDto(List.of(String.format("the number %d of uploaded images can not be greater than %d ", imagesBlobId.size(), 5)));
+        if (imageBlobIds.size() > 5) {
+            return new PostCreationResponseDto(List.of(String.format("the number %d of uploaded images can not be greater than %d ", imageBlobIds.size(), 5)));
         }
 
         Long userId = dto.getUserId();
@@ -60,11 +61,11 @@ public class PostFacadeImpl implements PostFacade {
                         userId
                 )
         );
-
-        imagesBlobId.forEach(image -> {
+        post.setImageBlobIds(imageBlobIds);
+        imageBlobIds.forEach(image -> {
             uploadImage(new UploadImageRequestDto(image, post.getId()));
         });
-        PostCreationResponseDto responseDto = postMapper.mapper(post, imagesBlobId);
+        PostCreationResponseDto responseDto = postMapper.mapper(post);
         LOGGER.info(" Successfully created post according to the provided request - {}, responseDto - {}", dto, responseDto);
         return responseDto;
     }
@@ -93,36 +94,29 @@ public class PostFacadeImpl implements PostFacade {
     public GetAllUserPostsResponseDto getAllUserPosts(GetAllUserPostsRequestDto dto) {
         Assert.notNull(dto, "get all user posts request dto param should not be null");
         LOGGER.info("getting user all posts  according to the provided request - {}", dto);
-        Optional<User> userOptional = userService.findById(dto.getUserId());
+        final Optional<User> userOptional = userService.findById(dto.getUserId());
 
         if (userOptional.isEmpty()) {
             return new GetAllUserPostsResponseDto(List.of(String.format("the user with id %d not found", dto.getUserId())));
         }
 
-        final Optional<List<Post>> optionalPosts = postService.findAllByUserId(dto.getUserId());
-        if (optionalPosts.isEmpty()) {
+        final List<Post> posts = postService.findAllByUserId(dto.getUserId());
+        if (posts.isEmpty()) {
             return new GetAllUserPostsResponseDto(List.of(String.format("the user with id %d still does not have posts ", dto.getUserId())));
         }
 
-        List<Post> posts = optionalPosts.get();
-        List<Long> postsId = new LinkedList<>();
+        List<PostCreationResponseDto> postsDto = new LinkedList<>();
         posts.forEach(post -> {
-            postsId.add(post.getId());
+            List<Long> blobIds = new LinkedList<>();
+            List<Image> images = imageService.findAllByPostId(post.getId());
+            images.forEach(image -> blobIds.add(image.getBlobId()));
+            postsDto.add(new PostCreationResponseDto(post.getId(), post.getTitle(), post.getDescription(), post.getUser().getId(), blobIds, null));
         });
-        List<List<Image>> postsImages = new LinkedList<>();
-        posts.forEach(post -> {
-            postsImages.add(imageService.findAllByPostId(post.getId()).get());
-        });
-        List<List<Long>> imagesId = new LinkedList<>();
-        postsImages.forEach(images -> {
-            List<Long> imageList = new LinkedList<>();
-            images.forEach(image -> {
-                imageList.add(image.getId());
-            });
-            imagesId.add(imageList);
-        });
-         GetAllUserPostsResponseDto responseDto = new GetAllUserPostsResponseDto(dto.getUserId(), postsId,imagesId);
-         LOGGER.info(" Successfully got all posts according to the provided request - {}, responseDto - {}", dto, responseDto);
+
+        User user = userOptional.get();
+        GetAllUserPostsResponseDto responseDto = new GetAllUserPostsResponseDto(
+                new UserSignUpResponseDto(user.getFirstName(), user.getSecondName(), user.getUsername(), user.getPassword(), null), postsDto);
+        LOGGER.info(" Successfully got all posts according to the provided request - {}, responseDto - {}", dto, responseDto);
         return responseDto;
     }
 }

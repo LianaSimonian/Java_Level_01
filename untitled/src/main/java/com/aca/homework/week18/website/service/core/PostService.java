@@ -11,5 +11,5 @@ public interface PostService {
 
     Optional<Post> findById(Long id);
 
-    Optional<List<Post>> findAllByUserId(Long id);
+    List<Post> findAllByUserId(Long id);
 }

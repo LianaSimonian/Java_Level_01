@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PostMapper {
 
-    PostCreationResponseDto mapper(Post post, List<Long> images);
+    PostCreationResponseDto mapper(Post post);
 }

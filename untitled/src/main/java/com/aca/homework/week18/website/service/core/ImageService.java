@@ -11,5 +11,5 @@ public interface ImageService {
 
     Optional<Image> findById(Long id);
 
-    Optional<List<Image>> findAllByPostId(Long id);
+    List<Image> findAllByPostId(Long id);
 }

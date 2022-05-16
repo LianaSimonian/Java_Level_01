@@ -12,7 +12,7 @@ public final class PostCreationResponseDto {
     private String title;
     private String description;
     private Long userId;
-    private List<Long> imagesId;
+    private List<Long> imagesBlobId;
     private LocalDate postCreationDate;
 
     private List<String> errors;
@@ -21,18 +21,18 @@ public final class PostCreationResponseDto {
         this.errors = errors;
     }
 
-    public PostCreationResponseDto(Long postId, String title, String description, Long userId, List<Long> imagesId, LocalDate postCreationDate) {
+    public PostCreationResponseDto(Long postId, String title, String description, Long userId, List<Long> imagesBlobId, LocalDate postCreationDate) {
         Assert.notNull(postId, "The postId should not be null ");
         Assert.hasText(title, "The title should not be null or empty");
         Assert.hasText(description, "The description should not be null or empty");
         Assert.notNull(userId, "The userId should not be null ");
-        Assert.notNull(imagesId, "The imageId should not be null");
+        Assert.notNull(imagesBlobId, "The imagesBlobId should not be null");
         Assert.notNull(postCreationDate, "The postCreationDate should not be null");
         this.postId = postId;
         this.title = title;
         this.description = description;
         this.userId = userId;
-        this.imagesId = imagesId;
+        this.imagesBlobId = imagesBlobId;
         this.postCreationDate = postCreationDate;
     }
 
@@ -48,8 +48,8 @@ public final class PostCreationResponseDto {
         return userId;
     }
 
-    public List<Long> getImagesId() {
-        return imagesId;
+    public List<Long> getImagesBlobId() {
+        return imagesBlobId;
     }
 
     public LocalDate getPostCreationDate() {
@@ -71,12 +71,12 @@ public final class PostCreationResponseDto {
 
         PostCreationResponseDto that = (PostCreationResponseDto) o;
 
-        return Objects.equals(postId, that.postId) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(userId, that.userId) && Objects.equals(imagesId, that.imagesId) && Objects.equals(postCreationDate, that.postCreationDate) && Objects.equals(errors, that.errors);
+        return Objects.equals(postId, that.postId) && Objects.equals(title, that.title) && Objects.equals(description, that.description) && Objects.equals(userId, that.userId) && Objects.equals(imagesBlobId, that.imagesBlobId) && Objects.equals(postCreationDate, that.postCreationDate) && Objects.equals(errors, that.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, title, description, userId, imagesId, postCreationDate, errors);
+        return Objects.hash(postId, title, description, userId, imagesBlobId, postCreationDate, errors);
     }
 
     @Override
@@ -86,7 +86,7 @@ public final class PostCreationResponseDto {
         sb.append(", title='").append(title).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", userId=").append(userId);
-        sb.append(", imagesId=").append(imagesId);
+        sb.append(", imagesBlobId=").append(imagesBlobId);
         sb.append(", postCreationDate=").append(postCreationDate);
         sb.append(", errors=").append(errors);
         sb.append('}');

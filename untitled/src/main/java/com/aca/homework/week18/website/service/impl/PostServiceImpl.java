@@ -60,11 +60,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Optional<List<Post>> findAllByUserId(Long id) {
+    public List<Post> findAllByUserId(Long id) {
         Assert.notNull(id, "user id should not be null");
         LOGGER.info("Retrieving posts for the provided user id  - {}", id);
-        final Optional<List<Post>> postOptional = postRepository.findAllByUserId(id);
-        LOGGER.info("Successfully retrieved  all posts for the provided user id - {}, result - {}", id, postOptional);
-        return postOptional;
+        final List<Post> posts = postRepository.findAllByUserId(id);
+        LOGGER.info("Successfully retrieved  all posts for the provided user id - {}, result - {}", id, posts);
+        return posts;
     }
 }

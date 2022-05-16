@@ -53,11 +53,11 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Optional<List<Image>> findAllByPostId(Long id) {
+    public List<Image> findAllByPostId(Long id) {
         Assert.notNull(id, "the post id cannot be null");
         LOGGER.info("Retrieving all images for the provided post id - {}");
-        Optional<List<Image>> optionalImages = imageRepository.findAllByPostId(id);
-        LOGGER.info("Successfully retrieved the imageList for the provided post id - {}, result - {}", id, optionalImages);
-        return optionalImages;
+        List<Image> images = imageRepository.findAllByPostId(id);
+        LOGGER.info("Successfully retrieved the imageList for the provided post id - {}, result - {}", id, images);
+        return images;
     }
 }

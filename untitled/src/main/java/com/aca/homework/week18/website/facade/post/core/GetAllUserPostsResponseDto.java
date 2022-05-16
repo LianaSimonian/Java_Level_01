@@ -1,5 +1,6 @@
 package com.aca.homework.week18.website.facade.post.core;
 
+import com.aca.homework.week18.website.facade.user.core.UserSignUpResponseDto;
 import org.springframework.util.Assert;
 
 import java.util.List;
@@ -7,9 +8,8 @@ import java.util.Objects;
 
 public final class GetAllUserPostsResponseDto {
 
-    private Long userId;
-    private List<Long> postsId;
-    private List<List<Long>> imagesId;
+    private UserSignUpResponseDto userDto;
+    private List<PostCreationResponseDto> postsDto;
 
     private List<String> errors;
 
@@ -17,25 +17,19 @@ public final class GetAllUserPostsResponseDto {
         this.errors = errors;
     }
 
-    public GetAllUserPostsResponseDto(Long userId, List<Long> postsId, List<List<Long>> imagesId) {
-        Assert.notNull(userId, "The userId should not be null");
-        Assert.notNull(postsId, "The postsId should not be null");
-        Assert.notNull(imagesId, "The postsId should not be null");
-        this.userId = userId;
-        this.postsId = postsId;
-        this.imagesId = imagesId;
+    public GetAllUserPostsResponseDto(UserSignUpResponseDto userDto, List<PostCreationResponseDto> postsDto) {
+        Assert.notNull(userDto, "the userDto should not be null");
+        Assert.notNull(postsDto, "the postDto should not be null");
+        this.userDto = userDto;
+        this.postsDto = postsDto;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserSignUpResponseDto getUserDto() {
+        return userDto;
     }
 
-    public List<Long> getPostsId() {
-        return postsId;
-    }
-
-    public List<List<Long>> getImagesId() {
-        return imagesId;
+    public List<PostCreationResponseDto> getPostsDto() {
+        return postsDto;
     }
 
     public List<String> getErrors() {
@@ -49,20 +43,19 @@ public final class GetAllUserPostsResponseDto {
 
         GetAllUserPostsResponseDto that = (GetAllUserPostsResponseDto) o;
 
-        return Objects.equals(userId, that.userId) && Objects.equals(postsId, that.postsId) && Objects.equals(errors, that.errors) && Objects.equals(imagesId,that.imagesId);
+        return Objects.equals(userDto, that.userDto) && Objects.equals(postsDto, that.postsDto) && Objects.equals(errors, that.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, postsId,imagesId, errors);
+        return Objects.hash(userDto, postsDto, errors);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("GetAllUserPostsResponseDto{");
-        sb.append("userId=").append(userId);
-        sb.append(", postsId=").append(postsId);
-        sb.append(", imagesId=").append(imagesId);
+        sb.append("userDto=").append(userDto);
+        sb.append(", postsDto=").append(postsDto);
         sb.append(", errors=").append(errors);
         sb.append('}');
         return sb.toString();
