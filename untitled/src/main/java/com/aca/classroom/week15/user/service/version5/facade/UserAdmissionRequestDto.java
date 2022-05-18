@@ -2,8 +2,12 @@ package com.aca.classroom.week15.user.service.version5.facade;
 
 public class UserAdmissionRequestDto {
 
-    private final String firstName;
-    private final String secondName;
+    private String firstName;
+    private String secondName;
+
+    UserAdmissionRequestDto() {
+
+    }
 
     public UserAdmissionRequestDto(String firstName, String secondName) {
         this.firstName = firstName;

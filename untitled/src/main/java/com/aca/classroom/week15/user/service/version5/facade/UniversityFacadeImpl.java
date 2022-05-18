@@ -9,6 +9,7 @@ import com.aca.classroom.week15.user.service.version5.service.core.DiplomaServic
 import com.aca.classroom.week15.user.service.version5.service.core.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -23,11 +24,13 @@ public class UniversityFacadeImpl implements UniversityFacade {
     private final UserService userService;
     private final DiplomaService diplomaService;
     private final UserMapper userMapper;
+    private final String usernamePrefix;
 
-    public UniversityFacadeImpl(final UserService userService, final DiplomaService diplomaService, UserMapper userMapper) {
+    public UniversityFacadeImpl(final UserService userService, final DiplomaService diplomaService, UserMapper userMapper, @Value("${university.username.prefix}") String usernamePrefix) {
         this.userService = userService;
         this.diplomaService = diplomaService;
         this.userMapper = userMapper;
+        this.usernamePrefix = usernamePrefix;
     }
 
     @Override
@@ -36,14 +39,13 @@ public class UniversityFacadeImpl implements UniversityFacade {
 
         User user = userService.create(
                 new CreateUserParams(
-                        dto.getFirstName() + "_" + dto.getSecondName(),
+                        usernamePrefix + dto.getFirstName() + "_" + dto.getSecondName(),
                         dto.getFirstName(),
                         dto.getSecondName(),
                         LocalDate.now()
                 )
         );
         UserAdmissionResponseDto userAdmissionResponseDto = userMapper.map(user);
-        //UserAdmissionResponseDto userAdmissionResponseDto = new UserAdmissionResponseDto(user.getUsername(), user.getFirstName(), user.getSecondName());
         LOGGER.info("Successfully admitted a student for the provided request - {},response -{}", dto, userAdmissionResponseDto);
         return userAdmissionResponseDto;
     }
@@ -66,7 +68,7 @@ public class UniversityFacadeImpl implements UniversityFacade {
                 user.getId()
         ));
         UserGraduationResponseDto responseDto = userMapper.map(diploma);
-        LOGGER.debug("starting graduation process for the provided dto -{}, result - {}", dto,responseDto);
+        LOGGER.debug("starting graduation process for the provided dto -{}, result - {}", dto, responseDto);
         return responseDto;
     }
 }

@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.transaction.Transactional;
+
 @Service
 public class DipolmaServiceImpl implements DiplomaService {
 
@@ -25,6 +27,7 @@ public class DipolmaServiceImpl implements DiplomaService {
     }
 
     @Override
+    @Transactional
     public Diploma create(CreateDiplomaParams params) {
         Assert.notNull(params, "The provided  params should not be null");
 

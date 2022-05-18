@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -23,11 +24,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User create(CreateUserParams params) {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating user for the provided params - {}", params);
         // TODO: 25.04.2022  replace null username
-        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(),params.getCreatedAt());
+        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt());
         User savedUser = userRepository.save(user);
         LOGGER.info("Successfully created a user for the provided params - {}", params);
         return savedUser;
@@ -60,7 +62,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findByUsername(username);
         User user = userOptional.orElseThrow(() -> new UserNotFoundException(username));
  */
-        LOGGER.info("Successfully retrieved the user for the provided username - {}, result - {}", username,userOptional);
+        LOGGER.info("Successfully retrieved the user for the provided username - {}, result - {}", username, userOptional);
 
         return userOptional;
     }
