@@ -12,12 +12,12 @@ public class Config {
     public UserMapper userMapper() {
         return new UserMapperImpl();
     }
-
+    /*
     @Bean
     public UserMapper userMapper2() {
         return new UserMapperImpl();
     }
-
+     */
     @Bean
     public String stringBean() {
         return "MYPREFIX";
