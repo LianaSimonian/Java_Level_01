@@ -4,18 +4,39 @@ import com.aca.classroom.week15.user.service.version5.facade.UniversityFacade;
 import com.aca.classroom.week15.user.service.version5.facade.UserAdmissionRequestDto;
 import com.aca.classroom.week15.user.service.version5.facade.UserAdmissionResponseDto;
 import com.aca.classroom.week15.user.service.version5.facade.UserGraduationRequestDto;
+import com.aca.classroom.week15.user.service.version5.service.core.CreateUserParams;
+import com.aca.classroom.week15.user.service.version5.service.core.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
 
 @EnableJpaRepositories
+//@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 @SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+       UserService userService= context.getBean(UserService.class);
+       userService.create(new CreateUserParams("username",
+               "firsName",
+               "secondName",
+               LocalDate.now(),
+               "password"));
+        final PasswordEncoder passwordEncoder = context.getBean(PasswordEncoder.class);
+        System.out.println(passwordEncoder);
+/*
+        if( true){
+            return;
+        }
+
+ */
         /*
         UserRepository userRepository = context.getBean(UserRepository.class);
         UserMapper mapper = context.getBean(UserMapper.class);

@@ -42,7 +42,8 @@ public class UniversityFacadeImpl implements UniversityFacade {
                         usernamePrefix + dto.getFirstName() + "_" + dto.getSecondName(),
                         dto.getFirstName(),
                         dto.getSecondName(),
-                        LocalDate.now()
+                        LocalDate.now(),
+                        "passwordRendom"
                 )
         );
         UserAdmissionResponseDto userAdmissionResponseDto = userMapper.map(user);

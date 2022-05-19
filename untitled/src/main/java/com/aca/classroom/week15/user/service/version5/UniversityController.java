@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("universities")
+@RequestMapping("/universities")
 public class UniversityController {
 
     private final UniversityFacade universityFacade;
@@ -24,8 +24,6 @@ public class UniversityController {
 
     @GetMapping
     public String sayHello() {
-
-
         return "Hello";
     }
 }

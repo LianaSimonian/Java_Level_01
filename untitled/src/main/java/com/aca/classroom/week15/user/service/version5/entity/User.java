@@ -21,17 +21,29 @@ public class User {
     @Column(name = "second_name", nullable = false)
     private String secondName;
 
-    @Column(name =" created_at",nullable = false)
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = " created_at", nullable = false)
     private LocalDate createdAt;//admitedUnivercity
 
     public User() {
     }
 
-    public User(String username, String firstName, String secondName,LocalDate createdAt) {
+    public User(String username, String firstName, String secondName, LocalDate createdAt, String password) {
         this.username = username;
         this.firstName = firstName;
         this.secondName = secondName;
         this.createdAt = createdAt;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
@@ -82,6 +94,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", createdAt=" + createdAt +
+                ", password=" + password +
                 '}';
     }
 
@@ -90,11 +103,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) &&  Objects.equals(createdAt,user.createdAt);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(createdAt, user.createdAt) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, firstName, secondName,createdAt);
+        return Objects.hash(id, username, firstName, secondName, createdAt, password);
     }
 }

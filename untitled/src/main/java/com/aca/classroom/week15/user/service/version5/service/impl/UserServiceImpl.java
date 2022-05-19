@@ -6,6 +6,7 @@ import com.aca.classroom.week15.user.service.version5.entity.User;
 import com.aca.classroom.week15.user.service.version5.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -17,19 +18,24 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository) {
+
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         Assert.notNull(userRepository, "user repository cannot be null");
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     @Transactional
+
     public User create(CreateUserParams params) {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating user for the provided params - {}", params);
+        final String encodedPassword = passwordEncoder.encode(params.getPassword());
         // TODO: 25.04.2022  replace null username
-        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt());
+        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt(), "String");
         User savedUser = userRepository.save(user);
         LOGGER.info("Successfully created a user for the provided params - {}", params);
         return savedUser;
@@ -83,5 +89,20 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("Successfully retrieved the user for the provided userid - {}, result - {}", id, user);
 
         return user;
+    }
+
+    @Override
+    public boolean checkCredentials(String username, String password) {
+        /*
+        //Monad design partern
+        Optional<String> passwordOptional = userRepository.findByUsername(username).map(user -> user.getPassword());
+        passwordEncoder.matches(password, );
+        return false;
+        //supplier
+        //callable
+        //orelse,orelseget difference
+         */
+        return userRepository.findByUsername(username).map(user -> user.getPassword())
+                .map(encryptedPassword -> passwordEncoder.matches(password, encryptedPassword)).orElse(false);
     }
 }
