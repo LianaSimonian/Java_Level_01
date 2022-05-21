@@ -12,8 +12,8 @@ public interface UserService {
 
     User getById(Long id);
 
-   boolean checkCredentials(String  username,String password);
+    boolean checkCredentials(String username, String password);
 
-    Optional<User> findByUsername(String username);//
+    Optional<User> findByUsername(String username);
 }
 //abstractianeer@ corei mej u dra het kapvath paramser@

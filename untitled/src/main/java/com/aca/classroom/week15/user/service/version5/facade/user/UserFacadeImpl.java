@@ -1,7 +1,6 @@
 package com.aca.classroom.week15.user.service.version5.facade.user;
 
 import com.aca.classroom.week15.user.service.version5.entity.User;
-import com.aca.classroom.week15.user.service.version5.facade.UserMapper;
 import com.aca.classroom.week15.user.service.version5.service.core.CreateUserParams;
 import com.aca.classroom.week15.user.service.version5.service.core.UserService;
 import com.aca.dto.UserSignUpRequestDto;
@@ -13,7 +12,6 @@ import java.time.LocalDate;
 public class UserFacadeImpl implements UserFacade {
 
     private final UserService userService;
-    private UserMapper userMapper;
 
     public UserFacadeImpl(UserService userService) {
         this.userService = userService;
