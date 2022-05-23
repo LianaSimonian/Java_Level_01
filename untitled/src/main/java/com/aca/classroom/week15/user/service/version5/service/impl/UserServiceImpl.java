@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
         LOGGER.info("Creating user for the provided params - {}", params);
         final String encodedPassword = passwordEncoder.encode(params.getPassword());
         // TODO: 25.04.2022  replace null username
-        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt(), "String");
+        User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt(), encodedPassword);
         User savedUser = userRepository.save(user);
-        LOGGER.info("Successfully created a user for the provided params - {}", params);
+        LOGGER.info("Successfully created a user for the provided params - {}, saved user - {}", params, savedUser);
         return savedUser;
     }
 

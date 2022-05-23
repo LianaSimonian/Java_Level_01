@@ -3,8 +3,8 @@ package com.aca.classroom.week15.user.service.version5.facade.user;
 import com.aca.classroom.week15.user.service.version5.entity.User;
 import com.aca.classroom.week15.user.service.version5.service.core.CreateUserParams;
 import com.aca.classroom.week15.user.service.version5.service.core.UserService;
-import com.aca.dto.UserSignUpRequestDto;
-import com.aca.dto.UserSignUpResponseDto;
+import com.aca.classroom.week15.user.service.version5.dto.UserSignUpRequestDto;
+import com.aca.classroom.week15.user.service.version5.dto.UserSignUpResponseDto;
 
 
 import java.time.LocalDate;
