@@ -61,9 +61,10 @@ public class OrganizationFacadeImpl implements OrganizationFacade {
         if (organizationOptional.isEmpty()) {
             return new OrganizationDetailsDto(List.of(String.format("organization with id %d not found", organizationId)));
         }
-        List<UserOrganization> userOrganizationOptional = userOrganizationService.findAllByOrganizationId(organizationId);
+
+        List<UserOrganization> userOrganizations= userOrganizationService.findAllByOrganizationId(organizationId);
         List<UserDetailsDto> userDetailsDtos = new LinkedList<>();
-        userOrganizationOptional.forEach(userOrganization -> {
+        userOrganizations.forEach(userOrganization -> {
             User user = userOrganization.getUser();
             userDetailsDtos.add(new UserDetailsDto(
                     user.getFirstName(),
@@ -72,8 +73,10 @@ public class OrganizationFacadeImpl implements OrganizationFacade {
                     user.getPassword(),
                     user.isOpenForJobOffers()));
         });
+
         Organization organization = organizationOptional.get();
-        OrganizationDetailsDto organizationDetailsDto = new OrganizationDetailsDto(organization.getName(), organization.getCreationDate(), userDetailsDtos);
+        organization.setEmployees(userDetailsDtos);
+        OrganizationDetailsDto organizationDetailsDto = organizationMapper.mapper(organization);
         LOGGER.info("Successfully got the organization details having id - {}, DetailsDto - {}", organizationId, organizationDetailsDto);
         return organizationDetailsDto;
     }

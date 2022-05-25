@@ -6,6 +6,7 @@ import com.aca.homework.week19.job.platform.dto.OrganizationDetailsDto;
 import com.aca.homework.week19.job.platform.dto.UserDetailsDto;
 import com.aca.homework.week19.job.platform.entity.*;
 import com.aca.homework.week19.job.platform.facade.core.*;
+import com.aca.homework.week19.job.platform.mapper.core.OrganizationMapper;
 import com.aca.homework.week19.job.platform.mapper.core.UserMapper;
 import com.aca.homework.week19.job.platform.service.core.*;
 import org.slf4j.Logger;
@@ -29,20 +30,23 @@ public class JobFacadeImpl implements JobFacade {
     private final InvitationService invitationService;
     private final InterviewService interviewService;
     private final UserMapper userMapper;
+    private final OrganizationMapper organizationMapper;
 
-    public JobFacadeImpl(UserService userService, OrganizationService organizationService, UserOrganizationService userOrganizationService, InvitationService invitationService, InterviewService interviewService, UserMapper userMapper) {
+    public JobFacadeImpl(UserService userService, OrganizationService organizationService, UserOrganizationService userOrganizationService, InvitationService invitationService, InterviewService interviewService, UserMapper userMapper, OrganizationMapper organizationMapper) {
         Assert.notNull(userService, "The provided userService should not be null");
         Assert.notNull(organizationService, "The provided organizationService should not be null");
         Assert.notNull(invitationService, "The provided invitationService should not be null");
         Assert.notNull(userOrganizationService, "The provided userOrganizationService should not be null");
         Assert.notNull(interviewService, "The provided interviewService should not be null");
         Assert.notNull(userMapper, "The provided userMapper should not be null");
+        Assert.notNull(organizationMapper, "The provided organizationMapper should not be null");
         this.userService = userService;
         this.organizationService = organizationService;
         this.userOrganizationService = userOrganizationService;
         this.invitationService = invitationService;
         this.interviewService = interviewService;
         this.userMapper = userMapper;
+        this.organizationMapper = organizationMapper;
     }
 
     @Override
@@ -101,8 +105,8 @@ public class JobFacadeImpl implements JobFacade {
 
         User user = userOptional.get();
         Organization organization = organizationOptional.get();
-        JobHireResponseDto jobHireResponseDto = new JobHireResponseDto(userMapper.mapper(user),
-                new OrganizationDetailsDto(organization.getName(), organization.getCreationDate(), employees));
+        organization.setEmployees(employees);
+        JobHireResponseDto jobHireResponseDto = new JobHireResponseDto(userMapper.mapper(user), organizationMapper.mapper(organization));
         LOGGER.info("Successfully hired a user according to the job hire request dto - {}, jobHireResponseDto - {}", dto, jobHireResponseDto);
         return jobHireResponseDto;
     }

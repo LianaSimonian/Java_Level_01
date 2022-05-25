@@ -15,12 +15,12 @@ public class OrganizationMapperImpl implements OrganizationMapper {
 
     @Override
     public OrganizationDetailsDto mapper(Organization organization) {
-        Assert.notNull(organization,"the organization param cannot be null");
+        Assert.notNull(organization, "the organization param cannot be null");
         LOGGER.info("Mapping an organization - {} to organization details dto", organization);
         OrganizationDetailsDto organizationDetailsDto = new OrganizationDetailsDto(
                 organization.getName(),
                 organization.getCreationDate(),
-                Collections.emptyList());
+                organization.getEmployees());
         LOGGER.info("Successfully mapped an organization - {} to organization details dto ,result - {}", organization, organizationDetailsDto);
         return organizationDetailsDto;
     }

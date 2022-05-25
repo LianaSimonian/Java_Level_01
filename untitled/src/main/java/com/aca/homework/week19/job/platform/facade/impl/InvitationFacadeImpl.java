@@ -3,6 +3,7 @@ package com.aca.homework.week19.job.platform.facade.impl;
 import com.aca.homework.week19.job.platform.dto.*;
 import com.aca.homework.week19.job.platform.entity.*;
 import com.aca.homework.week19.job.platform.facade.core.*;
+import com.aca.homework.week19.job.platform.mapper.core.OrganizationMapper;
 import com.aca.homework.week19.job.platform.mapper.core.UserMapper;
 import com.aca.homework.week19.job.platform.service.core.*;
 import org.slf4j.Logger;
@@ -26,20 +27,23 @@ public class InvitationFacadeImpl implements InvitationFacade {
     private final UserOrganizationService userOrganizationService;
     private final InterviewService interviewService;
     private final UserMapper userMapper;
+    private final OrganizationMapper organizationMapper;
 
-    public InvitationFacadeImpl(UserService userService, OrganizationService organizationService, InvitationService invitationService, UserOrganizationService userOrganizationService, InterviewService interviewService, UserMapper userMapper) {
+    public InvitationFacadeImpl(UserService userService, OrganizationService organizationService, InvitationService invitationService, UserOrganizationService userOrganizationService, InterviewService interviewService, UserMapper userMapper, OrganizationMapper organizationMapper) {
         Assert.notNull(userService, "The provided userService should not be null");
         Assert.notNull(organizationService, "The provided organizationService should not be null");
         Assert.notNull(invitationService, "The provided invitationService should not be null");
         Assert.notNull(userOrganizationService, "The provided userOrganizationService should not be null");
         Assert.notNull(interviewService, "The provided interviewService should not be null");
         Assert.notNull(userMapper, "The provided userMapper should not be null");
+        Assert.notNull(organizationMapper, "the provided organizationMapper should not be null");
         this.userService = userService;
         this.organizationService = organizationService;
         this.invitationService = invitationService;
         this.userOrganizationService = userOrganizationService;
         this.interviewService = interviewService;
         this.userMapper = userMapper;
+        this.organizationMapper = organizationMapper;
     }
 
     @Override
@@ -82,10 +86,11 @@ public class InvitationFacadeImpl implements InvitationFacade {
         });
 
         Organization organization = organizationOptional.get();
+        organization.setEmployees(employees);
         InvitationDetailsDto invitationDetailsDto = new InvitationDetailsDto(
                 invitation.getStatus(),
-                new OrganizationDetailsDto(organization.getName(), organization.getCreationDate(), employees
-                ), userMapper.mapper(user));
+                organizationMapper.mapper(organization),
+                userMapper.mapper(user));
         LOGGER.info("Successfully sent the invitation according to the provided request - {} , detailsDto- {}", dto, invitationDetailsDto);
         return invitationDetailsDto;
     }
@@ -133,10 +138,9 @@ public class InvitationFacadeImpl implements InvitationFacade {
 
         User user = userOptional.get();
         Organization organization = updatedInvitation.getOrganization();
+        organization.setEmployees(employees);
         InvitationDetailsDto invitationDetailsDto = new InvitationDetailsDto(updatedInvitation.getStatus(),
-                new OrganizationDetailsDto(
-                        organization.getName(),
-                        organization.getCreationDate(), employees),
+                organizationMapper.mapper(organization),
                 userMapper.mapper(user));
         LOGGER.info("Successfully accepted the invitation according to the provided request - {} , detailsDto- {}", dto, invitationDetailsDto);
         return invitationDetailsDto;
@@ -185,10 +189,10 @@ public class InvitationFacadeImpl implements InvitationFacade {
 
         User user = userOptional.get();
         Organization organization = invitation.getOrganization();
-        InvitationDetailsDto invitationDetailsDto = new InvitationDetailsDto(updatedInvitation.getStatus(),
-                new OrganizationDetailsDto(
-                        organization.getName(),
-                        organization.getCreationDate(), employees),
+        organization.setEmployees(employees);
+        InvitationDetailsDto invitationDetailsDto = new InvitationDetailsDto(
+                updatedInvitation.getStatus(),
+                organizationMapper.mapper(organization),
                 userMapper.mapper(user));
         LOGGER.info("Successfully rejected the invitation according to the provided request - {} , detailsDto- {}", dto, invitationDetailsDto);
         return invitationDetailsDto;

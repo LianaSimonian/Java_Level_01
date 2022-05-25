@@ -1,7 +1,10 @@
 package com.aca.homework.week19.job.platform.entity;
 
+import com.aca.homework.week19.job.platform.dto.UserDetailsDto;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +23,9 @@ public class Organization {
     @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
 
+    @Transient
+    private List<UserDetailsDto> employees;
+
     Organization() {
 
     }
@@ -27,6 +33,7 @@ public class Organization {
     public Organization(String name, LocalDate creationDate) {
         this.name = name;
         this.creationDate = creationDate;
+        employees = Collections.emptyList();
     }
 
     public Long getId() {
@@ -53,6 +60,14 @@ public class Organization {
         this.creationDate = creationDate;
     }
 
+    public List<UserDetailsDto> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<UserDetailsDto> employees) {
+        this.employees = employees;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,12 +75,12 @@ public class Organization {
 
         Organization that = (Organization) o;
 
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(creationDate, that.creationDate);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(creationDate, that.creationDate) && Objects.equals(employees, that.employees);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, creationDate);
+        return Objects.hash(id, name, creationDate, employees);
     }
 
     @Override
@@ -74,6 +89,7 @@ public class Organization {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", creationDate=" + creationDate +
+                ", employees=" + employees +
                 '}';
     }
 }
