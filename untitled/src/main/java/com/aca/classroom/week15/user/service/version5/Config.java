@@ -2,10 +2,17 @@ package com.aca.classroom.week15.user.service.version5;
 
 import com.aca.classroom.week15.user.service.version5.facade.UserMapper;
 import com.aca.classroom.week15.user.service.version5.facade.UserMapperImpl;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Date;
 
 @Configuration
 public class Config {
@@ -21,6 +28,16 @@ public class Config {
         return new UserMapperImpl();
     }
      */
+    @Bean
+    public JwtBuilder jwtBuilder(@Value("${jwt.secret.key }") String jwtSecretKey) {
+        return Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtSecretKey);
+    }
+
+    @Bean
+    public JwtParser jwtParser(@Value("${jwt.secret.key }") String jwtSecretKey) {
+        return Jwts.parser().setSigningKey(jwtSecretKey);
+    }
+
     @Bean
     public String stringBean() {
         return "MYPREFIX";
