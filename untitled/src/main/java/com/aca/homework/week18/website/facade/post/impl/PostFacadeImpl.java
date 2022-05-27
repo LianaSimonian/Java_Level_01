@@ -4,7 +4,7 @@ import com.aca.homework.week18.website.entity.Image;
 import com.aca.homework.week18.website.entity.Post;
 import com.aca.homework.week18.website.entity.User;
 import com.aca.homework.week18.website.facade.post.core.*;
-import com.aca.homework.week18.website.facade.user.core.UserSignUpResponseDto;
+import com.aca.homework.week18.website.facade.user.core.UserMapper;
 import com.aca.homework.week18.website.service.core.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,18 +24,21 @@ public class PostFacadeImpl implements PostFacade {
     private final ImageService imageService;
     private final ImageMapper imageMapper;
     private final PostMapper postMapper;
+    private final UserMapper userMapper;
 
-    public PostFacadeImpl(PostService postService, UserService userService, ImageService imageService, ImageMapper imageMapper, PostMapper postMapper) {
+    public PostFacadeImpl(PostService postService, UserService userService, ImageService imageService, ImageMapper imageMapper, PostMapper postMapper, UserMapper userMapper) {
         Assert.notNull(postService, "The provided postService should not be null");
         Assert.notNull(userService, "The provided userService should not be null");
         Assert.notNull(imageService, "The provided imageService should not be null");
         Assert.notNull(imageMapper, "The provided imageMapper should not be null");
         Assert.notNull(postMapper, "The provided postMapper should not be null");
+        Assert.notNull(userMapper, "The provided userMapper should not be null");
         this.postService = postService;
         this.userService = userService;
         this.imageService = imageService;
         this.imageMapper = imageMapper;
         this.postMapper = postMapper;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -58,7 +61,8 @@ public class PostFacadeImpl implements PostFacade {
                 new CreatePostParams(
                         dto.getTitle(),
                         dto.getDescription(),
-                        userId
+                        userId,
+                        LocalDate.now()
                 )
         );
         post.setImageBlobIds(imageBlobIds);
@@ -106,16 +110,17 @@ public class PostFacadeImpl implements PostFacade {
         }
 
         List<PostCreationResponseDto> postsDto = new LinkedList<>();
+
         posts.forEach(post -> {
             List<Long> blobIds = new LinkedList<>();
             List<Image> images = imageService.findAllByPostId(post.getId());
             images.forEach(image -> blobIds.add(image.getBlobId()));
-            postsDto.add(new PostCreationResponseDto(post.getId(), post.getTitle(), post.getDescription(), post.getUser().getId(), blobIds, null));
+            postsDto.add(new PostCreationResponseDto(post.getId(), post.getTitle(), post.getDescription(), post.getUser().getId(), blobIds, post.getPostCreationDate()));
         });
-
         User user = userOptional.get();
         GetAllUserPostsResponseDto responseDto = new GetAllUserPostsResponseDto(
-                new UserSignUpResponseDto(user.getFirstName(), user.getSecondName(), user.getUsername(), user.getPassword(), null), postsDto);
+                userMapper.mapper(user),
+                postsDto);
         LOGGER.info(" Successfully got all posts according to the provided request - {}, responseDto - {}", dto, responseDto);
         return responseDto;
     }

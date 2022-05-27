@@ -26,7 +26,11 @@ public class UserServiceImpl implements UserService {
     public User create(CreateUserParams params) {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating end saving user for the provided params - {}", params);
-        final User transientUser = new User(params.getFirstName(), params.getSecondName(), params.getUsername(), params.getPassword());
+        final User transientUser = new User(params.getFirstName(),
+                params.getSecondName(),
+                params.getUsername(),
+                params.getPassword(),
+                params.getSignUpDate());
         final User persistentUser = userRepository.save(transientUser);
         LOGGER.info("Successfully created end saved a user for the provided params - {},", params);
         return persistentUser;

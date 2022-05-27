@@ -15,7 +15,7 @@ public class UserMapperImpl implements UserMapper {
     @Override
     public UserSignUpResponseDto mapper(User user) {
         LOGGER.info("Mapping a user - {} to user SignUp response dto", user);
-        final UserSignUpResponseDto responseDto = new UserSignUpResponseDto(user.getFirstName(), user.getSecondName(), user.getUsername(), user.getPassword(), LocalDate.now());
+        final UserSignUpResponseDto responseDto = new UserSignUpResponseDto(user.getFirstName(), user.getSecondName(), user.getUsername(), user.getPassword(), user.getSignUpDate());
         LOGGER.info("Successfully mapped a user - {} to user signUp response dto ,result - {}", user, responseDto);
         return responseDto;
     }

@@ -1,6 +1,9 @@
 package com.aca.homework.week18.website.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +25,9 @@ public class Post {
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_POSTS_USER_ID_USERS_ID"), nullable = false)
     User user;
 
+    @Column(name = "postCreationDate", nullable = false)
+    private LocalDate postCreationDate;
+
     @Transient
     private List<Long> imageBlobIds;
 
@@ -29,10 +35,12 @@ public class Post {
 
     }
 
-    public Post(String title, String description, User user) {
+    public Post(String title, String description, User user, LocalDate postCreationDate) {
         this.title = title;
         this.description = description;
         this.user = user;
+        imageBlobIds = Collections.emptyList();
+        this.postCreationDate = postCreationDate;
     }
 
     public Long getId() {
@@ -75,6 +83,14 @@ public class Post {
         return imageBlobIds;
     }
 
+    public LocalDate getPostCreationDate() {
+        return postCreationDate;
+    }
+
+    public void setPostCreationDate(LocalDate postCreationDate) {
+        this.postCreationDate = postCreationDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,12 +98,12 @@ public class Post {
 
         Post post = (Post) o;
 
-        return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(description, post.description) && Objects.equals(user, post.user);
+        return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(description, post.description) && Objects.equals(user, post.user) && Objects.equals(imageBlobIds, post.imageBlobIds) && Objects.equals(postCreationDate, post.postCreationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, user);
+        return Objects.hash(id, title, description, user, imageBlobIds, postCreationDate);
     }
 
     @Override
@@ -97,6 +113,8 @@ public class Post {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", user=" + user +
+                ", postCreationDate=" + postCreationDate +
+                ", imageBlobIds=" + imageBlobIds +
                 '}';
     }
 }

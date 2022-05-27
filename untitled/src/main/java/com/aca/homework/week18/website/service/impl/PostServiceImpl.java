@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,8 @@ public class PostServiceImpl implements PostService {
         final Post transientPost = new Post(
                 params.getTitle(),
                 params.getDescription(),
-                userOptional.get()
+                userOptional.get(),
+                params.getCreationDate()
         );
 
         final Post persistentPost = postRepository.save(transientPost);

@@ -52,13 +52,15 @@ public class Main {
                 userService,
                 imageService,
                 imageMapper,
-                postMapper);
+                postMapper,
+                userMapper);
 
         postFacade.create(new PostCreationRequestDto("title1", "description1", 1L, List.of(1245L, 4545L, 4145L, 45787L)));
         postFacade.create(new PostCreationRequestDto("title1", "description1", 2L, List.of(1245L, 4545L, 4145L, 45787L)));
         postFacade.create(new PostCreationRequestDto("title1", "description1", 3L, List.of(1245L, 4545L, 4145L, 45787L)));
         postFacade.create(new PostCreationRequestDto("title1", "description1", 4L, List.of(1245L, 4545L, 4145L, 45787L)));
-        postFacade.create(new PostCreationRequestDto("title1", "description1", 5L, List.of(1245L, 4545L, 4145L, 45787L)));
+        System.out.println("################");
+        System.out.println(postFacade.create(new PostCreationRequestDto("title1", "description1", 5L, List.of(1245L, 4545L, 4145L, 45787L))));
 
         postFacade.getAllUserPosts(new GetAllUserPostsRequestDto(1L));
     }

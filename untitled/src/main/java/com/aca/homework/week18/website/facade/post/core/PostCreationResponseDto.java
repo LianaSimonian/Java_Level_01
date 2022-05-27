@@ -11,9 +11,9 @@ public final class PostCreationResponseDto {
     private Long postId;
     private String title;
     private String description;
+    private LocalDate postCreationDate;
     private Long userId;
     private List<Long> imagesBlobId;
-    private LocalDate postCreationDate;
 
     private List<String> errors;
 

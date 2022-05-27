@@ -1,6 +1,7 @@
 package com.aca.homework.week18.website.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -23,15 +24,19 @@ public class User {
     @Column(name = "password", nullable = false, unique = true, length = 20)
     private String password;
 
+    @Column(name = "signUpDate", nullable = false)
+    private LocalDate signUpDate;
+
     User() {
 
     }
 
-    public User(String firstName, String secondName, String username, String password) {
+    public User(String firstName, String secondName, String username, String password, LocalDate signUpDate) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.username = username;
         this.password = password;
+        this.signUpDate = signUpDate;
     }
 
     public Long getId() {
@@ -74,6 +79,14 @@ public class User {
         this.username = username;
     }
 
+    public LocalDate getSignUpDate() {
+        return signUpDate;
+    }
+
+    public void setSignUpDate(LocalDate signUpDate) {
+        this.signUpDate = signUpDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,23 +94,23 @@ public class User {
 
         User user = (User) o;
 
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(username, user.username) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(signUpDate, user.signUpDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, secondName, username, password);
+        return Objects.hash(id, firstName, secondName, username, password, signUpDate);
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("User{");
-        stringBuilder.append("id=").append(id);
-        stringBuilder.append(", firstName='").append(firstName).append('\'');
-        stringBuilder.append(", secondName='").append(secondName).append('\'');
-        stringBuilder.append(", username='").append(username).append('\'');
-        stringBuilder.append(", passwordId='").append(password);
-        stringBuilder.append('}');
-        return stringBuilder.toString();
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", signUpDate=" + signUpDate +
+                '}';
     }
 }

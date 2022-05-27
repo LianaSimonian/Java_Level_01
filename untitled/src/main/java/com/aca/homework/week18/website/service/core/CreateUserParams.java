@@ -1,7 +1,9 @@
 package com.aca.homework.week18.website.service.core;
 
+import com.aca.homework.week10.template.PageRenderer;
 import org.springframework.util.Assert;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public final class CreateUserParams {
@@ -10,8 +12,9 @@ public final class CreateUserParams {
     private final String secondName;
     private final String username;
     private final String password;
+    private final LocalDate signUpDate;
 
-    public CreateUserParams(String firstName, String secondName, String username, String password) {
+    public CreateUserParams(String firstName, String secondName, String username, String password, LocalDate signUpDate) {
         Assert.hasText(firstName, "The first name should not be null or empty");
         Assert.hasText(secondName, "The second name should not be null or empty");
         Assert.hasText(username, "The username should not be null or empty");
@@ -20,6 +23,7 @@ public final class CreateUserParams {
         this.secondName = secondName;
         this.username = username;
         this.password = password;
+        this.signUpDate = signUpDate;
     }
 
     public String getFirstName() {
@@ -38,6 +42,10 @@ public final class CreateUserParams {
         return password;
     }
 
+    public LocalDate getSignUpDate() {
+        return signUpDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,22 +53,22 @@ public final class CreateUserParams {
 
         CreateUserParams that = (CreateUserParams) o;
 
-        return Objects.equals(firstName, that.firstName) && Objects.equals(secondName, that.secondName) && Objects.equals(username, that.username) && Objects.equals(password, that.password);
+        return Objects.equals(firstName, that.firstName) && Objects.equals(secondName, that.secondName) && Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(signUpDate, that.signUpDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, secondName, username, password);
+        return Objects.hash(firstName, secondName, username, password, signUpDate);
     }
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("CreateUserParams{");
-        stringBuilder.append("firstName='").append(firstName).append('\'');
-        stringBuilder.append(", secondName='").append(secondName).append('\'');
-        stringBuilder.append(", username='").append('\'');
-        stringBuilder.append(", password='").append(password).append('\'');
-        stringBuilder.append('}');
-        return stringBuilder.toString();
+        return "CreateUserParams{" +
+                "firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", signUpDate=" + signUpDate +
+                '}';
     }
 }
