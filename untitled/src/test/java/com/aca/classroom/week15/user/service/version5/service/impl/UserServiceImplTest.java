@@ -42,23 +42,6 @@ class UserServiceImplTest {
         Mockito.verifyNoMoreInteractions(userRepository, passwordEncoder);
     }
 
-    /*
-
-        @Test
-        public void testCheckCredentialsWhenPasswordIsWRONG() {
-            User user  = new User();
-            user.setPassword("absd");
-            Mockito.when(userRepository.findByUsername("javalvl1")).thenReturn(Optional.of(user));
-
-            Mockito.when(passwordEncoder.matches("prof_group","absd")).thenReturn(false);
-            boolean result = userService.checkCredentials("javalvl1", "prof_froup");
-            Assertions.assertThat(result).isFalse();
-            Mockito.verify(userRepository).findByUsername("javalvl1");
-            Mockito.verify(passwordEncoder).matches("prof_group","absd");
-            Mockito.verifyNoMoreInteractions(userRepository, passwordEncoder);
-        }
-
-     */
     @Test
     public void testCheckCredentialsWhenPasswordIsWrong() {
         User user = new User();
