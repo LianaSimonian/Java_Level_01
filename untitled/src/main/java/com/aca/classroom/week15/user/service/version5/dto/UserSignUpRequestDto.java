@@ -1,10 +1,11 @@
 package com.aca.classroom.week15.user.service.version5.dto;
 
 public class UserSignUpRequestDto {
+
     private String username;
+    private String password;
     private String firstName;
     private String secondName;
-    private String password;
 
     public UserSignUpRequestDto() {
 

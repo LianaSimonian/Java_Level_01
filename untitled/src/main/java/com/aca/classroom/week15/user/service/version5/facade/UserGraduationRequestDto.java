@@ -11,4 +11,11 @@ public class UserGraduationRequestDto {
     public String getUsername() {
         return username;
     }
+
+    @Override
+    public String toString() {
+        return "UserGraduationRequestDto{" +
+                "username='" + username + '\'' +
+                '}';
+    }
 }

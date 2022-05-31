@@ -54,7 +54,7 @@ public class UniversityFacadeImpl implements UniversityFacade {
     @Override
     public UserGraduationResponseDto graduate(UserGraduationRequestDto dto) {
         Assert.notNull(dto, "the user graduation dto should not be null");
-
+        LOGGER.debug("Starting graduation process fro the provided dto - {}", dto);
         Optional<User> userOptional = userService.findByUsername(dto.getUsername());
 
         if (userOptional.isEmpty()) {

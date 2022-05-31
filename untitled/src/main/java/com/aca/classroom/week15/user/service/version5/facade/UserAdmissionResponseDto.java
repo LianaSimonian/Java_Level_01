@@ -3,12 +3,12 @@ package com.aca.classroom.week15.user.service.version5.facade;
 public class UserAdmissionResponseDto {
 
     private final String username;
-    private final String firsName;
+    private final String firstName;
     private final String secondName;
 
     public UserAdmissionResponseDto(String username, String firsName, String secondName) {
         this.username = username;
-        this.firsName = firsName;
+        this.firstName = firsName;
         this.secondName = secondName;
     }
 
@@ -16,8 +16,8 @@ public class UserAdmissionResponseDto {
         return username;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getSecondName() {
@@ -28,7 +28,7 @@ public class UserAdmissionResponseDto {
     public String toString() {
         return "UserAdmissionResponseDto{" +
                 "username='" + username + '\'' +
-                ", firsName='" + firsName + '\'' +
+                ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 '}';
     }

@@ -22,29 +22,49 @@ public class Config {
         return new UserMapperImpl();
     }
 
-    /*
+     /*
     @Bean
     public UserMapper userMapper2() {
         return new UserMapperImpl();
     }
      */
-    @Bean
-    public JwtBuilder jwtBuilder(@Value("${jwt.secret.key }") String jwtSecretKey) {
-        return Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtSecretKey);
-    }
-
-    @Bean
-    public JwtParser jwtParser(@Value("${jwt.secret.key }") String jwtSecretKey) {
-        return Jwts.parser().setSigningKey(jwtSecretKey);
-    }
-
-    @Bean
-    public String stringBean() {
-        return "MYPREFIX";
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public String jwtSecretKey(@Value("${jwt.secret.key}") String secretKey) {
+        return secretKey;
+    }
+
+    @Bean
+    public JwtBuilder jwtBuilder(String secretKey) {
+        return Jwts.builder()
+                .signWith(SignatureAlgorithm.HS256, secretKey);
+    }
+    /*
+    @Bean
+    public JwtBuilder jwtBuilder(@Value("${jwt.secret.key }") String jwtSecretKey) {
+        return Jwts.builder().signWith(SignatureAlgorithm.HS256, jwtSecretKey);
+    }
+     */
+
+    @Bean
+    public JwtParser jwtParser(String secretKey) {
+        return Jwts.parser().setSigningKey(secretKey);
+    }
+
+    /*
+     @Bean
+    public JwtParser jwtParser(@Value("${jwt.secret.key }") String jwtSecretKey) {
+        return Jwts.parser().setSigningKey(jwtSecretKey);
+    }
+     */
+    @Bean
+    public String stringBean() {
+        return "MYPREFIX";
+    }
+
 }
