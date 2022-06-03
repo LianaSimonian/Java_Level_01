@@ -26,7 +26,7 @@ public class Organization {
     @Transient
     private List<UserDetailsDto> employees;
 
-    Organization() {
+    public Organization() {
 
     }
 

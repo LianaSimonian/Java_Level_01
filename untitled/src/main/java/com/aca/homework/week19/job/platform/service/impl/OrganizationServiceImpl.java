@@ -41,4 +41,13 @@ public class OrganizationServiceImpl implements OrganizationService {
         LOGGER.info("Successfully retrieved the organization for the provided id - {}, result - {}", id, organizationOptional);
         return organizationOptional;
     }
+
+    @Override
+    public Optional<Organization> findByName(String name) {
+        Assert.hasText(name, "the organization name  should not be null");
+        LOGGER.info("Retrieving organization for the provided name  - {}", name);
+        final Optional<Organization> organizationOptional = organizationRepository.findByName(name);
+        LOGGER.info("Successfully retrieved the organization for the provided name - {}, result - {}", name, organizationOptional);
+        return organizationOptional;
+    }
 }

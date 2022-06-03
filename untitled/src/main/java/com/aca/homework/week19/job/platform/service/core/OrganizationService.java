@@ -9,4 +9,6 @@ public interface OrganizationService {
     Organization create(CreateOrganizationParams params);
 
     Optional<Organization> findById(Long id);
+
+    Optional<Organization> findByName(String name);
 }

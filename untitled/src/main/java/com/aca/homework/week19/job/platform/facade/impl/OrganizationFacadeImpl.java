@@ -43,6 +43,10 @@ public class OrganizationFacadeImpl implements OrganizationFacade {
     public OrganizationDetailsDto register(OrganizationRegistrationRequestDto dto) {
         Assert.notNull(dto, "the organization registration request dto param should not be null");
         LOGGER.info("registering the organization according to the provided request - {}", dto);
+        Optional<Organization> organizationOptional = organizationService.findByName(dto.getName());
+        if (organizationOptional.isPresent()) {
+            return new OrganizationDetailsDto(List.of(String.format("organization with name %s already exists", dto.getName())));
+        }
         Organization organization = organizationService.create(
                 new CreateOrganizationParams(
                         dto.getName(),
@@ -62,7 +66,7 @@ public class OrganizationFacadeImpl implements OrganizationFacade {
             return new OrganizationDetailsDto(List.of(String.format("organization with id %d not found", organizationId)));
         }
 
-        List<UserOrganization> userOrganizations= userOrganizationService.findAllByOrganizationId(organizationId);
+        List<UserOrganization> userOrganizations = userOrganizationService.findAllByOrganizationId(organizationId);
         List<UserDetailsDto> userDetailsDtos = new LinkedList<>();
         userOrganizations.forEach(userOrganization -> {
             User user = userOrganization.getUser();

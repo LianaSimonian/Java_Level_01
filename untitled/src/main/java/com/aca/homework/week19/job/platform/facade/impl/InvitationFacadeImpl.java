@@ -64,7 +64,7 @@ public class InvitationFacadeImpl implements InvitationFacade {
 
         User user = userOptional.get();
         if (!user.isOpenForJobOffers()) {
-            return new InvitationDetailsDto(List.of(String.format("the HR can not send an invitation to the user with id %d ,because the user is not open to job offers")));
+            return new InvitationDetailsDto(List.of(String.format("the HR can not send an invitation to the user with id %d ,because the user is not open to job offers",userId)));
         }
 
         Invitation invitation = invitationService.create(new CreateInvitationParams(
@@ -97,7 +97,7 @@ public class InvitationFacadeImpl implements InvitationFacade {
 
     @Override
     public InvitationDetailsDto acceptInvitation(InvitationAcceptDto dto) {
-        Assert.notNull(dto, "the invitation request dto param should not be null");
+        Assert.notNull(dto, "the invitation accept dto param should not be null");
         LOGGER.info("accepting the invitation according to the provided request - {}", dto);
         Long userId = dto.getUserId();
         Optional<User> userOptional = userService.findById(userId);
@@ -123,7 +123,7 @@ public class InvitationFacadeImpl implements InvitationFacade {
                 organizationId,
                 InvitationStatusType.ACCEPTED
         ));
-        Interview interview = interviewService.create(new CreateInterviewParams(userId, LocalDateTime.now(), InterviewStatusType.INVITED, organizationId));
+        Interview interview = interviewService.create(new CreateInterviewParams(userId, dto.getInterviewDateTime(), InterviewStatusType.INVITED, organizationId));
         List<UserOrganization> userOrganizations = userOrganizationService.findAllByOrganizationId(organizationId);
         List<UserDetailsDto> employees = new LinkedList<>();
         userOrganizations.forEach(userOrganization -> {
@@ -148,7 +148,7 @@ public class InvitationFacadeImpl implements InvitationFacade {
 
     @Override
     public InvitationDetailsDto rejectInvitation(InvitationRejectDto dto) {
-        Assert.notNull(dto, "the invitation request dto param should not be null");
+        Assert.notNull(dto, "the invitation reject dto param should not be null");
         LOGGER.info("rejecting the invitation according to the provided request - {}", dto);
         Long userId = dto.getUserId();
         Optional<User> userOptional = userService.findById(userId);

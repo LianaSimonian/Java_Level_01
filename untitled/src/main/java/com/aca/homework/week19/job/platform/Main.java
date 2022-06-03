@@ -12,6 +12,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @SpringBootApplication
 @EnableJpaRepositories
@@ -38,7 +40,10 @@ public class Main {
 
         InvitationFacade invitationFacade = context.getBean(InvitationFacadeImpl.class);
         invitationFacade.sendInvitation(new InvitationRequestDto(1L, 1L));
-        invitationFacade.acceptInvitation(new InvitationAcceptDto(1L, 1L));
+        LocalDate date = LocalDate.of(2022, 6, 30);
+        LocalTime time = LocalTime.of(6, 30);
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
+        invitationFacade.acceptInvitation(new InvitationAcceptDto(1L, 1L, dateTime));
         invitationFacade.sendInvitation(new InvitationRequestDto(2L, 1L));
         invitationFacade.rejectInvitation(new InvitationRejectDto(2L, 2L));
 

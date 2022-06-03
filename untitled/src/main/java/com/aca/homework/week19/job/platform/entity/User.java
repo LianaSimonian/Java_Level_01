@@ -27,7 +27,7 @@ public class User {
     @Column(name = "is_open_for_job_offers", nullable = false)
     private boolean isOpenForJobOffers;
 
-    User() {
+    public User() {
     }
 
     public User(String firstName, String secondName, String username, String password, boolean isOpenForJobOffers) {
