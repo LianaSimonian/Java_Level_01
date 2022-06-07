@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -71,6 +72,10 @@ public class UniversityFacadeImpl implements UniversityFacade {
         UserGraduationResponseDto responseDto = userMapper.map(diploma);
         LOGGER.debug("starting graduation process for the provided dto -{}, result - {}", dto, responseDto);
         return responseDto;
+    }
+    @PostConstruct
+    public void test(){
+        System.out.println();
     }
 }
 //cntrlP tesnum enq dashter@

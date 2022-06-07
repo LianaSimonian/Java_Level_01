@@ -1,7 +1,9 @@
 package com.aca.classroom.week15.user.service.version5.entity;
 
 import javax.persistence.*;
+import java.awt.font.TextHitInfo;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -26,6 +28,9 @@ public class User {
 
     @Column(name = " created_at", nullable = false)
     private LocalDate createdAt;//admitedUnivercity
+//PTI DBUM AVELACNI
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private List<UserRole> userRoles;
 
     public User() {
     }
@@ -86,16 +91,12 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", createdAt=" + createdAt +
-                ", password=" + password +
-                '}';
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 
     @Override
@@ -103,11 +104,25 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(createdAt, user.createdAt) && Objects.equals(password, user.password);
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(secondName, user.secondName) && Objects.equals(password, user.password) && Objects.equals(createdAt, user.createdAt) && Objects.equals(userRoles, user.userRoles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, firstName, secondName, createdAt, password);
+        return Objects.hash(id, username, firstName, secondName, password, createdAt, userRoles);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", password='" + password + '\'' +
+                ", createdAt=" + createdAt +
+                ", userRoles=" + userRoles +
+                '}';
     }
 }
+//INVERSE SIDE

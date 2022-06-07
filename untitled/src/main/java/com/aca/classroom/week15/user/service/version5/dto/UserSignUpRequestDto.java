@@ -1,5 +1,7 @@
 package com.aca.classroom.week15.user.service.version5.dto;
 
+import java.util.Objects;
+
 public class UserSignUpRequestDto {
 
     private String username;
@@ -37,32 +39,23 @@ public class UserSignUpRequestDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserSignUpRequestDto)) return false;
-
+        if (o == null || getClass() != o.getClass()) return false;
         UserSignUpRequestDto that = (UserSignUpRequestDto) o;
-
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (secondName != null ? !secondName.equals(that.secondName) : that.secondName != null) return false;
-        return password != null ? password.equals(that.password) : that.password == null;
+        return Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(firstName, that.firstName) && Objects.equals(secondName, that.secondName);
     }
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
+        return Objects.hash(username, password, firstName, secondName);
     }
 
     @Override
     public String toString() {
-        return "UsewrSignUpRequestDto{" +
+        return "UserSignUpRequestDto{" +
                 "username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

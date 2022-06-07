@@ -1,5 +1,7 @@
 package com.aca.classroom.week15.user.service.version5.service.impl;
 
+import com.aca.classroom.week15.user.service.version5.entity.UserRole;
+import com.aca.classroom.week15.user.service.version5.entity.UserRoleType;
 import com.aca.classroom.week15.user.service.version5.service.core.CreateUserParams;
 import com.aca.classroom.week15.user.service.version5.service.core.UserService;
 import com.aca.classroom.week15.user.service.version5.entity.User;
@@ -8,9 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import javax.transaction.Transactional;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,19 +32,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
-
+    @Transactional(readOnly = true)
     public User create(CreateUserParams params) {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating user for the provided params - {}", params);
         final String encodedPassword = passwordEncoder.encode(params.getPassword());
         // TODO: 25.04.2022  replace null username
         User user = new User(params.getUsername(), params.getFirstName(), params.getSecondName(), params.getCreatedAt(), encodedPassword);
+        user.setUserRoles(List.of(new UserRole(user, UserRoleType.STUDENT)));//dbum chi avelacnelu
         User savedUser = userRepository.save(user);
         LOGGER.info("Successfully created a user for the provided params - {}, saved user - {}", params, savedUser);
         return savedUser;
     }
 
+    //transactional(readOnly = true)
+    @Transactional(readOnly = true)
     @Override
     public User getByUsername(String username) {
         Assert.hasText(username, "Username should not be null or empty");

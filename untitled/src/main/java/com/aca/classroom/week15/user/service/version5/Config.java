@@ -62,9 +62,11 @@ public class Config {
         return Jwts.parser().setSigningKey(jwtSecretKey);
     }
      */
+    /*
     @Bean
     public String stringBean() {
         return "MYPREFIX";
     }
 
+     */
 }
