@@ -50,20 +50,21 @@ public class Main {
         UniversityFacade universityFacade = context.getBean(UniversityFacade.class);
 
         UserAdmissionResponseDto name1Response = universityFacade.admit(new UserAdmissionRequestDto("Liana", "Simonian"));
-       /*
+
         UserAdmissionResponseDto name2Response = universityFacade.admit(new UserAdmissionRequestDto("Diana", "Simonian"));
         UserAdmissionResponseDto name3Response = universityFacade.admit(new UserAdmissionRequestDto("Arsen", "Simonian"));
         UserAdmissionResponseDto name4Response = universityFacade.admit(new UserAdmissionRequestDto("Olya", "Ayvazian"));
-*/
-        //universityFacade.graduate(new UserGraduationRequestDto(name1Response.getUsername()));
+
+        universityFacade.graduate(new UserGraduationRequestDto(name1Response.getUsername()));
         universityFacade.graduate(new UserGraduationRequestDto("Diana_Simonian"));
 
-        System.out.println(universityFacade.graduate(new UserGraduationRequestDto("abc")));
+        // System.out.println(universityFacade.graduate(new UserGraduationRequestDto("abc")));
         User user = userService.getByUsername("username");
-        System.out.println(user);
+        System.out.println("The user is " + user);
 
 
     }
+
     //debug
     //proxi design pattern
 //control p

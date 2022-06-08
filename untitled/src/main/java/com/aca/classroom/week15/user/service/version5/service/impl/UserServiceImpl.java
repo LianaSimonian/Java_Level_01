@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.util.LinkedList;
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +32,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    //@Transactional(readOnly = true)
+    @Transactional
     public User create(CreateUserParams params) {
         Assert.notNull(params, "the params cannot be null");
         LOGGER.info("Creating user for the provided params - {}", params);
@@ -45,9 +46,8 @@ public class UserServiceImpl implements UserService {
         return savedUser;
     }
 
-    //transactional(readOnly = true)
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
     public User getByUsername(String username) {
         Assert.hasText(username, "Username should not be null or empty");
         LOGGER.info("Retrieving user for the provided username - {}", username);
@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<User> findByUsername(String username) {
         Assert.hasText(username, "Username should not be null or empty");
         LOGGER.info("Retrieving user for the provided username - {}", username);
@@ -110,5 +111,10 @@ public class UserServiceImpl implements UserService {
          */
         return userRepository.findByUsername(username).map(user -> user.getPassword())
                 .map(encryptedPassword -> passwordEncoder.matches(password, encryptedPassword)).orElse(false);
+    }
+
+    @PostConstruct
+    public void test() {
+        System.out.println("test");
     }
 }

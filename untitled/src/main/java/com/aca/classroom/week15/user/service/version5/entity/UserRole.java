@@ -12,15 +12,6 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public UserRole() {
-
-    }
-
-    public UserRole(User user, UserRoleType type) {
-        this.user = user;
-        this.type = type;
-    }
-
     @ManyToOne()
     @JoinColumn(name = "USER_ID", foreignKey = @ForeignKey(name = "USER_ROLE_USER_ID"), nullable = false)
     private User user;
@@ -29,4 +20,11 @@ public class UserRole {
     @Column(name = "TYPE", nullable = false, length = 50)
     private UserRoleType type;
 
+    public UserRole() {
+    }
+
+    public UserRole(User user, UserRoleType type) {
+        this.user = user;
+        this.type = type;
+    }
 }

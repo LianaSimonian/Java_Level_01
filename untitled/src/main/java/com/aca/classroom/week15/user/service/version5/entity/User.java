@@ -1,7 +1,6 @@
 package com.aca.classroom.week15.user.service.version5.entity;
 
 import javax.persistence.*;
-import java.awt.font.TextHitInfo;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +10,7 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", unique = true, nullable = false)
@@ -28,7 +27,7 @@ public class User {
 
     @Column(name = " created_at", nullable = false)
     private LocalDate createdAt;//admitedUnivercity
-//PTI DBUM AVELACNI
+    //PTI DBUM AVELACNI
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<UserRole> userRoles;
 

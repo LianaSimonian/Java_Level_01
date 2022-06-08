@@ -8,6 +8,7 @@ import com.aca.classroom.week15.user.service.version5.dto.UserSignUpResponseDto;
 import org.springframework.stereotype.Component;
 
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 @Component
@@ -34,4 +35,10 @@ public class UserFacadeImpl implements UserFacade {
                 user.getCreatedAt());
         return responseDto;
     }
+
+    @PostConstruct
+    public void test() {
+        System.out.println();
+    }
 }
+//cntrlP tesnum enq dashter@
