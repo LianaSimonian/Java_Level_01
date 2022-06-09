@@ -3,10 +3,7 @@ package com.aca.classroom.week15.user.service.version5.controller;
 
 import com.aca.classroom.week15.user.service.version5.service.core.JwtService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +23,12 @@ public class DiplomaController {
         String username = jwtService.getUsername(token);
         return ResponseEntity.ok("You are " + username);
     }
+
+    @GetMapping
+    public ResponseEntity<String> getOk(){
+        return ResponseEntity.ok("Ok");
+    }
+
 }
 /*
 import com.aca.classroom.week15.user.service.version5.service.JwtService;

@@ -9,6 +9,9 @@ version '1.0'
 
 repositories {
     mavenCentral()
+    ext {
+        set('snippetsDir', file("build/generated-snippets"))
+    }
 }
 
 dependencies {

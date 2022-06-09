@@ -27,7 +27,7 @@ public class User {
 
     @Column(name = " created_at", nullable = false)
     private LocalDate createdAt;//admitedUnivercity
-    //PTI DBUM AVELACNI
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<UserRole> userRoles;
 

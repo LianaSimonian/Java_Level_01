@@ -17,8 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 
 @EnableJpaRepositories
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-//@SpringBootApplication
+//@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
