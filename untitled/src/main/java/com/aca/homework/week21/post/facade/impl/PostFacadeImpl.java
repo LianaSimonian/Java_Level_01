@@ -43,10 +43,9 @@ public class PostFacadeImpl implements PostFacade {
         Assert.notNull(dto, "post request dto param should not be null");
         LOGGER.info("create the post according to the provided request - {}", dto);
         final Post post = postService.create(new CreatePostParams(
-                LocalDateTime.now(),
+                LocalDateTime.of(2020, 04, 01, 12, 30),
                 randomFactService.getRandomFact(),
                 dto.getCreatedBy()
-
         ));
         PostDto responseDto = postMapper.map(post);
         LOGGER.info(" Successfully created the post according to the provided request - {}, responseDto - {}", dto, responseDto);
