@@ -103,7 +103,7 @@ public class PostFacadeImpl implements PostFacade {
                 @Override
                 public PostDto call() throws Exception {
                     Post post = postService.create(new CreatePostParams(
-                            LocalDateTime.now(),
+                            LocalDateTime.of(2020, 02, 02, 01, 01),
                             bulkPostPrefix + randomFactService.getRandomFact(),
                             createdBy
                     ));
