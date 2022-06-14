@@ -27,4 +27,25 @@ public class UserRole {
         this.user = user;
         this.type = type;
     }
-}
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public UserRoleType getType() {
+        return type;
+    }
+
+    //adapter dp
+    //base64
+}//xozi girq skzbi 50 ej
+//apiGataway d pattern apiGarAway inq@ servera vor Database chuni  u securityn henc iran kcenq heriqa
+    //TCP
+//dispatcherservlet defaulltov 1 hat servlet ka tomkati mej es anunov
+//usernamepasswordautorizitetionfilter1,basicautorizetion filter2 2 filtrerri mijov a ancnum
+//jainofresponsiblity
+//basic autontication filtrer hat kar
