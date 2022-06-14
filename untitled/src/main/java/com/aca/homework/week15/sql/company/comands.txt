@@ -1,0 +1,146 @@
+PS C:\Users\user> docker run -d postgres:9.6.12
+a8fe7b5e8d5c9b2bd5691339f355d3894a20f614d409b4813fb4ac35918a9e29
+PS C:\Users\user> docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS      NAMES
+a8fe7b5e8d5c   postgres:9.6.12   "docker-entrypoint.s…"   5 seconds ago    Up 3 seconds    5432/tcp   objective_galois
+PS C:\Users\user> docker exec -it  objective_galois bash
+root@a8fe7b5e8d5c:/# psql -U postgres
+psql (9.6.12)
+Type "help" for help.
+
+postgres=# create table Companies ( id serial primary key,name varchar(255) unique not null,price bigint not null,creation_date date not null);
+CREATE TABLE
+postgres=# create table Users (id serial primary key,username varchar(255) not null,first_name varchar(255) not null,last_name varchar(255) not null,registration_date date not null,company_id int references companies(id));
+CREATE TABLE
+postgres=# select* from Users;
+ id | username | first_name | last_name | registration_date | company_id
+----+----------+------------+-----------+-------------------+------------
+(0 rows)
+
+postgres=# select* from Companies;
+ id | name | price | creation_date
+----+------+-------+---------------
+(0 rows)
+
+postgres=# \d
+                List of relations
+ Schema |       Name       |   Type   |  Owner
+--------+------------------+----------+----------
+ public | companies        | table    | postgres
+ public | companies_id_seq | sequence | postgres
+ public | users            | table    | postgres
+ public | users_id_seq     | sequence | postgres
+(4 rows)
+
+postgres=# \d Users;
+                                      Table "public.users"
+      Column       |          Type          |                     Modifiers
+-------------------+------------------------+----------------------------------------------------
+ id                | integer                | not null default nextval('users_id_seq'::regclass)
+ username          | character varying(255) | not null
+ first_name        | character varying(255) | not null
+ last_name         | character varying(255) | not null
+ registration_date | date                   | not null
+ company_id        | integer                |
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "users_company_id_fkey" FOREIGN KEY (company_id) REFERENCES companies(id)
+
+postgres=# \d Companies;
+                                    Table "public.companies"
+    Column     |          Type          |                       Modifiers
+---------------+------------------------+--------------------------------------------------------
+ id            | integer                | not null default nextval('companies_id_seq'::regclass)
+ name          | character varying(255) | not null
+ price         | bigint                 | not null
+ creation_date | date                   | not null
+Indexes:
+    "companies_pkey" PRIMARY KEY, btree (id)
+    "companies_name_key" UNIQUE CONSTRAINT, btree (name)
+Referenced by:
+    TABLE "users" CONSTRAINT "users_company_id_fkey" FOREIGN KEY (company_id) REFERENCES companies(id)
+                                  ^
+postgres=# insert into Companies(name,price,creation_date) values ('SmartclickAI',2000000,'01-01-2018'), ('KrispAI',50000000,'01-01-2019');
+INSERT 0 2
+postgres=# select* from Companies;
+ id |     name     |  price   | creation_date
+----+--------------+----------+---------------
+  1 | SmartclickAI |  2000000 | 2018-01-01
+  2 | KrispAI      | 50000000 | 2019-01-01
+(2 rows)
+
+postgres=#  alter table Users add constraint unique_users_username unique (username);
+ALTER TABLE
+postgres=# \d Users;
+                                      Table "public.users"
+      Column       |          Type          |                     Modifiers
+-------------------+------------------------+----------------------------------------------------
+ id                | integer                | not null default nextval('users_id_seq'::regclass)
+ username          | character varying(255) | not null
+ first_name        | character varying(255) | not null
+ last_name         | character varying(255) | not null
+ registration_date | date                   | not null
+ company_id        | integer                |
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+    "unique_users_username" UNIQUE CONSTRAINT, btree (username)
+Foreign-key constraints:
+    "users_company_id_fkey" FOREIGN KEY (company_id) REFERENCES companies(id)
+
+postgres=# insert into Users (username,first_name,last_name,registration_date,company_id)  values ('user12','name1','lastname1','2020-11-13',1),  ('user123','name2','lastname2','2021-11-01',2),  ('user1234','name3','lastname3','2021-12-01',2), ('user214','name4','lastname4','2020-01-01',2), ('user456','name5','lastname5','2019-01-09',1);
+INSERT 0 5
+postgres=# select* from Users;
+ id | username | first_name | last_name | registration_date | company_id
+----+----------+------------+-----------+-------------------+------------
+  1 | user12   | name1      | lastname1 | 2020-11-13        |          1
+  2 | user123  | name2      | lastname2 | 2021-11-01        |          2
+  3 | user1234 | name3      | lastname3 | 2021-12-01        |          2
+  4 | user214  | name4      | lastname4 | 2020-01-01        |          2
+  5 | user456  | name5      | lastname5 | 2019-01-09        |          1
+(5 rows)
+
+postgres=# select name from Companies;
+     name
+--------------
+ SmartclickAI
+ KrispAI
+(2 rows)
+
+postgres=# select count(*) from Companies;
+ count
+-------
+     2
+(1 row)
+
+postgres=# select first_name from Users;
+ first_name
+------------
+ name1
+ name2
+ name3
+ name4
+ name5
+(5 rows)
+
+postgres=# select u.first_name, u.last_name, c.name from companies c inner join users u on c.id = u.company_id;
+ first_name | last_name |     name
+------------+-----------+--------------
+ name5      | lastname5 | SmartclickAI
+ name1      | lastname1 | SmartclickAI
+ name4      | lastname4 | KrispAI
+ name3      | lastname3 | KrispAI
+ name2      | lastname2 | KrispAI
+(5 rows)
+
+postgres=# select * from users inner join companies on users.company_id = companies.id where companies.name = 'SmartclickAI';
+ id | username | first_name | last_name | registration_date | company_id | id |     name     |  price  | creation_date
+----+----------+------------+-----------+-------------------+------------+----+--------------+---------+---------------
+  1 | user12   | name1      | lastname1 | 2020-11-13        |          1 |  1 | SmartclickAI | 2000000 | 2018-01-01
+  5 | user456  | name5      | lastname5 | 2019-01-09        |          1 |  1 | SmartclickAI | 2000000 | 2018-01-01
+(2 rows)
+
+postgres=# \q
+root@a8fe7b5e8d5c:/# exit
+exit
+PS C:\Users\user>
