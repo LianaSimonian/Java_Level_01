@@ -18,9 +18,7 @@ public class InterruptionSensitiveRunnable implements Runnable {
         while (true) {
             if (Thread.interrupted()) return;
 
-            synchronized (sharedList) {
                 sharedList.add(UUID.randomUUID().toString());
-            }
 
             try {
                 sleep(2000);
