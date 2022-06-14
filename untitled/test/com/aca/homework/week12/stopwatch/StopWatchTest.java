@@ -33,10 +33,4 @@ class StopWatchTest {
         Assertions.assertTrue(timer1 > timer && timer1 >= 20);
     }
 
-    @Test
-    public void testGetTimer() {
-        StopWatchForTest testSubject = new StopWatchForTest(DisplayType.SECONDS_AND_MILLIS);
-        testSubject.setTimer(12);
-        Assertions.assertEquals(12, testSubject.getTimer());
-    }
 }

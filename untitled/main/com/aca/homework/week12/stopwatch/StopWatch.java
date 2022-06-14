@@ -11,12 +11,12 @@ public class StopWatch {
     }
 
     public void start() {
-        long startMillis;
+        long startMethodInvocationMillis;
         while (true) {
             System.out.println(type.displayFormat(timer));
             startMillis = System.currentTimeMillis();
-            while (System.currentTimeMillis() - startMillis < 10) ;
-            timer += System.currentTimeMillis() - startMillis ;
+            while (System.currentTimeMillis() - startMethodInvocationMillis < 10) ;
+            timer += System.currentTimeMillis() - startMethodInvocationMillis ;
         }
     }
 
