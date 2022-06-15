@@ -6,7 +6,35 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+/*
+@RestController
+@RequestMapping(
+        path = "diplomas"
+            consumes = "application/json",
+            produces = "application/json")
+public class DiplomaController {
 
+    private final JwtComponent jwtComponent;
+
+    public DiplomaController(JwtComponent jwtComponent) {
+        this.jwtComponent = jwtComponent;
+    }
+
+    @PostMapping
+    public ResponseEntity<String> create(@RequestBody DiplomaCreateDto dto, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        String username = jwtComponent.getUsername(token);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("you are" + username);
+    }
+    @GetMapping()
+    public ResponseEntity<String> getOk(){
+        return ResponseEntity.ok("OK");
+    }
+
+}
+ */
 @RestController
 @RequestMapping(path = "/diplomas", consumes = "application/json", produces = "application/json")
 public class DiplomaController {
@@ -69,6 +97,4 @@ public class DiplomaController {
         // return request.getHeader("myId");
     }
 }
-
-
  */

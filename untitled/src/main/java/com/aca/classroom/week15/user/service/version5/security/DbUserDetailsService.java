@@ -44,7 +44,7 @@ public class DbUserDetailsService implements UserDetailsService {
         final User dbUser = userService.getByUsername(username);
         List<GrantedAuthority> list = new ArrayList<>();
         List<UserRole> userRoles = dbUser.getUserRoles();
-        userRoles.forEach(userRole -> list.add(new SimpleGrantedAuthority(userRole.getType().name())));
+       1 userRoles.forEach(userRole -> list.add(new SimpleGrantedAuthority(userRole.getType().name())));
         return new org.springframework.security.core.userdetails.User(
                 username,
                 dbUser.getPassword(),
